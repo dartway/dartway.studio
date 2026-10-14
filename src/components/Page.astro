@@ -1,0 +1,170 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/jetbrains-mono/400.css';
+import '../styles/site.css';
+import metrics from '../data/metrics.json';
+
+const { t } = Astro.props;
+
+const TELEGRAM = 'https://t.me/eu_novikov';
+const DEMO = 'https://www.loom.com/share/2d8ecc86d04342fcb66917e823f1507e';
+const endpoint = import.meta.env.PUBLIC_ANALYTICS_ENDPOINT ?? '';
+
+const day = (iso: string) => {
+  const [, m, d] = iso.split('-');
+  return `${d}.${m}`;
+};
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang={t.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t.title}</title>
+    <meta name="description" content={t.description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="ru" href="https://dartway.studio/" />
+    <link rel="alternate" hreflang="en" href="https://dartway.studio/en/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={t.title} />
+    <meta property="og:description" content={t.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b0d10" />
+  </head>
+  <body data-endpoint={endpoint}>
+    <header class="top">
+      <div class="wrap top-row">
+        <a class="brand" href={t.lang === 'ru' ? '/' : '/en/'}>
+          <img src="/favicon.svg" alt="" width="24" height="24" />
+          <span>DartWay <b>Studio</b></span>
+        </a>
+        <nav class="nav">
+          <a href="#how">{t.nav.how}</a>
+          <a href="#agents">{t.nav.agents}</a>
+          <a href="#who">{t.nav.who}</a>
+          <a href="#beta">{t.nav.beta}</a>
+        </nav>
+        <div class="top-actions">
+          <a class="lang" href={t.switchHref} data-cta="lang">{t.switchLabel}</a>
+          <a class="btn btn-small" href={TELEGRAM} data-cta="nav-telegram">{t.nav.cta}</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">{t.hero.eyebrow}</p>
+          <h1>{t.hero.title}</h1>
+          <p class="lead">{t.hero.lead}</p>
+          <div class="actions">
+            <a class="btn" href={TELEGRAM} data-cta="hero-telegram">{t.hero.primary}</a>
+            <a class="btn btn-ghost" href={DEMO} data-cta="hero-demo">▶ {t.hero.secondary}</a>
+          </div>
+        </div>
+        <div class="board" aria-hidden="true">
+          {t.board.map((col: string, i: number) => (
+            <div class="col">
+              <span class="col-name">{col}</span>
+              {Array.from({ length: 4 - i }).map((_, j) => (
+                <span class={`card ${j === 0 ? 'card-live' : ''}`} style={`--d:${i * 0.6 + j * 0.25}s`}>
+                  <i></i><i></i>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="metrics wrap">
+        <div class="metric">
+          <strong>{metrics.completed}</strong>
+          <span>{t.metrics.completed}</span>
+          <small>{t.metrics.week(day(metrics.monday), day(metrics.sunday))}</small>
+        </div>
+        <div class="metric">
+          <strong>{metrics.projects}</strong>
+          <span>{t.metrics.projects}</span>
+          <small>{t.metrics.projectsNote}</small>
+        </div>
+        <div class="metric">
+          <strong>{metrics.self}</strong>
+          <span>{t.metrics.self}</span>
+          <small>{t.metrics.selfNote}</small>
+        </div>
+      </section>
+
+      <section class="problem wrap">
+        <h2>{t.problem.title}</h2>
+        <p>{t.problem.text}</p>
+      </section>
+
+      <section id="how" class="wrap">
+        <h2>{t.how.title}</h2>
+        <ol class="steps">
+          {t.how.steps.map((s: { name: string; text: string }, i: number) => (
+            <li>
+              <span class="step-n">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{s.name}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="agents" class="wrap split">
+        <div>
+          <h2>{t.agents.title}</h2>
+          <p>{t.agents.text}</p>
+          <ul class="chips">
+            {t.agents.chips.map((c: string) => <li>{c}</li>)}
+          </ul>
+        </div>
+        <aside class="human">
+          <h3>{t.agents.humanTitle}</h3>
+          <p>{t.agents.humanText}</p>
+        </aside>
+      </section>
+
+      <section id="who" class="wrap">
+        <h2>{t.who.title}</h2>
+        <div class="grid">
+          {t.who.items.map((w: { name: string; text: string }) => (
+            <div class="tile">
+              <h3>{w.name}</h3>
+              <p>{w.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="beta" class="wrap">
+        <h2>{t.beta.title}</h2>
+        <ul class="honest">
+          {t.beta.items.map((b: string) => <li>{b}</li>)}
+        </ul>
+      </section>
+
+      <section class="final wrap">
+        <h2>{t.final.title}</h2>
+        <p>{t.final.text}</p>
+        <a class="btn" href={TELEGRAM} data-cta="final-telegram">{t.final.cta}</a>
+      </section>
+    </main>
+
+    <footer class="wrap foot">
+      <span>© DartWay</span>
+      <a href="https://dartway.dev" data-cta="footer-framework">{t.footer.framework}</a>
+      <a href="https://t.me/ai_native_by_novikov" data-cta="footer-channel">{t.footer.channel}</a>
+      <a href="https://www.threads.com/@novikov_dartway" data-cta="footer-threads">Threads</a>
+      <a href="https://x.com/novikov_dartway" data-cta="footer-x">X</a>
+    </footer>
+
+    <script>
+      import '../scripts/analytics.ts';
+    </script>
+  </body>
+</html>
