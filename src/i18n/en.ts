@@ -17,7 +17,7 @@ export default {
   },
   stats: [
     { value: '5', label: 'projects on the platform' },
-    { value: '200+', label: 'issues a week pass code review' },
+    { value: '200+', label: 'issues passed code review in a week' },
     { value: '18 h', label: 'from spec to testing' },
   ],
   problem: {
