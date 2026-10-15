@@ -1,6 +1,5 @@
 ---
 import '../styles/site.css';
-import metrics from '../data/metrics.json';
 
 const { t } = Astro.props;
 
@@ -8,10 +7,6 @@ const TELEGRAM = 'https://t.me/eu_novikov';
 const DEMO = 'https://www.loom.com/share/2d8ecc86d04342fcb66917e823f1507e';
 const endpoint = import.meta.env.PUBLIC_ANALYTICS_ENDPOINT ?? '';
 
-const day = (iso: string) => {
-  const [, m, d] = iso.split('-');
-  return `${d}.${m}`;
-};
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
@@ -23,20 +18,32 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <title>{t.title}</title>
     <meta name="description" content={t.description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="ru" href="https://dartway.studio/" />
-    <link rel="alternate" hreflang="en" href="https://dartway.studio/en/" />
+    <link rel="alternate" hreflang="en" href="https://dartway.studio/" />
+    <link rel="alternate" hreflang="ru" href="https://dartway.studio/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://dartway.studio/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content={t.title} />
     <meta property="og:description" content={t.description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#05060c" />
+    {t.lang === 'en' && (
+      <script is:inline>
+        // English is the default; a Russian-speaking browser goes to /ru/ unless the visitor picked a language.
+        try {
+          const picked = localStorage.getItem('lang');
+          if (!picked && /^ru\b/i.test(navigator.languages?.[0] ?? navigator.language ?? '')) {
+            location.replace('/ru/' + location.search + location.hash);
+          }
+        } catch {}
+      </script>
+    )}
 
   </head>
   <body data-endpoint={endpoint}>
     <header class="top">
       <div class="wrap top-row">
-        <a class="brand" href={t.lang === 'ru' ? '/' : '/en/'}>
+        <a class="brand" href={t.lang === 'ru' ? '/ru/' : '/'}>
           <img src="/img/dartway-cube.svg" alt="" width="36" height="40" />
           <span>DartWay Studio</span>
         </a>
@@ -47,7 +54,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
           <a href="#beta">{t.nav.beta}</a>
         </nav>
         <div class="top-actions">
-          <a class="lang" href={t.switchHref} data-cta="lang">{t.switchLabel}</a>
+          <a class="lang" href={t.switchHref} data-cta="lang" data-lang={t.lang === 'ru' ? 'en' : 'ru'}>{t.switchLabel}</a>
           <a class="btn btn-small" href={TELEGRAM} data-cta="nav-telegram">{t.nav.cta}</a>
         </div>
       </div>
@@ -67,18 +74,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
           {t.hero.meta.map((m: string) => <span>{m}</span>)}
         </div>
         <div class="stats">
-          <div class="stat">
-            <strong>{metrics.completed} {t.metrics.completed}</strong>
-            <span>{t.metrics.week(day(metrics.monday), day(metrics.sunday))}</span>
-          </div>
-          <div class="stat">
-            <strong>{metrics.projects} {t.metrics.projects}</strong>
-            <span>{t.metrics.projectsNote}</span>
-          </div>
-          <div class="stat">
-            <strong>{metrics.self} {t.metrics.self}</strong>
-            <span>{t.metrics.selfNote}</span>
-          </div>
+          {t.stats.map((st: { value: string; label: string }) => (
+            <div class="stat">
+              <strong>{st.value}</strong>
+              <span>{st.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -150,6 +151,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
     <script>
       import '../scripts/analytics.ts';
+
+      document.querySelectorAll<HTMLElement>('[data-lang]').forEach((a) =>
+        a.addEventListener('click', () => {
+          try {
+            localStorage.setItem('lang', a.dataset.lang!);
+          } catch {}
+        }),
+      );
     </script>
   </body>
 </html>

@@ -1,28 +1,25 @@
 export default {
   lang: 'en',
-  title: 'DartWay Studio — the Dark Factory you don’t have to build',
+  title: 'DartWay Studio — a ready-made AI software factory',
   description:
     'A platform where AI agents run development from requirements to staging. You decide where a mistake is expensive. Closed beta.',
   switchLabel: 'RU',
-  switchHref: '/',
+  switchHref: '/ru/',
   nav: { how: 'How it works', agents: 'Agents', who: 'Who it’s for', beta: 'Beta', cta: 'Get in touch' },
   hero: {
     eyebrow: 'DartWay Studio',
-    title: 'The Dark Factory you don’t have to build',
+    title: 'A ready-made AI software factory',
     kicker: 'AI agents run development from requirements to staging.',
     lead: 'You describe what the product should be and decide where a mistake is expensive. The rest follows the process.',
     meta: ['Closed beta', 'Free', 'Your agents, our process'],
     primary: 'Join the beta',
     secondary: '3-minute demo',
   },
-  metrics: {
-    completed: 'issues passed code review',
-    week: (from: string, to: string) => `in the week of ${from}–${to}`,
-    projects: 'projects on the platform',
-    projectsNote: 'ours and clients’',
-    self: 'of them — Studio itself',
-    selfNote: 'the platform builds itself on itself',
-  },
+  stats: [
+    { value: '5', label: 'projects on the platform' },
+    { value: '200+', label: 'issues a week pass code review' },
+    { value: '18 h', label: 'from spec to testing' },
+  ],
   problem: {
     title: 'You can build your own factory. It just takes a lot of doing.',
     text: 'Wiring a tracker, CI, agents, review and deploys into a process that doesn’t fall apart in week three is a project of its own. It rarely gets finished: the process lives in heads and chats, and nobody can see where the time went.',
@@ -69,7 +66,6 @@ export default {
     items: [
       'Closed beta. Free, with support from the founder.',
       'Best on Dart and Flutter, where our DartWay framework helps. Other stacks are being connected now.',
-      'The numbers above come from our own board and are updated weekly.',
     ],
   },
   final: {
