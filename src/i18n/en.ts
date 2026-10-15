@@ -7,13 +7,14 @@ export default {
   switchHref: '/',
   nav: { how: 'How it works', agents: 'Agents', who: 'Who it’s for', beta: 'Beta', cta: 'Get in touch' },
   hero: {
-    eyebrow: 'DartWay Studio · closed beta',
+    eyebrow: 'DartWay Studio',
     title: 'The Dark Factory you don’t have to build',
-    lead: 'A platform where AI agents run development from requirements to staging. You describe what the product should be and decide where a mistake is expensive. The rest follows the process.',
+    kicker: 'AI agents run development from requirements to staging.',
+    lead: 'You describe what the product should be and decide where a mistake is expensive. The rest follows the process.',
+    meta: ['Closed beta', 'Free', 'Your agents, our process'],
     primary: 'Join the beta',
     secondary: '3-minute demo',
   },
-  board: ['Requirements', 'Development', 'Review', 'Staging'],
   metrics: {
     completed: 'issues passed code review',
     week: (from: string, to: string) => `in the week of ${from}–${to}`,

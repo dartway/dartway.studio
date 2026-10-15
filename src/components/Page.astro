@@ -1,6 +1,4 @@
 ---
-import '@fontsource-variable/inter';
-import '@fontsource/jetbrains-mono/400.css';
 import '../styles/site.css';
 import metrics from '../data/metrics.json';
 
@@ -32,14 +30,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:description" content={t.description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#0b0d10" />
+    <meta name="theme-color" content="#05060c" />
+
   </head>
   <body data-endpoint={endpoint}>
     <header class="top">
       <div class="wrap top-row">
         <a class="brand" href={t.lang === 'ru' ? '/' : '/en/'}>
-          <img src="/favicon.svg" alt="" width="24" height="24" />
-          <span>DartWay <b>Studio</b></span>
+          <img src="/img/dartway-cube.svg" alt="" width="36" height="40" />
+          <span>DartWay Studio</span>
         </a>
         <nav class="nav">
           <a href="#how">{t.nav.how}</a>
@@ -55,45 +54,31 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     </header>
 
     <main>
-      <section class="hero wrap">
-        <div class="hero-copy">
-          <p class="eyebrow">{t.hero.eyebrow}</p>
-          <h1>{t.hero.title}</h1>
-          <p class="lead">{t.hero.lead}</p>
-          <div class="actions">
-            <a class="btn" href={TELEGRAM} data-cta="hero-telegram">{t.hero.primary}</a>
-            <a class="btn btn-ghost" href={DEMO} data-cta="hero-demo">▶ {t.hero.secondary}</a>
+      <section class="hero">
+        <p class="eyebrow">{t.hero.eyebrow}</p>
+        <h1>{t.hero.title}</h1>
+        <p class="kicker">{t.hero.kicker}</p>
+        <p class="lead">{t.hero.lead}</p>
+        <div class="actions">
+          <a class="btn" href={TELEGRAM} data-cta="hero-telegram">{t.hero.primary}</a>
+          <a class="more" href={DEMO} data-cta="hero-demo">{t.hero.secondary}</a>
+        </div>
+        <div class="meta">
+          {t.hero.meta.map((m: string) => <span>{m}</span>)}
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong>{metrics.completed} {t.metrics.completed}</strong>
+            <span>{t.metrics.week(day(metrics.monday), day(metrics.sunday))}</span>
           </div>
-        </div>
-        <div class="board" aria-hidden="true">
-          {t.board.map((col: string, i: number) => (
-            <div class="col">
-              <span class="col-name">{col}</span>
-              {Array.from({ length: 4 - i }).map((_, j) => (
-                <span class={`card ${j === 0 ? 'card-live' : ''}`} style={`--d:${i * 0.6 + j * 0.25}s`}>
-                  <i></i><i></i>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="metrics wrap">
-        <div class="metric">
-          <strong>{metrics.completed}</strong>
-          <span>{t.metrics.completed}</span>
-          <small>{t.metrics.week(day(metrics.monday), day(metrics.sunday))}</small>
-        </div>
-        <div class="metric">
-          <strong>{metrics.projects}</strong>
-          <span>{t.metrics.projects}</span>
-          <small>{t.metrics.projectsNote}</small>
-        </div>
-        <div class="metric">
-          <strong>{metrics.self}</strong>
-          <span>{t.metrics.self}</span>
-          <small>{t.metrics.selfNote}</small>
+          <div class="stat">
+            <strong>{metrics.projects} {t.metrics.projects}</strong>
+            <span>{t.metrics.projectsNote}</span>
+          </div>
+          <div class="stat">
+            <strong>{metrics.self} {t.metrics.self}</strong>
+            <span>{t.metrics.selfNote}</span>
+          </div>
         </div>
       </section>
 
