@@ -17,8 +17,8 @@ export default {
   },
   stats: [
     { value: '5', label: 'projects on the platform' },
-    { value: '200+', label: 'issues passed code review in a week' },
-    { value: '18 h', label: 'from spec to testing' },
+    { value: '649', label: 'issues closed' },
+    { value: '6 h', label: 'average delivery time' },
   ],
   problem: {
     title: 'You can build your own factory. It just takes a lot of doing.',
