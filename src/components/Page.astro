@@ -8,6 +8,8 @@ const DEMO = 'https://www.loom.com/share/2d8ecc86d04342fcb66917e823f1507e';
 const endpoint = import.meta.env.PUBLIC_ANALYTICS_ENDPOINT ?? '';
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// The query busts X's card cache; bump it when og.png changes.
+const ogImage = new URL('/og.png?v=2', Astro.site).href;
 ---
 
 <!doctype html>
@@ -26,10 +28,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:description" content={t.description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={new URL('/og.png', Astro.site).href} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@novikov_dartway" />
+    <meta name="twitter:title" content={t.title} />
+    <meta name="twitter:description" content={t.description} />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="theme-color" content="#05060c" />
     {t.lang === 'en' && (
       <script is:inline>
