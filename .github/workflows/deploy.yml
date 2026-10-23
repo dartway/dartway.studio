@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -7,11 +7,9 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: true
 
 jobs:
@@ -30,19 +28,10 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
 
-  # Cloudflare Pages takes over hosting (GitHub Pages stopped issuing HTTPS
-  # certificates for our domains, 18.10.2026). Runs beside GitHub Pages until
-  # DNS moves to Cloudflare; then the GitHub Pages jobs go.
+  # Hosting is Cloudflare Pages (GitHub Pages stopped issuing HTTPS certificates
+  # for our domains, 18.10.2026). The build artifact keeps the upload-pages-artifact
+  # format: one tar named github-pages.
   cloudflare:
     needs: build
     runs-on: ubuntu-latest
