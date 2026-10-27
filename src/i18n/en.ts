@@ -16,8 +16,7 @@ export default {
     secondary: 'See it in 3 minutes',
   },
   stats: [
-    { value: 'N', label: 'apps launched in 5 years' },
-    { value: '5', label: 'apps in progress now' },
+    { value: '5', label: 'projects in progress now' },
   ],
   problem: {
     title: 'You need an app, but you have no dev team',
@@ -62,7 +61,8 @@ export default {
   beta: {
     title: 'Where it stands — honestly',
     items: [
-      'None of the five apps on the platform is in the stores yet — the first releases come by the end of the year.',
+      'We are a startup just getting going: 5 projects in progress, none published in the stores yet.',
+      'Once apps are published and have users, those numbers will show up here.',
       'We take no more than two new projects at a time — hence the queue.',
       'We build with Flutter: one app for both iOS and Android.',
       'Timelines and cost are discussed for your app, not promised on a website.',
