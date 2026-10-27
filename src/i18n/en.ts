@@ -11,12 +11,13 @@ export default {
     title: 'AI agents build mobile apps — from idea to the App Store',
     kicker: 'Launch a mobile app without an in-house dev team.',
     lead: 'AI agents write the code; a person answers for the result. You hold the idea and accept the work — the app, the code and the accounts stay yours.',
-    meta: ['iOS and Android', 'Your code, your accounts', 'Launch queue'],
+    meta: ['iOS and Android', 'Your code, your accounts', 'One-on-one approach'],
     primary: 'Apply for a launch',
     secondary: 'See it in 3 minutes',
   },
   stats: [
     { value: '5', label: 'projects in progress now' },
+    { value: '2', label: 'new projects a month, no more — a one-on-one approach' },
   ],
   problem: {
     title: 'You need an app, but you have no dev team',
@@ -26,20 +27,20 @@ export default {
     title: 'How a launch goes',
     steps: [
       {
-        name: 'Idea → description',
-        text: 'You tell us what the app should do. Together we break it into parts: you answer questions and decide what matters.',
+        name: 'Idea and features',
+        text: 'You describe the idea and what the app should do. Together we break it into parts: you answer questions and decide what matters.',
       },
       {
         name: 'AI agents write the code',
-        text: 'Agents build each part, and other agents check their work. Everything is on record: what was decided, what was done and why.',
+        text: 'Agents on our platform build each part, and other agents check their work. Everything is on record: what was decided, what was done and why.',
       },
       {
-        name: 'You accept from your phone',
-        text: 'Finished work shows up in a test version of the app. You open it on your phone and accept it — or send it back with notes.',
+        name: 'Try it on your phone',
+        text: 'Updates reach a test version of the app every day. You try them on your phone and accept — or send them back with notes.',
       },
       {
         name: 'App Store and Google Play',
-        text: 'The app goes to the stores under your own developer account. After that it keeps growing the same way: new features, monitoring, fixes.',
+        text: 'We publish when the app is ready — under your own developer account. After that it keeps growing the same way: new features, monitoring, fixes.',
       },
     ],
   },
@@ -63,7 +64,7 @@ export default {
     items: [
       'We are a startup just getting going: 5 projects in progress, none published in the stores yet.',
       'Once apps are published and have users, those numbers will show up here.',
-      'We take no more than two new projects at a time — hence the queue.',
+      'We take no more than two new projects a month — each gets real attention, hence the queue.',
       'We build with Flutter: one app for both iOS and Android.',
       'Timelines and cost are discussed for your app, not promised on a website.',
     ],
