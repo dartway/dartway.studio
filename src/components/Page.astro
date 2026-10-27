@@ -9,7 +9,7 @@ const endpoint = import.meta.env.PUBLIC_ANALYTICS_ENDPOINT ?? '';
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // The query busts X's card cache; bump it when og.png changes.
-const ogImage = new URL('/og.png?v=2', Astro.site).href;
+const ogImage = new URL('/og.png?v=3', Astro.site).href;
 ---
 
 <!doctype html>
