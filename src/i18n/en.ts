@@ -17,8 +17,7 @@ export default {
   },
   stats: [
     { value: '4', label: 'apps in progress now' },
-    { value: '649', label: 'tasks closed on the platform' },
-    { value: '2', label: 'new projects at a time, no more' },
+    { value: '4', label: 'in the stores by year-end — our goal' },
   ],
   problem: {
     title: 'You need an app, but you have no dev team',
@@ -63,7 +62,7 @@ export default {
   beta: {
     title: 'Where it stands — honestly',
     items: [
-      'Four apps in progress. The goal is all four in the stores by the end of the year.',
+      'None of the four apps is in the stores yet — the first releases come by the end of the year.',
       'We take no more than two new projects at a time — hence the queue.',
       'We build with Flutter: one app for both iOS and Android.',
       'Timelines and cost are discussed for your app, not promised on a website.',
