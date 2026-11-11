@@ -2,7 +2,7 @@ export default {
   "lang": "en",
   "title": "DartWay — a dark factory for apps",
   "description": "AI agents build your client's app all the way to production: pixel-perfect to the design, strict coding rules and tests, senior developer supervision. Fixed price.",
-  "stats": { "inProgress": "apps in progress", "published": "live on the App Store and Google Play" },
+  "stats": { "inProgress": "active projects", "published": "live on the App Store and Google Play" },
   "hero": {
     "eyebrow": "AI-native development",
     "title": "A dark factory for apps.",
@@ -38,7 +38,7 @@ export default {
   "work": {
     "eyebrow": "Built this way",
     "title": "Apps in production and in progress.",
-    "text": "U90 is live on the App Store and Google Play. Molodey and AF Universe are built for an agency that keeps the client, the product and the design.",
+    "text": "U90 and Tvaity are live on the App Store and Google Play. Two projects are under NDA: built for an agency that keeps the client, the product and the design.",
     "all": "All projects"
   },
   "delivery": {
@@ -131,19 +131,19 @@ export default {
     "note": "Red: a check stopped it. It goes back to the agents until it passes.",
     "stats": [
       {
-        "value": "6",
-        "label": "active projects on the line"
-      },
-      {
         "value": "30",
         "label": "tasks a week per project, on average"
+      },
+      {
+        "value": "~10 h",
+        "label": "average from the start of work to code that passed review"
       },
       {
         "value": "1",
         "label": "business day from your mockup to a fixed price"
       }
     ],
-    "source": "Counted by our delivery system: a task counts when it passes code review."
+    "source": "Counted by our delivery system: a task counts when it passes code review. Delivery hours are our current estimate until the system measures them."
   },
   "founder": {
     "eyebrow": "Who answers for it",

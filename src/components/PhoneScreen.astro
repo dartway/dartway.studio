@@ -1,0 +1,88 @@
+---
+// An imitation app screen drawn by the site itself, in the page's language.
+// Used where a real screenshot can't be shown (NDA) or doesn't exist in this language.
+import type { MockScreen } from '../data/caseStudies';
+const { screen, small = false } = Astro.props as { screen: MockScreen; small?: boolean };
+---
+<div class:list={['phone', { 'phone-small': small }]} role="img" aria-label={`${screen.app}: ${screen.title}`}>
+  <div class="phone-status" aria-hidden="true"><span>9:41</span><span class="phone-notch"></span><span>●●●</span></div>
+  <div class="phone-bar"><strong>{screen.app}</strong><span class="phone-avatar"></span></div>
+  <div class="phone-body">
+    <p class="phone-title">{screen.title}</p>
+    {screen.sub && <p class="phone-sub">{screen.sub}</p>}
+    {screen.player && (
+      <div class="phone-player">
+        <span class="phone-play" aria-hidden="true"></span>
+        <span class="phone-player-cap">{screen.player}</span>
+        <span class="phone-track"><span style={`width:${screen.progress ?? 40}%`}></span></span>
+      </div>
+    )}
+    {!screen.player && screen.progress !== undefined && (
+      <div class="phone-meter">
+        <span class="phone-meter-num">{screen.progress}</span>
+        <span class="phone-track"><span style={`width:${screen.progress}%`}></span></span>
+      </div>
+    )}
+    {screen.chips && <div class="phone-chips">{screen.chips.map((c, i) => <span class:list={{ on: i === 0 }}>{c}</span>)}</div>}
+    <ul class="phone-rows">
+      {screen.rows.map((r) => (
+        <li class:list={{ done: r.done }}>
+          <span class="phone-ico" aria-hidden="true"></span>
+          <span class="phone-row-text"><b>{r.t}</b>{r.m && <em>{r.m}</em>}</span>
+          {r.v && <span class="phone-row-v">{r.v}</span>}
+        </li>
+      ))}
+    </ul>
+    {screen.cta && <span class="phone-cta">{screen.cta}</span>}
+  </div>
+  {screen.tabs && <div class="phone-tabs" aria-hidden="true">{screen.tabs.map((tab, i) => <span class:list={{ on: i === 0 }}>{tab}</span>)}</div>}
+</div>
+
+<style is:global>
+  .phone { --pa: var(--case-accent, #ffb000); width: 100%; max-width: 290px; aspect-ratio: 9 / 18.5; margin: 0 auto; display: flex; flex-direction: column;
+    border-radius: 34px; border: 7px solid #26272b; background: #0f1012; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5); overflow: hidden;
+    font-family: var(--sans); color: #f2f2f2; text-align: left; }
+  .phone-status { display: flex; justify-content: space-between; align-items: center; padding: 0.55rem 1.1rem 0.2rem; font-size: 0.62rem; font-weight: 700; color: rgba(255,255,255,.8); }
+  .phone-notch { width: 64px; height: 16px; border-radius: 10px; background: #000; }
+  .phone-bar { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 1rem; }
+  .phone-bar strong { font-size: 0.82rem; letter-spacing: 0.02em; color: var(--pa); }
+  .phone-avatar { width: 22px; height: 22px; border-radius: 50%; background: color-mix(in srgb, var(--pa), transparent 70%); border: 1px solid color-mix(in srgb, var(--pa), transparent 40%); }
+  .phone-body { flex: 1; min-height: 0; padding: 0.3rem 1rem 0.6rem; display: flex; flex-direction: column; gap: 0.55rem; overflow: hidden; }
+  .phone-title { margin: 0; font-size: 1.12rem; font-weight: 800; line-height: 1.2; color: #fff; }
+  .phone-sub { margin: -0.2rem 0 0; font-size: 0.72rem; color: rgba(255,255,255,.6); line-height: 1.35; }
+  .phone-player { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; display: grid; place-items: center;
+    background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--pa), transparent 55%), transparent 70%), #1d1e22; }
+  .phone-play { width: 0; height: 0; border-style: solid; border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+  .phone-player-cap { position: absolute; left: 0.6rem; top: 0.5rem; font-size: 0.62rem; font-weight: 700; color: rgba(255,255,255,.85); }
+  .phone-player .phone-track { position: absolute; left: 0.6rem; right: 0.6rem; bottom: 0.55rem; }
+  .phone-track { display: block; height: 4px; border-radius: 4px; background: rgba(255,255,255,.14); overflow: hidden; }
+  .phone-track > span { display: block; height: 100%; background: var(--pa); }
+  .phone-meter { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0.7rem; padding: 0.7rem; border-radius: 12px; background: #1b1c20; }
+  .phone-meter-num { font-size: 1.6rem; font-weight: 800; color: var(--pa); line-height: 1; }
+  .phone-chips { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+  .phone-chips span { padding: 0.22rem 0.55rem; border-radius: 999px; font-size: 0.64rem; border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.75); }
+  .phone-chips span.on { background: var(--pa); border-color: var(--pa); color: #111; font-weight: 700; }
+  .phone-rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .phone-rows li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; align-items: center; gap: 0.55rem; padding: 0.5rem 0.6rem; border-radius: 10px; background: #1b1c20; }
+  .phone-ico { width: 26px; height: 26px; border-radius: 8px; background: color-mix(in srgb, var(--pa), transparent 75%); border: 1px solid color-mix(in srgb, var(--pa), transparent 45%); }
+  .phone-rows li.done .phone-ico { background: var(--pa); }
+  .phone-row-text { min-width: 0; display: flex; flex-direction: column; }
+  .phone-row-text b { font-size: 0.74rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .phone-row-text em { font-style: normal; font-size: 0.62rem; color: rgba(255,255,255,.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .phone-row-v { font-size: 0.68rem; font-weight: 700; color: var(--pa); }
+  .phone-cta { margin-top: auto; padding: 0.6rem; border-radius: 12px; background: var(--pa); color: #111; font-size: 0.78rem; font-weight: 800; text-align: center; }
+  .phone-tabs { display: flex; justify-content: space-around; padding: 0.5rem 0.4rem 0.75rem; border-top: 1px solid rgba(255,255,255,.08); font-size: 0.58rem; color: rgba(255,255,255,.5); }
+  .phone-tabs span.on { color: var(--pa); font-weight: 700; }
+  .phone-small { max-width: 168px; border-width: 5px; border-radius: 24px; font-size: 0.58em; }
+  .phone-small .phone-title { font-size: 0.8rem; }
+  .phone-small .phone-body { gap: 0.35rem; padding: 0.2rem 0.6rem 0.4rem; }
+  .phone-small .phone-rows li { padding: 0.32rem 0.4rem; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 0.35rem; }
+  .phone-small .phone-ico { width: 16px; height: 16px; border-radius: 5px; }
+  .phone-small .phone-row-text b { font-size: 0.56rem; }
+  .phone-small .phone-row-text em, .phone-small .phone-sub, .phone-small .phone-chips span, .phone-small .phone-row-v, .phone-small .phone-player-cap { font-size: 0.48rem; }
+  .phone-small .phone-bar strong, .phone-small .phone-cta { font-size: 0.58rem; }
+  .phone-small .phone-status, .phone-small .phone-tabs { font-size: 0.44rem; }
+  .phone-small .phone-notch { width: 40px; height: 10px; }
+  .phone-small .phone-meter-num { font-size: 1.05rem; }
+  .phone-small .phone-play { border-width: 7px 0 7px 12px; }
+</style>

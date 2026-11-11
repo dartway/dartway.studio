@@ -9,7 +9,7 @@ const { t, agency = false } = Astro.props;
 const prefix = t.lang === 'ru' ? '/ru' : '';
 const published = caseStudies.filter((c) => c.locales.en.status === 'Published').length;
 const stats = [
-  { value: caseStudies.length - published, label: t.stats.inProgress },
+  { value: caseStudies.length, label: t.stats.inProgress },
   { value: published, label: t.stats.published },
 ];
 ---

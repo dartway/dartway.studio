@@ -256,3 +256,8 @@ section.case-visuals { padding-top: 0; padding-bottom: 3rem; display: flex; flex
 }
 
 @keyframes belt { to { background-position: 22px 0; } }
+
+.work-cover.has-screens { display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.work-screens { display: flex; gap: 0.9rem; justify-content: center; align-items: center; height: 100%; }
+.work-screens .phone { height: 100%; width: auto; max-width: none; }
+.work-screens .phone:nth-child(2) { transform: translateY(14px); }
