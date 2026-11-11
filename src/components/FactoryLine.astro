@@ -41,7 +41,6 @@ const tickets = f.tickets.map((label: string, i: number) => ({
 ---
 <section class="factory" id="factory" aria-labelledby="factory-title">
   <div class="wrap">
-    <p class="eyebrow factory-label">{f.eyebrow}</p>
     <div class="line" style={`--n:${n};--dur:${DURATION}s`}>
       <div class="track" aria-hidden="true"></div>
       <ol class="stations">
@@ -64,6 +63,7 @@ const tickets = f.tickets.map((label: string, i: number) => ({
     <p class="line-note"><span class="swatch" aria-hidden="true"></span>{f.note}</p>
 
     <div class="factory-head">
+      <p class="eyebrow">{f.eyebrow}</p>
       <h2 id="factory-title">{f.title}</h2>
       <p class="section-intro">{f.intro}</p>
     </div>
@@ -79,10 +79,9 @@ const tickets = f.tickets.map((label: string, i: number) => ({
 
 <style is:global set:html={css}></style>
 <style is:global>
-  .factory { position: relative; padding: 2rem 0 4.5rem; border-top: 1px solid rgba(255, 176, 0, 0.25); border-bottom: 1px solid var(--line);
+  .factory { position: relative; padding: 0.5rem 0 4.5rem; border-bottom: 1px solid var(--line);
     background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 176, 0, 0.09), transparent 70%), #121214; overflow: hidden; }
   .factory .line { position: relative; margin-top: 0.5rem; padding-top: 4.2rem; }
-  .factory .factory-label { margin: 0; }
   .factory .factory-head { margin-top: 3.5rem; }
   .factory .factory-head h2 { margin-top: 0; }
   .factory .track { position: absolute; left: calc(50% / var(--n)); right: calc(50% / var(--n)); top: 5.6rem; height: 2px;
