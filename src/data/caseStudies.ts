@@ -76,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
           { screen: 'u90-meal', alt: 'U90 meal recognised from a photo, with its items and a portion slider', caption: 'A meal recognised from a photo: items, calories and protein, one slider for the portion.' },
           { screen: 'u90-progress', alt: 'U90 Progress screen: summary, the 90-day line and a weight forecast', caption: 'Progress over the 90-day cycle: summary, plan line, weight forecast.' },
         ],
-        screensNote: 'Screens recreated in HTML from the app design.',
+        screensNote: 'Screens taken from the app design as live HTML.',
         links: [
           { label: 'App Store', href: 'https://apps.apple.com/th/app/u90-90-day-weight-loss/id6822748008' },
           { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=ai.u90.app&hl=en' },
@@ -116,7 +116,7 @@ export const caseStudies: CaseStudy[] = [
           { screen: 'u90-meal', alt: 'Блюдо, распознанное по фото, с составом и ползунком порции', caption: 'Блюдо по фото: состав, калории и белок, порция одним ползунком.' },
           { screen: 'u90-progress', alt: 'Экран «Прогресс» в U90: итоги, линия 90 дней, прогноз веса', caption: 'Прогресс за цикл 90 дней: итоги, линия плана, прогноз веса.' },
         ],
-        screensNote: 'Экраны свёрстаны по макетам приложения и переведены; само приложение — на английском.',
+        screensNote: 'Экраны — из макетов приложения, переведены на русский; само приложение — на английском.',
         links: [
           { label: 'App Store', href: 'https://apps.apple.com/ru/app/u90-90-day-weight-loss/id6822748008' },
           { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=ai.u90.app&hl=en' },

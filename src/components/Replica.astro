@@ -1,11 +1,8 @@
 ---
-/** An app screen recreated in HTML, in the page's language: `screen` is "<app>-<name>". */
+/** An app screen taken from the project's published design, in the page's language: `screen` is "<app>-<name>". */
 import Phone from './Phone.astro';
-import U90 from './replicas/U90.astro';
 const { screen, lang = 'en', label, decorative = false } = Astro.props;
-const [app, ...rest] = screen.split('-');
-const name = rest.join('-');
+const files: Record<string, string> = { 'u90-today': 'u90-screens/today', 'u90-meal': 'u90-screens/confirm', 'u90-progress': 'u90-screens/progress' };
+const src = `/cases/${files[screen]}.${lang === 'ru' ? 'ru' : 'en'}.html`;
 ---
-<Phone label={label} decorative={decorative}>
-  {app === 'u90' && <U90 screen={name} lang={lang} />}
-</Phone>
+<Phone src={src} label={label} decorative={decorative} />

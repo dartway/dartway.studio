@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="252" height="116" viewBox="16 20 252 116"
+     fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">U90 logo</title>
+  <desc id="desc">Official U90 wordmark in navy and coral.</desc>
+
+  <!--
+    Construction grid
+    Visible bounds including stroke:
+    Actual visible bounds including stroke:
+    U: x 16–100, 9: x 107–177, 0: x 184–268
+    Equal visible gaps: 7 units. Common stroke: 16 units.
+  -->
+
+  <!-- U -->
+  <path d="M24 28V83C24 108 39 128 58 128H60C79 128 92 108 92 83V28"
+        stroke="#081B35" stroke-width="16"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 9: rounded loop and diagonal down-left tail from the selected mockup -->
+  <circle cx="142" cy="55" r="27"
+          stroke="#FF3F61" stroke-width="16"/>
+  <path d="M166 67C162 80 155 92 147 102L128 128"
+        stroke="#FF3F61" stroke-width="16"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 0 -->
+  <rect x="192" y="28" width="68" height="100" rx="34"
+        stroke="#081B35" stroke-width="16"/>
+</svg>
