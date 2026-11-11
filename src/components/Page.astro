@@ -23,6 +23,31 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
     </div>
   </section>
 
+
+  {!agency && (
+    <section class="wrap pillars">
+      <p class="eyebrow">{t.pillars.eyebrow}</p>
+      <h2>{t.pillars.title}</h2>
+      <div class="delivery-steps pillar-grid">
+        {t.pillars.items.map((item: { title: string; text: string }) => (
+          <article><h3>{item.title}</h3><p>{item.text}</p></article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {!agency && (
+    <section class="wrap segments">
+      <p class="eyebrow">{t.segments.eyebrow}</p>
+      <h2>{t.segments.title}</h2>
+      <div class="delivery-steps pillar-grid">
+        {t.segments.items.map((item: { title: string; text: string }) => (
+          <article><h3>{item.title}</h3><p>{item.text}</p></article>
+        ))}
+      </div>
+    </section>
+  )}
+
   {agency && (
     <section class="wrap agency-roles">
       <p class="eyebrow">{t.agency.eyebrow}</p>
@@ -50,7 +75,7 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
       <a class="more" href={`${prefix}/work/`}>{t.work.all}</a>
     </div>
     <p class="section-intro">{t.work.text}</p>
-    <WorkGrid lang={t.lang} limit={agency ? 4 : undefined} />
+    <WorkGrid lang={t.lang} limit={agency ? 4 : 3} />
   </section>
 
   <section class="wrap release-proof">
@@ -69,14 +94,6 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
     </div>
   </section>
 
-  <section class="wrap">
-    <h2>{t.services.title}</h2>
-    <div class="roles-grid">
-      {t.services.items.map((service: { title: string; text: string }) => (
-        <article><h3>{service.title}</h3><p>{service.text}</p></article>
-      ))}
-    </div>
-  </section>
 
   <section class="wrap ownership">
     <h2>{t.ownership.title}</h2>

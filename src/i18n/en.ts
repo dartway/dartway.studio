@@ -1,17 +1,17 @@
 export default {
   "lang": "en",
-  "title": "DartWay — mobile apps, from design to release",
-  "description": "Mobile development and ongoing support for product teams and agencies. Your design and priorities, working releases, clear technical responsibility.",
+  "title": "DartWay — a dark factory for apps",
+  "description": "AI agents build your client's app all the way to production: pixel-perfect to the design, strict coding rules and tests, senior developer supervision. Fixed price.",
   "hero": {
-    "eyebrow": "Mobile development & ongoing support",
-    "title": "From your design to a working mobile app.",
-    "lead": "We turn product ideas and designs into mobile apps, with reviewable updates throughout development and technical responsibility through release.",
-    "primary": "Discuss your project",
-    "secondary": "Explore our work",
+    "eyebrow": "AI-native development",
+    "title": "A dark factory for apps.",
+    "lead": "AI agents build the whole app, from design to production. You keep the client and the product decisions.",
+    "primary": "Get a price for your project",
+    "secondary": "See the work",
     "meta": [
-      "iOS, Android & web",
-      "Your code and accounts",
-      "A person responsible for delivery"
+      "Fixed price",
+      "Weeks, not months",
+      "Same-day updates and fixes"
     ]
   },
   "agency": {
@@ -35,53 +35,76 @@ export default {
     ]
   },
   "work": {
-    "eyebrow": "Selected work",
-    "title": "Mobile products we build and maintain.",
-    "text": "Explore delivery, collaboration and the current stage of each project.",
-    "all": "View all projects"
+    "eyebrow": "Built this way",
+    "title": "Apps in production and in progress.",
+    "text": "Two of them are built for an agency that keeps the client, the product and the design.",
+    "all": "All projects"
   },
   "delivery": {
-    "title": "Stay close to the result as it takes shape.",
-    "intro": "Your team gets a working version to review at the agreed cadence. Design details, changes and technical questions stay connected to the work.",
+    "title": "How a project runs.",
+    "intro": "One person on your side decides on the product. Everything else is on us.",
     "steps": [
       {
-        "title": "Agree the first milestone",
-        "text": "We review the brief, designs and existing system, define scope and agree responsibilities, timing and cost."
+        "title": "Send the design",
+        "text": "A mockup, a prototype or a brief. We return the scope, a fixed price and the timeline."
       },
       {
-        "title": "Build and review",
-        "text": "AI agents handle implementation and code review. We oversee technical decisions and verify the result against the agreed design and behaviour."
+        "title": "Agents build",
+        "text": "Implementation, code review and the comparison with the design run every day. You see a working test version from the first week."
       },
       {
-        "title": "Try it and refine it",
-        "text": "Your product owner reviews the test version. Feedback becomes a concrete change, with progress visible along the way."
+        "title": "Change on the go",
+        "text": "Your feedback becomes a change the same day, not a ticket for the next sprint."
       },
       {
-        "title": "Release and keep improving",
-        "text": "We prepare the agreed releases in your accounts, then continue with maintenance and the next product priorities."
-      }
-    ]
-  },
-  "services": {
-    "title": "Start where your product is today.",
-    "items": [
-      {
-        "title": "A new application",
-        "text": "Bring your brief or design. We agree an achievable first version and implement the mobile experience, backend and integrations it needs."
-      },
-      {
-        "title": "An existing product",
-        "text": "We inspect the code and current issues, agree the transition work, then take on fixes, releases and a defined volume of improvements."
+        "title": "Release",
+        "text": "We publish to the stores in your or your client's accounts and stay on for fixes and the next version."
       }
     ]
   },
   "proof": {
-    "title": "Released on iOS and Android.",
-    "text": "U90 brings nutrition, activity and a personalised plan together in one app. It is available in the App Store and Google Play.",
+    "title": "Live on iOS and Android.",
+    "text": "U90 brings nutrition, activity and a personalised plan into one app, published in the App Store and Google Play.",
     "link": "Read the U90 case"
   },
   "ownership": {
-    "title": "Your product stays yours.",
-    "text": "Code, data, infrastructure and store accounts remain under your or your client’s control. The first agreement makes the delivery scope and responsibilities explicit."
+    "title": "The code is your client's.",
+    "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in."
+  },
+  "pillars": {
+    "eyebrow": "Not vibe coding",
+    "title": "Anyone can generate an app in a day. Shipping one is different.",
+    "items": [
+      {
+        "title": "Pixel-perfect to the design",
+        "text": "Every screen is compared with the mockup. A mismatch goes back to the agents in the same round, not to your client."
+      },
+      {
+        "title": "Strict coding rules and tests",
+        "text": "Agents build on our own production framework: one architecture, automated tests and code review for every change."
+      },
+      {
+        "title": "Senior developer supervision",
+        "text": "A senior engineer owns the technical result: decisions, releases and what happens after launch."
+      }
+    ]
+  },
+  "segments": {
+    "eyebrow": "Who it is for",
+    "title": "You own the client. We build the app.",
+    "items": [
+      {
+        "title": "Agencies that build",
+        "text": "Keep more margin on every build, without trading quality for budget."
+      },
+      {
+        "title": "Agencies that hand the build off",
+        "text": "Sell the development yourselves instead of passing it, and the result, to someone else."
+      },
+      {
+        "title": "Builders who vibe-code",
+        "text": "Ship apps you can stand behind once real users and real money come in."
+      }
+    ]
   }
 };
