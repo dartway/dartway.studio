@@ -1,10 +1,216 @@
 ---
+// Price request builder: four taps write the message for the visitor, with the day the price is due.
+// Nothing is sent from the page: the buttons open the visitor's email or Telegram with the text ready.
 const { lang = 'en' } = Astro.props;
 const ru = lang === 'ru';
+const EMAIL = 'evgenii@dartway.studio';
+const TG = 'https://t.me/eu_novikov';
+
+const t = ru
+  ? {
+      eyebrow: 'Цена проекта',
+      title: ['Четыре клика — фиксированная цена ', 'на следующий рабочий день', '.'],
+      lead: 'Отметьте, что у вас есть. Письмо мы напишем за вас: добавьте ссылку и отправьте. Евгений вернёт объём, цену и срок.',
+      groups: [
+        { key: 'have', q: 'Что у вас есть?', opts: ['Макет в Figma', 'Прототип', 'Только описание', 'Готовое приложение'] },
+        { key: 'platforms', q: 'Платформы', multi: true, opts: ['iOS', 'Android', 'Веб'] },
+        { key: 'size', q: 'Размер', opts: ['Несколько экранов', '10–30 экранов', 'Больше 30', 'Пока не знаем'] },
+        { key: 'for', q: 'Для кого', opts: ['Для нашего заказчика', 'Наш продукт'] },
+      ],
+      existing: 'Начнём с осмотра кода: продолжать или пересобрать — с ценой каждого пути.',
+      link: 'Ссылка на макет или описание',
+      linkHint: 'необязательно',
+      preview: 'Ваше письмо',
+      email: 'Отправить письмом',
+      tg: 'Скопировать и открыть Telegram',
+      copied: 'Текст скопирован — вставьте в чат',
+      note: 'Со страницы ничего не уходит, пока вы сами не отправите. Без форм и созвонов.',
+      or: 'Или напрямую:',
+      subject: 'Расчёт проекта',
+      hello: 'Здравствуйте, Евгений!',
+      ask: 'Хотим фиксированную цену и срок.',
+      labels: { have: 'Что есть', platforms: 'Платформы', size: 'Размер', for: 'Для кого', link: 'Макет' },
+      about: 'Пара слов о приложении:',
+      sign: '(имя, компания)',
+      none: '—',
+    }
+  : {
+      eyebrow: 'Price your project',
+      title: ['Four taps. A fixed price ', 'by the next business day', '.'],
+      lead: 'Pick what you have. We write the message for you: add a link and send it. Evgenii replies with the scope, the price and the timeline.',
+      groups: [
+        { key: 'have', q: 'What do you have?', opts: ['Figma mockup', 'Prototype', 'Just a brief', 'An existing app'] },
+        { key: 'platforms', q: 'Platforms', multi: true, opts: ['iOS', 'Android', 'Web'] },
+        { key: 'size', q: 'Size', opts: ['A few screens', '10–30 screens', '30+ screens', 'Not sure yet'] },
+        { key: 'for', q: "It's for", opts: ['Our client', 'Our own product'] },
+      ],
+      existing: 'We start with a code review: continue or rebuild, with a price for each.',
+      link: 'Link to the design or brief',
+      linkHint: 'optional',
+      preview: 'Your message',
+      email: 'Send by email',
+      tg: 'Copy and open Telegram',
+      copied: 'Copied — paste it into the chat',
+      note: 'Nothing leaves this page until you send it yourself. No forms, no calls.',
+      or: 'Or directly:',
+      subject: 'Price request',
+      hello: 'Hi Evgenii,',
+      ask: "We'd like a fixed price and timeline.",
+      labels: { have: 'What we have', platforms: 'Platforms', size: 'Size', for: "It's for", link: 'Design' },
+      about: 'A few words about the app:',
+      sign: '(name, company)',
+      none: '—',
+    };
+const cfg = { ru, email: EMAIL, t };
 ---
-<section class="final wrap" id="contact">
-  <p class="eyebrow">{ru ? 'Цена проекта' : 'Price your project'}</p>
-  <h2>{ru ? 'Пришлите макет — вернём фиксированную цену и срок.' : 'Send the design. Get a fixed price and timeline.'}</h2>
-  <p>{ru ? 'Подойдёт макет, прототип или описание. За один рабочий день вернём объём, цену и срок.' : 'A mockup, a prototype or a brief will do. Within one business day you get the scope, the price and the timeline.'}</p>
-  <div class="actions contact-actions"><a class="btn" href="mailto:evgenii@dartway.studio" data-cta="contact-email">{ru ? 'Прислать проект' : 'Send your project'}</a><a class="more" href="https://t.me/eu_novikov" data-cta="contact-telegram">Telegram</a></div>
+<section class="brief" id="contact" aria-labelledby="brief-title">
+  <div class="wrap brief-grid">
+    <div class="brief-copy">
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 id="brief-title">{t.title[0]}<span class="brief-due" data-due>{t.title[1]}</span>{t.title[2]}</h2>
+      <p class="brief-lead">{t.lead}</p>
+      <p class="brief-note">{t.note}</p>
+      <p class="brief-direct">{t.or} <a href={`mailto:${EMAIL}`} data-cta="contact-email">{EMAIL}</a> · <a href={TG} data-cta="contact-telegram">Telegram</a></p>
+    </div>
+
+    <div class="brief-card">
+      {t.groups.map((g) => (
+        <fieldset class="brief-q" data-key={g.key} data-multi={g.multi ? '1' : ''}>
+          <legend>{g.q}</legend>
+          <div class="brief-opts">
+            {g.opts.map((o) => (
+              <button type="button" class="brief-chip" aria-pressed="false" data-cta="brief-chip">{o}</button>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+      <p class="brief-existing" hidden>{t.existing}</p>
+      <label class="brief-link">
+        <span>{t.link} <em>{t.linkHint}</em></span>
+        <input type="url" inputmode="url" placeholder="figma.com/…" autocomplete="off" />
+      </label>
+      <div class="brief-preview">
+        <span>{t.preview}</span>
+        <pre data-preview></pre>
+      </div>
+      <div class="brief-actions">
+        <a class="btn" data-send href={`mailto:${EMAIL}`} data-cta="brief-email">{t.email}</a>
+        <a class="more brief-tg" data-tg href={TG} target="_blank" rel="noopener" data-cta="brief-telegram">{t.tg}</a>
+      </div>
+      <p class="brief-copied" data-copied hidden>{t.copied}</p>
+    </div>
+  </div>
 </section>
+
+<script is:inline define:vars={{ cfg }}>
+  (() => {
+    const root = document.getElementById('contact');
+    if (!root) return;
+    const { t, ru, email } = cfg;
+    const state = { have: [], platforms: [], size: [], for: [] };
+    const link = root.querySelector('.brief-link input');
+    const pre = root.querySelector('[data-preview]');
+    const send = root.querySelector('[data-send]');
+    const tg = root.querySelector('[data-tg]');
+    const existing = root.querySelector('.brief-existing');
+
+    // The day the price is due: the next business day; on a weekend, Monday.
+    const due = new Date();
+    do { due.setDate(due.getDate() + 1); } while (due.getDay() === 0 || due.getDay() === 6);
+    const dayRu = ['воскресенью', 'понедельнику', 'вторнику', 'среде', 'четвергу', 'пятнице', 'субботе'];
+    const date = due.toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long' });
+    root.querySelector('[data-due]').textContent = ru
+      ? `к ${dayRu[due.getDay()]}, ${date}`
+      : `by ${due.toLocaleDateString('en-GB', { weekday: 'long' })}, ${date}`;
+
+    function text() {
+      const L = t.labels;
+      const v = (k) => (state[k].length ? state[k].join(', ') : t.none);
+      return [
+        t.hello, '', t.ask, '',
+        `${L.have}: ${v('have')}`,
+        `${L.platforms}: ${v('platforms')}`,
+        `${L.size}: ${v('size')}`,
+        `${L.for}: ${v('for')}`,
+        `${L.link}: ${link.value.trim() || t.none}`,
+        '', t.about, '', '', t.sign,
+      ].join('\n');
+    }
+    function subject() {
+      const bits = [state.have[0], state.platforms.join('/')].filter(Boolean);
+      return bits.length ? `${t.subject}: ${bits.join(', ')}` : t.subject;
+    }
+    function render() {
+      const body = text();
+      pre.textContent = body;
+      send.href = `mailto:${email}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body)}`;
+      existing.hidden = !state.have.includes(t.groups[0].opts[3]);
+    }
+
+    root.querySelectorAll('.brief-q').forEach((fs) => {
+      const key = fs.dataset.key;
+      const multi = fs.dataset.multi === '1';
+      fs.querySelectorAll('.brief-chip').forEach((chip) => {
+        chip.addEventListener('click', () => {
+          const val = chip.textContent.trim();
+          const on = chip.getAttribute('aria-pressed') !== 'true';
+          if (!multi) fs.querySelectorAll('.brief-chip').forEach((c) => c.setAttribute('aria-pressed', 'false'));
+          chip.setAttribute('aria-pressed', String(on));
+          state[key] = multi
+            ? (on ? [...state[key], val] : state[key].filter((x) => x !== val))
+            : (on ? [val] : []);
+          render();
+        });
+      });
+    });
+    link.addEventListener('input', render);
+
+    tg.addEventListener('click', () => {
+      const done = () => { root.querySelector('[data-copied]').hidden = false; };
+      try { navigator.clipboard?.writeText(text()).then(done, () => {}); } catch (e) {}
+    });
+    render();
+  })();
+</script>
+
+<style is:global>
+  .brief { padding: 5rem 0; border-top: 1px solid rgba(255, 176, 0, 0.25);
+    background: radial-gradient(ellipse 70% 80% at 85% 30%, rgba(255, 176, 0, 0.1), transparent 70%), #121214; }
+  .brief-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 3rem; align-items: start; }
+  .brief-copy { position: sticky; top: 2rem; min-width: 0; }
+  .brief h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.08; margin: 0 0 1.25rem; text-wrap: balance; }
+  .brief-due { color: var(--accent-lightest); }
+  .brief-lead { font-size: 1.1rem; }
+  .brief-note { font-size: 0.95rem; padding-left: 0.9rem; border-left: 2px solid var(--accent); }
+  .brief-direct { font-size: 0.95rem; }
+  .brief-direct a { color: #fff; }
+  .brief-card { min-width: 0; padding: 1.5rem; border: 1px solid rgba(255, 209, 102, 0.35); border-radius: 12px;
+    background: rgba(24, 24, 26, 0.92); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45); display: grid; gap: 1.1rem; }
+  .brief-q { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .brief-q legend { padding: 0; margin-bottom: 0.55rem; color: #fff; font-weight: 700; font-size: 0.95rem; }
+  .brief-opts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .brief-chip { font: 600 0.92rem/1.2 var(--sans); color: rgba(255, 255, 255, 0.86); background: transparent; cursor: pointer;
+    padding: 0.5rem 0.9rem; border: 1px solid var(--line); border-radius: 999px; transition: border-color 0.15s, background 0.15s, color 0.15s; }
+  .brief-chip:hover { border-color: rgba(255, 209, 102, 0.6); }
+  .brief-chip[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .brief-chip:focus-visible { outline: 2px solid var(--accent-lightest); outline-offset: 2px; }
+  .brief-existing { margin: -0.4rem 0 0; font-size: 0.9rem; color: var(--accent-lightest); }
+  .brief-link { display: grid; gap: 0.45rem; font-weight: 700; color: #fff; font-size: 0.95rem; }
+  .brief-link em { font-style: normal; font-weight: 400; color: var(--muted); }
+  .brief-link input { width: 100%; padding: 0.65rem 0.8rem; border-radius: 8px; border: 1px solid var(--line); background: #0d0d0f;
+    color: #fff; font: 400 1rem var(--sans); }
+  .brief-link input:focus { outline: none; border-color: var(--accent); }
+  .brief-preview { display: grid; gap: 0.45rem; }
+  .brief-preview span { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .brief-preview pre { margin: 0; padding: 0.9rem 1rem; max-height: 13.5rem; overflow: auto; white-space: pre-wrap; word-break: break-word;
+    border-radius: 8px; border: 1px dashed rgba(255, 255, 255, 0.16); background: #0d0d0f; color: rgba(227, 227, 227, 0.85);
+    font: 400 0.84rem/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .brief-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+  .brief-copied { margin: -0.4rem 0 0; font-size: 0.9rem; color: #d4f7a6; }
+  @media (max-width: 860px) {
+    .brief { padding: 3.5rem 0; }
+    .brief-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    .brief-copy { position: static; }
+    .brief-card { padding: 1.1rem; }
+  }
+</style>
