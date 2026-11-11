@@ -310,9 +310,11 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Participant sign-in', 'Personalised content profile', 'Mood check-ins and history', 'Community and moderation', 'Course access integration', 'Web deployment and launch preparation'],
         visuals: [
-          { src: '/cases/nda-companion-home.jpg', alt: 'Home: profile card, daily mood check-in and calendar', caption: 'Screen from the design the app is built to. Names hidden; the app is in Russian.' },
-          { src: '/cases/nda-companion-chat.jpg', alt: 'Group chat of the programme', caption: 'Programme chat from the same design.' },
+          { screen: 'comp-home', alt: 'Home: profile card, daily mood check-in and calendar', caption: 'Home: the daily check-in and the diary week.' },
+          { screen: 'comp-chat', alt: 'Group chat of the programme', caption: 'The programme chat with a moderator.' },
+          { screen: 'comp-notif', alt: 'Notifications: live sessions, hints and schedule', caption: 'Notifications by course, live sessions and offers.' },
         ],
+        screensNote: 'Screens rebuilt from the app code and design, translated from Russian; names and photos replaced under NDA.',
         cta: 'Extending an existing course or membership business? Let’s map the app and the systems it needs to connect.',
       },
       ru: {
@@ -344,9 +346,11 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Вход участника', 'Персональные материалы', 'Настроение и история отметок', 'Сообщество и модерация', 'Интеграция доступа к курсам', 'Подготовка веб-продукта к запуску'],
         visuals: [
-          { src: '/cases/nda-companion-home.jpg', alt: 'Главная: карточка профиля, отметка самочувствия и календарь', caption: 'Экран из макета, по которому собрано приложение. Названия скрыты.' },
-          { src: '/cases/nda-companion-chat.jpg', alt: 'Общий чат программы', caption: 'Чат программы из того же макета.' },
+          { screen: 'comp-home', alt: 'Главная: карточка профиля, отметка самочувствия и календарь', caption: 'Главная: отметка состояния и неделя дневника.' },
+          { screen: 'comp-chat', alt: 'Общий чат программы', caption: 'Чат программы с модератором.' },
+          { screen: 'comp-notif', alt: 'Уведомления: эфиры, подсказки и расписание', caption: 'Уведомления по курсу, эфирам и предложениям.' },
         ],
+        screensNote: 'Экраны собраны по коду и макетам приложения; названия и фото заменены по NDA.',
         cta: 'Развиваете образовательный продукт или клуб? Разберём приложение и необходимые связи с вашими системами.',
       },
     },
