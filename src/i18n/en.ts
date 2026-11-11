@@ -72,6 +72,140 @@ export default {
     "title": "The code is yours.",
     "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in: if you leave, you leave with everything. White label if you need it: we work under your brand, and your client doesn't have to know about us."
   },
+  "factory": {
+    "eyebrow": "Inside the factory",
+    "title": "Every feature goes down the same line.",
+    "intro": "Agents do the work. Checks stop anything that isn't right and send it back. A person signs off the release.",
+    "stations": [
+      {
+        "name": "Spec",
+        "text": "Written and agreed before any code.",
+        "who": "you + senior",
+        "kind": "you"
+      },
+      {
+        "name": "Build",
+        "text": "An agent writes it on our framework.",
+        "who": "agent",
+        "kind": "agent"
+      },
+      {
+        "name": "Review",
+        "text": "A second agent reviews it, tests run.",
+        "who": "agent",
+        "kind": "agent"
+      },
+      {
+        "name": "Design check",
+        "text": "Screens compared with your mockup.",
+        "who": "agent",
+        "kind": "agent"
+      },
+      {
+        "name": "Test build",
+        "text": "Lands in a build you can open.",
+        "who": "automatic",
+        "kind": "auto"
+      },
+      {
+        "name": "Your OK",
+        "text": "You accept it or send it back.",
+        "who": "you",
+        "kind": "you"
+      },
+      {
+        "name": "Release",
+        "text": "Shipped and watched after launch.",
+        "who": "senior",
+        "kind": "senior"
+      }
+    ],
+    "tickets": [
+      "Apple sign-in",
+      "Meal log",
+      "Course player",
+      "Paywall",
+      "Mood check-in",
+      "Profile edit"
+    ],
+    "note": "Red: a check stopped it. It goes back to the agents until it passes.",
+    "stats": [
+      {
+        "value": "760",
+        "label": "features and fixes passed code review since mid-September"
+      },
+      {
+        "value": "~150",
+        "label": "a week now"
+      },
+      {
+        "value": "6",
+        "label": "client apps on the line"
+      }
+    ],
+    "source": "Counted by our delivery system, client apps only."
+  },
+  "founder": {
+    "eyebrow": "Who answers for it",
+    "name": "Evgenii Novikov",
+    "role": "Founder, DartWay",
+    "text": [
+      "I've been in IT since 2016 and have run a Flutter studio for five years. I wrote DartWay, the open-source framework the agents build on.",
+      "Every project on the line goes through me: I agree the scope and the price, and every release ships on my word. You write to me, not to a sales team."
+    ],
+    "links": [
+      {
+        "label": "Framework on GitHub",
+        "href": "https://github.com/dartway/dartway"
+      },
+      {
+        "label": "Telegram",
+        "href": "https://t.me/eu_novikov"
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Questions agencies ask",
+    "title": "Before you send a project.",
+    "items": [
+      {
+        "q": "How much does it cost?",
+        "a": "A fixed price for an agreed scope. Send the design and within one business day you get the scope, the price and the timeline. Anything beyond the scope is priced the same way, before work starts."
+      },
+      {
+        "q": "How fast is it?",
+        "a": "The timeline comes with the quote. You see a working test build from the first week, and feedback becomes a change the same day."
+      },
+      {
+        "q": "Can we start small?",
+        "a": "Yes. Start with one paid stage: one flow or a few screens. Judge the result, then decide."
+      },
+      {
+        "q": "Will it match our design?",
+        "a": "Every screen is compared with the mockup before you see it. Your designer accepts the result."
+      },
+      {
+        "q": "Who talks to our client?",
+        "a": "You do. We can work under your brand, and your client doesn't have to know about us."
+      },
+      {
+        "q": "What stack do you build on?",
+        "a": "Flutter for iOS, Android and web, with a Dart backend on our open-source DartWay framework. One codebase that any Flutter developer can pick up."
+      },
+      {
+        "q": "What do you need from us?",
+        "a": "A design or a prototype, one person who makes product decisions, and access to the store accounts when it's time to release."
+      },
+      {
+        "q": "What happens after release?",
+        "a": "We stay on for fixes and the next versions, on the same line. Or you take the code and go: it's yours."
+      },
+      {
+        "q": "We already have an app.",
+        "a": "We start with a review of the code and tell you whether to continue it or rebuild it, with a price for each path."
+      }
+    ]
+  },
   "pillars": {
     "eyebrow": "Not vibe coding",
     "title": "Anyone can generate an app in a day. Shipping one is different.",

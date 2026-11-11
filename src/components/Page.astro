@@ -2,6 +2,7 @@
 import SiteLayout from './SiteLayout.astro';
 import WorkGrid from './WorkGrid.astro';
 import Contact from './Contact.astro';
+import FactoryLine from './FactoryLine.astro';
 import { caseStudies } from '../data/caseStudies';
 const { t, agency = false } = Astro.props;
 const prefix = t.lang === 'ru' ? '/ru' : '';
@@ -34,6 +35,8 @@ const stats = [
     )}
   </section>
 
+
+  {!agency && <FactoryLine f={t.factory} />}
 
   {!agency && (
     <section class="wrap pillars">
@@ -106,5 +109,31 @@ const stats = [
     <h2>{t.ownership.title}</h2>
     <p>{t.ownership.text}</p>
   </section>
+  {!agency && (
+    <section class="wrap founder">
+      <div class="founder-mark" aria-hidden="true">EN</div>
+      <div>
+        <p class="eyebrow">{t.founder.eyebrow}</p>
+        <h2>{t.founder.name}</h2>
+        <p class="founder-role">{t.founder.role}</p>
+        {t.founder.text.map((line: string) => <p>{line}</p>)}
+        <div class="founder-links">
+          {t.founder.links.map((l: { label: string; href: string }) => <a class="more" href={l.href} data-cta="founder-link">{l.label}</a>)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {!agency && (
+    <section class="wrap faq" id="faq">
+      <p class="eyebrow">{t.faq.eyebrow}</p>
+      <h2>{t.faq.title}</h2>
+      <div class="faq-list">
+        {t.faq.items.map((item: { q: string; a: string }) => (
+          <details data-cta="faq"><summary>{item.q}</summary><p>{item.a}</p></details>
+        ))}
+      </div>
+    </section>
+  )}
   <Contact lang={t.lang} />
 </SiteLayout>

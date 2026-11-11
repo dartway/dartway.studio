@@ -1,0 +1,135 @@
+---
+// The dark factory, shown working: tickets ride station to station; one is stopped at review and sent back.
+// Keyframes are generated from the routes so stations and stops always line up.
+const { f } = Astro.props;
+const n = f.stations.length;
+const pos = (i: number) => ((i + 0.5) / n) * 100;
+const DURATION = 26;
+const REVIEW = 2;
+
+function frames(name: string, route: number[], axis: 'left' | 'top', flagAt = -1) {
+  const stop = 100 / (route.length + 0.4);
+  const out: string[] = [`0%{${axis}:${pos(route[0])}%;opacity:0}`, `2%{opacity:1}`];
+  route.forEach((s, j) => {
+    const start = j * stop;
+    const hold = start + stop * 0.62;
+    const red = j === flagAt;
+    const look = red
+      ? 'border-color:#ff5d5d;color:#ffb3b3;background:rgba(255,93,93,.14)'
+      : 'border-color:rgba(255,209,102,.55);color:#ffe7ad;background:rgba(18,16,10,.92)';
+    out.push(`${start.toFixed(2)}%{${axis}:${pos(s)}%;${look}}`);
+    out.push(`${hold.toFixed(2)}%{${axis}:${pos(s)}%;${look}}`);
+  });
+  const last = route[route.length - 1];
+  out.push(`97%{${axis}:${pos(last)}%;opacity:1}`, `100%{${axis}:${pos(last)}%;opacity:0}`);
+  return `@keyframes ${name}{${out.join('')}}`;
+}
+const straight = [...Array(n).keys()];
+const rework = [0, 1, 2, 1, 2, 3, 4, 5, 6];
+const css = [
+  frames('fl-x', straight, 'left'),
+  frames('fl-y', straight, 'top'),
+  frames('fr-x', rework, 'left', REVIEW),
+  frames('fr-y', rework, 'top', REVIEW),
+].join('\n');
+const tickets = f.tickets.map((label: string, i: number) => ({
+  label,
+  rework: i === f.tickets.length - 1,
+  delay: -((i * DURATION) / f.tickets.length).toFixed(2),
+  lane: i % 2,
+}));
+---
+<section class="factory" id="factory" aria-labelledby="factory-title">
+  <div class="wrap">
+    <p class="eyebrow">{f.eyebrow}</p>
+    <h2 id="factory-title">{f.title}</h2>
+    <p class="section-intro">{f.intro}</p>
+
+    <div class="line" style={`--n:${n};--dur:${DURATION}s`}>
+      <div class="track" aria-hidden="true"></div>
+      <ol class="stations">
+        {f.stations.map((s: { name: string; text: string; who: string; kind: string }, i: number) => (
+          <li class:list={['station', `who-${s.kind}`, { gate: i === REVIEW }]}>
+            <span class="dot" aria-hidden="true"></span>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <strong>{s.name}</strong>
+            <p>{s.text}</p>
+            <em>{s.who}</em>
+          </li>
+        ))}
+      </ol>
+      <div class="tickets" aria-hidden="true">
+        {tickets.map((t) => (
+          <span class:list={['ticket', { rework: t.rework }, `lane-${t.lane}`]} style={`animation-delay:${t.delay}s`}>{t.label}</span>
+        ))}
+      </div>
+    </div>
+    <p class="line-note"><span class="swatch" aria-hidden="true"></span>{f.note}</p>
+
+    <div class="flow-stats">
+      {f.stats.map((st: { value: string; label: string }) => (
+        <div><strong>{st.value}</strong><span>{st.label}</span></div>
+      ))}
+    </div>
+    <p class="flow-source">{f.source}</p>
+  </div>
+</section>
+
+<style is:global set:html={css}></style>
+<style is:global>
+  .factory { position: relative; padding: 5rem 0 4.5rem; border-top: 1px solid rgba(255, 176, 0, 0.25); border-bottom: 1px solid var(--line);
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 176, 0, 0.09), transparent 70%), #121214; overflow: hidden; }
+  .factory .line { position: relative; margin-top: 3rem; padding-top: 4.2rem; }
+  .factory .track { position: absolute; left: calc(50% / var(--n)); right: calc(50% / var(--n)); top: 5.6rem; height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(255, 176, 0, 0.55) 0 14px, transparent 14px 22px); background-size: 22px 2px;
+    animation: belt 1.2s linear infinite; }
+  @keyframes belt { to { background-position: 22px 0; } }
+  .factory .stations { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 0.75rem; }
+  .factory .station { position: relative; padding-top: 2.4rem; text-align: center; }
+  .factory .dot { position: absolute; top: 0.95rem; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%;
+    background: #121214; border: 2px solid var(--accent); box-shadow: 0 0 0 5px rgba(255, 176, 0, 0.12); }
+  .factory .gate .dot { border-color: #ff5d5d; box-shadow: 0 0 0 5px rgba(255, 93, 93, 0.14); }
+  .factory .num { display: block; color: rgba(255, 255, 255, 0.4); font: 600 0.75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; margin-top: 0.4rem; }
+  .factory .station strong { display: block; margin: 0.45rem 0 0.4rem; color: #fff; font-size: 1rem; }
+  .factory .station p { margin: 0 0 0.6rem; font-size: 0.86rem; line-height: 1.45; }
+  .factory .station em { display: inline-block; font-style: normal; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.18rem 0.5rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .factory .who-agent em { border-color: rgba(255, 176, 0, 0.5); color: var(--accent-lightest); }
+  .factory .who-you em { border-color: rgba(140, 200, 255, 0.55); color: #b9dcff; }
+  .factory .who-senior em { border-color: rgba(184, 243, 106, 0.55); color: #d4f7a6; }
+  .factory .tickets { position: absolute; inset: 0; pointer-events: none; }
+  .factory .ticket { position: absolute; top: 0.2rem; transform: translateX(-50%); white-space: nowrap; padding: 0.28rem 0.65rem; border-radius: 6px;
+    border: 1px solid rgba(255, 209, 102, 0.55); background: rgba(18, 16, 10, 0.92); color: #ffe7ad;
+    font: 600 0.74rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+    animation: fl-x var(--dur) linear infinite; opacity: 0; }
+  .factory .ticket.lane-1 { top: 2.15rem; }
+  .factory .ticket.rework { animation-name: fr-x; }
+  .factory .line-note { display: flex; align-items: center; gap: 0.6rem; margin: 2rem 0 0; font-size: 0.95rem; }
+  .factory .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #ff5d5d; background: rgba(255, 93, 93, 0.2); flex: none; }
+  .factory .flow-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+  .factory .flow-stats div { padding: 1.25rem; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; background: rgba(255, 255, 255, 0.02); }
+  .factory .flow-stats strong { display: block; color: var(--accent-lightest); font-size: 2.3rem; font-weight: 800; line-height: 1.1; }
+  .factory .flow-stats span { display: block; margin-top: 0.4rem; color: var(--muted); }
+  .factory .flow-source { margin: 0.9rem 0 0; font-size: 0.82rem; color: rgba(227, 227, 227, 0.5); }
+
+  @media (max-width: 860px) {
+    .factory .line { padding-top: 0; padding-left: 8.4rem; }
+    .factory .track { left: 7.2rem; right: auto; top: calc(50% / var(--n)); bottom: calc(50% / var(--n)); width: 2px; height: auto;
+      background: repeating-linear-gradient(180deg, rgba(255, 176, 0, 0.55) 0 14px, transparent 14px 22px); background-size: 2px 22px; animation-name: belt-y; }
+    @keyframes belt-y { to { background-position: 0 22px; } }
+    .factory .stations { grid-template-columns: 1fr; grid-auto-rows: 1fr; gap: 0; }
+    .factory .station { text-align: left; padding: 0.9rem 0 0.9rem 0.9rem; }
+    .factory .dot { top: 50%; left: -1.55rem; margin: -7px 0 0 0; }
+    .factory .num { margin: 0; }
+    .factory .station strong { margin: 0.25rem 0; }
+    .factory .station p { margin-bottom: 0.4rem; }
+    .factory .ticket { left: 0 !important; top: 0; transform: translateY(-50%); animation-name: fl-y; max-width: 6.6rem; overflow: hidden; text-overflow: ellipsis; }
+    .factory .ticket.lane-1 { top: 0; }
+    .factory .ticket.rework { animation-name: fr-y; }
+    .factory .flow-stats { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .factory .track { animation: none; }
+    .factory .tickets { display: none; }
+  }
+</style>
