@@ -1,0 +1,42 @@
+---
+import { caseStudies } from '../data/caseStudies';
+const { lang = 'en', limit } = Astro.props;
+const prefix = lang === 'ru' ? '/ru' : '';
+const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
+---
+<div class="work-grid">
+  {projects.map((project) => {
+    const content = project.locales[lang as 'en' | 'ru'];
+    const visual = content.visuals?.[0];
+    return <a
+      class="work-card"
+      href={`${prefix}/work/${project.slug}/`}
+      style={`--case-accent:${project.accent || '#ffb000'}`}
+      data-cta={`case-${project.slug}`}
+    >
+      <div class:list={['work-cover', { 'has-image': !!visual }]}>
+        {visual ? (
+          <img src={visual.src} alt={visual.alt} loading="lazy" />
+        ) : (
+          <div class="work-type">
+            <span>{content.category}</span>
+            <strong>{content.title}</strong>
+            <p>{content.features.slice(0, 3).join(' · ')}</p>
+          </div>
+        )}
+      </div>
+      <div class="work-copy">
+        <div class="work-meta">
+          <span>{content.category}</span>
+          <span>{content.status}</span>
+        </div>
+        <h3>{content.title}<span aria-hidden="true">↗</span></h3>
+        <p>{content.summary}</p>
+        <span class="read-case">
+          {lang === 'ru' ? 'История проекта' : 'Explore the project'}
+          <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </a>;
+  })}
+</div>

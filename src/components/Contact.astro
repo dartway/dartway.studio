@@ -1,0 +1,10 @@
+---
+const { lang = 'en' } = Astro.props;
+const ru = lang === 'ru';
+---
+<section class="final wrap" id="contact">
+  <p class="eyebrow">{ru ? 'Следующий проект' : 'Your next project'}</p>
+  <h2>{ru ? 'Расскажите, что нужно выпустить.' : 'Tell us what you need to ship.'}</h2>
+  <p>{ru ? 'Пришлите описание, дизайн или ссылку на действующее приложение. Обсудим объём, ответственность сторон и первый этап.' : 'Share a brief, a design or your existing app. We will discuss the scope, responsibilities and a useful first milestone.'}</p>
+  <div class="actions contact-actions"><a class="btn" href="mailto:evgenii.novikov.global@gmail.com" data-cta="contact-email">{ru ? 'Написать на почту' : 'Email your brief'}</a><a class="more" href="https://t.me/eu_novikov" data-cta="contact-telegram">Telegram</a></div>
+</section>

@@ -123,3 +123,101 @@ h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 0.6rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Delivery pages and detailed project stories. */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+.skip-link { position: fixed; top: -80px; left: 1rem; z-index: 100; padding: 0.7rem 1rem; background: var(--accent); color: var(--accent-ink); }
+.skip-link:focus { top: 1rem; }
+.delivery-hero { min-height: 82vh; }
+.delivery-hero h1 { max-width: 960px; }
+.section-intro { max-width: 750px; font-size: 1.15rem; }
+.section-heading { display: flex; align-items: end; gap: 2rem; justify-content: space-between; }
+.section-heading h2 { max-width: 700px; }
+.section-heading > a { flex-shrink: 0; margin-bottom: 1.5rem; }
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 1.7rem; margin-top: 2.5rem; }
+.work-card { text-decoration: none; display: block; border-top: 1px solid var(--line); }
+.work-cover { height: 330px; overflow: hidden; margin-top: 1rem; background: radial-gradient(ellipse at top right, color-mix(in srgb, var(--case-accent), transparent 77%), transparent 80%), #121417; border: 1px solid color-mix(in srgb, var(--case-accent), transparent 75%); border-radius: 10px; transition: border-color 0.2s; }
+.work-card:hover .work-cover { border-color: var(--case-accent); }
+.work-cover.has-image { display: flex; justify-content: center; padding: 1rem; }
+.work-cover img { width: 100%; height: 100%; object-fit: contain; }
+.work-type { padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.work-type > span { color: var(--case-accent); font-size: 0.85rem; }
+.work-type strong { display: block; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.1; margin: 1rem 0; letter-spacing: -0.04em; }
+.work-type p { max-width: 360px; margin: 0; }
+.work-copy { padding: 1.3rem 0 0; }
+.work-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; justify-content: space-between; color: var(--muted); font-size: 0.8rem; }
+.work-meta span:last-child { color: var(--case-accent); }
+.work-copy h3 { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.8rem; font-size: 1.7rem; }
+.work-copy h3 > span { color: var(--case-accent); }
+.work-copy p { font-size: 1rem; }
+.read-case { font-weight: 600; color: var(--text); }
+.release-proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.release-proof p { max-width: 750px; font-size: 1.15rem; }
+.roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+.roles-grid article { border-top: 2px solid var(--line); padding: 1.8rem 0; }
+.roles-grid .our-role { border-color: var(--accent); }
+.roles-grid h3 { font-size: 1.5rem; }
+.roles-grid ul { padding-left: 1.2rem; color: var(--muted); }
+.roles-grid li { margin: 0.75rem 0; }
+.delivery-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; margin-top: 2.5rem; }
+.delivery-steps article { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.delivery-steps h3 { color: var(--accent-lightest); }
+.ownership { border-top: 1px solid var(--line); }
+.ownership p { max-width: 760px; font-size: 1.15rem; }
+.contact-actions { justify-content: center; }
+.final p { max-width: 720px; margin-inline: auto; }
+.page-intro { padding-top: 10rem !important; padding-bottom: 1rem !important; }
+.page-intro h1, .case-intro h1 { max-width: 940px; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.06; letter-spacing: -0.035em; }
+.portfolio { padding-top: 1rem !important; }
+.case-intro { padding-top: 8rem; padding-bottom: 3.5rem; }
+.back-link { color: var(--muted); text-decoration: none; display: inline-block; margin-bottom: 3rem; }
+.case-intro .eyebrow { color: var(--case-accent); }
+.case-intro .lead { max-width: 840px; font-size: 1.35rem; }
+.case-status { margin-top: 2rem; border-left: 3px solid var(--case-accent); padding-left: 1.25rem; max-width: 850px; }
+.case-status strong { color: var(--case-accent); }
+.case-status p { margin: 0.5rem 0 0; }
+.case-store-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.case-store-links a { gap: 0.5rem; }
+section.case-visuals { padding-top: 0; padding-bottom: 3rem; display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.case-visuals figure { margin: 0; flex: 1 1 260px; min-width: 0; background: #121417; padding: 1.25rem; border-radius: 10px; }
+.case-visuals img { display: block; max-width: 100%; width: auto; max-height: 640px; margin: 0 auto; object-fit: contain; }
+.case-visuals figcaption { padding-top: 1rem; color: var(--muted); font-size: 0.9rem; }
+.case-body { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 4rem; padding-bottom: 3rem; }
+.case-sidebar h2 { font-size: 1rem; color: var(--muted); }
+.case-sidebar ul { padding-left: 1.2rem; margin: 1rem 0 2.5rem; }
+.case-sidebar li { margin-bottom: 0.7rem; }
+.case-sidebar nav { display: flex; flex-direction: column; gap: 0.75rem; }
+.case-sidebar nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+.case-story section { padding: 0 0 2.75rem; scroll-margin-top: 2rem; }
+.case-story h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 1.3rem; }
+.case-story p { font-size: 1.1rem; line-height: 1.8; }
+@media (max-width: 800px) {
+  .section-heading { display: block; }
+  .section-heading > a { display: inline-block; }
+  .work-grid { gap: 2rem 1.2rem; }
+  .work-cover { height: 280px; }
+  .work-type { padding: 1.2rem; }
+  .case-body { grid-template-columns: 1fr; gap: 2rem; }
+  .case-sidebar { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+  .case-sidebar nav { flex-direction: row; flex-wrap: wrap; }
+  .case-sidebar ul { columns: 2; }
+}
+@media (max-width: 600px) {
+  .top-row { gap: 0.75rem; height: 70px; }
+  .brand { gap: 0.4rem; font-size: 1rem; }
+  .brand img { width: 26px; }
+  .top-actions { gap: 0.7rem; }
+  .top-actions .btn-small { padding: 0.5rem 0.7rem; font-size: 0.8rem; }
+  .delivery-hero { min-height: 740px; padding-top: 7rem; padding-bottom: 3rem; }
+  .hero h1 { font-size: 2.7rem; }
+  .meta { gap: 0.5rem; flex-direction: column; font-size: 0.88rem; }
+  .meta span::after { content: ''; }
+  .work-grid, .roles-grid, .delivery-steps { grid-template-columns: 1fr; }
+  .work-cover { height: 330px; }
+  .work-type { padding: 1.7rem; }
+  .case-intro { padding-top: 7rem; }
+  .case-intro .lead { font-size: 1.15rem; }
+  .case-visuals figure { flex-basis: 100%; }
+  .case-sidebar ul { columns: 1; }
+  .page-intro { padding-top: 8rem !important; }
+}

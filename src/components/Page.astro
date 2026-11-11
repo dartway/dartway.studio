@@ -1,175 +1,86 @@
 ---
-import '../styles/site.css';
-
-const { t } = Astro.props;
-
-const TELEGRAM = 'https://t.me/eu_novikov';
-const DEMO = 'https://www.loom.com/share/2d8ecc86d04342fcb66917e823f1507e';
-const endpoint = import.meta.env.PUBLIC_ANALYTICS_ENDPOINT ?? '';
-
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
-// The query busts X's card cache; bump it when og.png changes.
-const ogImage = new URL('/og.png?v=3', Astro.site).href;
+import SiteLayout from './SiteLayout.astro';
+import WorkGrid from './WorkGrid.astro';
+import Contact from './Contact.astro';
+const { t, agency = false } = Astro.props;
+const prefix = t.lang === 'ru' ? '/ru' : '';
 ---
+<SiteLayout
+  lang={t.lang}
+  title={agency ? `${t.agency.title} — DartWay` : t.title}
+  description={agency ? t.agency.description : t.description}
+>
+  <section class="hero delivery-hero">
+    <p class="eyebrow">{agency ? t.agency.eyebrow : t.hero.eyebrow}</p>
+    <h1>{agency ? t.agency.title : t.hero.title}</h1>
+    <p class="lead">{agency ? t.agency.lead : t.hero.lead}</p>
+    <div class="actions">
+      <a class="btn" href="#contact" data-cta="hero-contact">{t.hero.primary}</a>
+      <a class="more" href={`${prefix}/work/`} data-cta="hero-work">{t.hero.secondary}</a>
+    </div>
+    <div class="meta">
+      {t.hero.meta.map((item: string) => <span>{item}</span>)}
+    </div>
+  </section>
 
-<!doctype html>
-<html lang={t.lang}>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{t.title}</title>
-    <meta name="description" content={t.description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href="https://dartway.studio/" />
-    <link rel="alternate" hreflang="ru" href="https://dartway.studio/ru/" />
-    <link rel="alternate" hreflang="x-default" href="https://dartway.studio/" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:title" content={t.title} />
-    <meta property="og:description" content={t.description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@novikov_dartway" />
-    <meta name="twitter:title" content={t.title} />
-    <meta name="twitter:description" content={t.description} />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="theme-color" content="#05060c" />
-    {t.lang === 'en' && (
-      <script is:inline>
-        // English is the default; a Russian-speaking browser goes to /ru/ unless the visitor picked a language.
-        try {
-          const picked = localStorage.getItem('lang');
-          if (!picked && /^ru\b/i.test(navigator.languages?.[0] ?? navigator.language ?? '')) {
-            location.replace('/ru/' + location.search + location.hash);
-          }
-        } catch {}
-      </script>
-    )}
-
-  </head>
-  <body data-endpoint={endpoint}>
-    <header class="top">
-      <div class="wrap top-row">
-        <a class="brand" href={t.lang === 'ru' ? '/ru/' : '/'}>
-          <img src="/img/dartway-cube.svg" alt="" width="36" height="40" />
-          <span>DartWay Studio</span>
-        </a>
-        <nav class="nav">
-          <a href="#how">{t.nav.how}</a>
-          <a href="#agents">{t.nav.agents}</a>
-          <a href="#who">{t.nav.who}</a>
-          <a href="#beta">{t.nav.beta}</a>
-        </nav>
-        <div class="top-actions">
-          <a class="lang" href={t.switchHref} data-cta="lang" data-lang={t.lang === 'ru' ? 'en' : 'ru'}>{t.switchLabel}</a>
-          <a class="btn btn-small" href={TELEGRAM} data-cta="nav-telegram">{t.nav.cta}</a>
-        </div>
+  {agency && (
+    <section class="wrap agency-roles">
+      <p class="eyebrow">{t.agency.eyebrow}</p>
+      <h2>{t.agency.heading}</h2>
+      <p class="section-intro">{t.agency.intro}</p>
+      <div class="roles-grid">
+        <article>
+          <h3>{t.agency.yourTitle}</h3>
+          <ul>{t.agency.yourItems.map((item: string) => <li>{item}</li>)}</ul>
+        </article>
+        <article class="our-role">
+          <h3>{t.agency.ourTitle}</h3>
+          <ul>{t.agency.ourItems.map((item: string) => <li>{item}</li>)}</ul>
+        </article>
       </div>
-    </header>
+    </section>
+  )}
 
-    <main>
-      <section class="hero">
-        <p class="eyebrow">{t.hero.eyebrow}</p>
-        <h1>{t.hero.title}</h1>
-        <p class="kicker">{t.hero.kicker}</p>
-        <p class="lead">{t.hero.lead}</p>
-        <div class="actions">
-          <a class="btn" href={TELEGRAM} data-cta="hero-telegram">{t.hero.primary}</a>
-          <a class="more" href={DEMO} data-cta="hero-demo">{t.hero.secondary}</a>
-        </div>
-        <div class="meta">
-          {t.hero.meta.map((m: string) => <span>{m}</span>)}
-        </div>
-        <div class="stats">
-          {t.stats.map((st: { value: string; label: string }) => (
-            <div class="stat">
-              <strong>{st.value}</strong>
-              <span>{st.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+  <section class="wrap work-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{t.work.eyebrow}</p>
+        <h2>{t.work.title}</h2>
+      </div>
+      <a class="more" href={`${prefix}/work/`}>{t.work.all}</a>
+    </div>
+    <p class="section-intro">{t.work.text}</p>
+    <WorkGrid lang={t.lang} limit={agency ? 4 : undefined} />
+  </section>
 
-      <section class="problem wrap">
-        <h2>{t.problem.title}</h2>
-        <p>{t.problem.text}</p>
-      </section>
+  <section class="wrap release-proof">
+    <h2>{t.proof.title}</h2>
+    <p>{t.proof.text}</p>
+    <a class="more" href={`${prefix}/work/u90/`}>{t.proof.link}</a>
+  </section>
 
-      <section id="how" class="wrap">
-        <h2>{t.how.title}</h2>
-        <ol class="steps">
-          {t.how.steps.map((s: { name: string; text: string }, i: number) => (
-            <li>
-              <span class="step-n">{String(i + 1).padStart(2, '0')}</span>
-              <h3>{s.name}</h3>
-              <p>{s.text}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
+  <section class="wrap" id="delivery">
+    <h2>{t.delivery.title}</h2>
+    <p class="section-intro">{t.delivery.intro}</p>
+    <div class="delivery-steps">
+      {t.delivery.steps.map((step: { title: string; text: string }) => (
+        <article><h3>{step.title}</h3><p>{step.text}</p></article>
+      ))}
+    </div>
+  </section>
 
-      <section id="agents" class="wrap split">
-        <div>
-          <h2>{t.agents.title}</h2>
-          <p>{t.agents.text}</p>
-          <ul class="chips">
-            {t.agents.chips.map((c: string) => <li>{c}</li>)}
-          </ul>
-        </div>
-        <aside class="human">
-          <h3>{t.agents.humanTitle}</h3>
-          <p>{t.agents.humanText}</p>
-        </aside>
-      </section>
+  <section class="wrap">
+    <h2>{t.services.title}</h2>
+    <div class="roles-grid">
+      {t.services.items.map((service: { title: string; text: string }) => (
+        <article><h3>{service.title}</h3><p>{service.text}</p></article>
+      ))}
+    </div>
+  </section>
 
-      <section id="who" class="wrap">
-        <h2>{t.who.title}</h2>
-        <div class="grid">
-          {t.who.items.map((w: { name: string; text: string }) => (
-            <div class="tile">
-              <h3>{w.name}</h3>
-              <p>{w.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="beta" class="wrap">
-        <h2>{t.beta.title}</h2>
-        <ul class="honest">
-          {t.beta.items.map((b: string) => <li>{b}</li>)}
-        </ul>
-      </section>
-
-      <section class="final wrap">
-        <h2>{t.final.title}</h2>
-        <p>{t.final.text}</p>
-        <a class="btn" href={TELEGRAM} data-cta="final-telegram">{t.final.cta}</a>
-      </section>
-    </main>
-
-    <footer class="wrap foot">
-      <span>© DartWay</span>
-      <a href="https://dartway.dev" data-cta="footer-framework">{t.footer.framework}</a>
-      <a href="https://t.me/ai_native_by_novikov" data-cta="footer-channel">{t.footer.channel}</a>
-      <a href="https://www.threads.com/@novikov_dartway" data-cta="footer-threads">Threads</a>
-      <a href="https://x.com/novikov_dartway" data-cta="footer-x">X</a>
-    </footer>
-
-    <script>
-      import '../scripts/analytics.ts';
-
-      document.querySelectorAll<HTMLElement>('[data-lang]').forEach((a) =>
-        a.addEventListener('click', () => {
-          try {
-            localStorage.setItem('lang', a.dataset.lang!);
-          } catch {}
-        }),
-      );
-    </script>
-  </body>
-</html>
+  <section class="wrap ownership">
+    <h2>{t.ownership.title}</h2>
+    <p>{t.ownership.text}</p>
+  </section>
+  <Contact lang={t.lang} />
+</SiteLayout>

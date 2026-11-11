@@ -1,0 +1,78 @@
+---
+import '../styles/site.css';
+const { lang = 'en', title, description, image = '/og.png?v=3' } = Astro.props;
+const ru = lang === 'ru';
+const prefix = ru ? '/ru' : '';
+const enPath = Astro.url.pathname.replace(/^\/ru(?=\/|$)/, '') || '/';
+const ruPath = '/ru' + (enPath.startsWith('/') ? enPath : '/' + enPath);
+const switchHref = ru ? enPath : ruPath;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const endpoint = import.meta.env.PUBLIC_ANALYTICS_ENDPOINT ?? '';
+const email = 'mailto:evgenii.novikov.global@gmail.com';
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site).href} />
+    <link rel="alternate" hreflang="ru" href={new URL(ruPath, Astro.site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(enPath, Astro.site).href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#05060c" />
+    {!ru && <script is:inline>
+      try {
+        const picked = localStorage.getItem('lang');
+        if (!picked && /^ru\b/i.test(navigator.languages?.[0] ?? navigator.language ?? '')) {
+          location.replace('/ru' + location.pathname + location.search + location.hash);
+        }
+      } catch {}
+    </script>}
+  </head>
+  <body data-endpoint={endpoint}>
+    <a class="skip-link" href="#main">{ru ? 'К содержимому' : 'Skip to content'}</a>
+    <header class="top">
+      <div class="wrap top-row">
+        <a class="brand" href={`${prefix}/`}><img src="/img/dartway-cube.svg" alt="" width="32" height="36" /><span>DartWay</span></a>
+        <nav class="nav" aria-label={ru ? 'Навигация' : 'Navigation'}>
+          <a href={`${prefix}/work/`}>{ru ? 'Проекты' : 'Our work'}</a>
+          <a href={`${prefix}/agencies/`}>{ru ? 'Для агентств' : 'For agencies'}</a>
+          <a href={`${prefix}/#delivery`}>{ru ? 'Как работаем' : 'How we deliver'}</a>
+        </nav>
+        <div class="top-actions">
+          <a class="lang" href={switchHref} data-lang={ru ? 'en' : 'ru'} data-cta="lang" aria-label={ru ? 'English version' : 'Русская версия'}>{ru ? 'EN' : 'RU'}</a>
+          <a class="btn btn-small" href={email} data-cta="nav-email">{ru ? 'Обсудить проект' : 'Discuss a project'}</a>
+        </div>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="wrap foot">
+      <span>© {new Date().getFullYear()} DartWay</span>
+      <a href={email} data-cta="footer-email">Email</a>
+      <a href="https://t.me/eu_novikov" data-cta="footer-telegram">Telegram</a>
+      <a href={`${prefix}/work/`}>{ru ? 'Все проекты' : 'All projects'}</a>
+      <a href="https://dartway.dev" data-cta="footer-framework">{ru ? 'Наш фреймворк' : 'Our framework'}</a>
+    </footer>
+    <script>
+      import '../scripts/analytics.ts';
+      document.querySelectorAll<HTMLAnchorElement>('[data-lang]').forEach((link) => {
+        link.addEventListener('click', () => {
+          try { localStorage.setItem('lang', link.dataset.lang!); } catch {}
+          const target = new URL(link.href);
+          target.search = location.search;
+          target.hash = location.hash;
+          link.href = target.href;
+        });
+      });
+    </script>
+  </body>
+</html>
