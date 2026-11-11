@@ -36,17 +36,6 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
     </section>
   )}
 
-  {!agency && (
-    <section class="wrap segments">
-      <p class="eyebrow">{t.segments.eyebrow}</p>
-      <h2>{t.segments.title}</h2>
-      <div class="delivery-steps pillar-grid">
-        {t.segments.items.map((item: { title: string; text: string }) => (
-          <article><h3>{item.title}</h3><p>{item.text}</p></article>
-        ))}
-      </div>
-    </section>
-  )}
 
   {agency && (
     <section class="wrap agency-roles">
@@ -78,11 +67,18 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
     <WorkGrid lang={t.lang} limit={agency ? 4 : 3} />
   </section>
 
-  <section class="wrap release-proof">
-    <h2>{t.proof.title}</h2>
-    <p>{t.proof.text}</p>
-    <a class="more" href={`${prefix}/work/u90/`}>{t.proof.link}</a>
-  </section>
+
+  {!agency && (
+    <section class="wrap segments">
+      <p class="eyebrow">{t.segments.eyebrow}</p>
+      <h2>{t.segments.title}</h2>
+      <div class="delivery-steps pillar-grid">
+        {t.segments.items.map((item: { title: string; text: string }) => (
+          <article><h3>{item.title}</h3><p>{item.text}</p></article>
+        ))}
+      </div>
+    </section>
+  )}
 
   <section class="wrap" id="delivery">
     <h2>{t.delivery.title}</h2>

@@ -10,7 +10,7 @@ export default {
     "secondary": "See the work",
     "meta": [
       "Fixed price",
-      "Weeks, not months",
+      "Price and timeline in one business day",
       "Same-day updates and fixes"
     ]
   },
@@ -37,7 +37,7 @@ export default {
   "work": {
     "eyebrow": "Built this way",
     "title": "Apps in production and in progress.",
-    "text": "Two of them are built for an agency that keeps the client, the product and the design.",
+    "text": "U90 is live on the App Store and Google Play. Molodey and AF Universe are built for an agency that keeps the client, the product and the design.",
     "all": "All projects"
   },
   "delivery": {
@@ -46,7 +46,7 @@ export default {
     "steps": [
       {
         "title": "Send the design",
-        "text": "A mockup, a prototype or a brief. We return the scope, a fixed price and the timeline."
+        "text": "A mockup, a prototype or a brief. Within one business day we return the scope, a fixed price and the timeline."
       },
       {
         "title": "Agents build",
@@ -68,8 +68,8 @@ export default {
     "link": "Read the U90 case"
   },
   "ownership": {
-    "title": "The code is your client's.",
-    "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in."
+    "title": "The code is yours.",
+    "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in: if you leave, you leave with everything."
   },
   "pillars": {
     "eyebrow": "Not vibe coding",
@@ -81,11 +81,11 @@ export default {
       },
       {
         "title": "Strict coding rules and tests",
-        "text": "Agents build on our own production framework: one architecture, automated tests and code review for every change."
+        "text": "Agents build on DartWay, our own production framework: one architecture, automated tests and code review for every change."
       },
       {
         "title": "Senior developer supervision",
-        "text": "A senior engineer owns the technical result: decisions, releases and what happens after launch."
+        "text": "Evgenii Novikov, the founder, owns the technical result: decisions, releases and what happens after launch. Ten years in IT, five of them running a mobile studio."
       }
     ]
   },
