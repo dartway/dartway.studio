@@ -5,7 +5,7 @@ export default {
   "hero": {
     "eyebrow": "AI-native development",
     "title": "A dark factory for apps.",
-    "lead": "AI agents build the whole app, from design to production. You keep the client and the product decisions.",
+    "lead": "AI agents build the whole app, from design to production. You own the product.",
     "primary": "Get a price for your project",
     "secondary": "See the work",
     "meta": [
@@ -91,7 +91,7 @@ export default {
   },
   "segments": {
     "eyebrow": "Who it is for",
-    "title": "You own the client. We build the app.",
+    "title": "You own the product. We build it.",
     "items": [
       {
         "title": "Agencies that build",
