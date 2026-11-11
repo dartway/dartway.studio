@@ -2,7 +2,10 @@ export default {
   "lang": "en",
   "title": "DartWay — a dark factory for apps",
   "description": "AI agents build your app all the way to production: pixel-perfect to your design, strict coding rules and tests, senior developer supervision. Fixed price.",
-  "stats": { "inProgress": "projects in progress", "published": "live on the App Store and Google Play" },
+  "stats": {
+    "inProgress": "projects in progress",
+    "published": "live on the App Store and Google Play"
+  },
   "hero": {
     "eyebrow": "AI-native development",
     "title": "A dark factory for apps",
@@ -165,16 +168,16 @@ export default {
     "title": "Straight answers before you send a project",
     "items": [
       {
+        "q": "Can we start small?",
+        "a": "Yes. Start with one paid stage: one flow or a few screens. Judge the result, then decide."
+      },
+      {
         "q": "How much does it cost?",
         "a": "A fixed price for an agreed scope. Send the design and within one business day you get the scope, the price and the timeline. Anything beyond the scope is priced the same way, before work starts."
       },
       {
         "q": "How fast is it?",
         "a": "The timeline comes with the quote. You see a working test build from the first week, and feedback becomes a change the same day."
-      },
-      {
-        "q": "Can we start small?",
-        "a": "Yes. Start with one paid stage: one flow or a few screens. Judge the result, then decide."
       },
       {
         "q": "Will it match our design?",
@@ -260,7 +263,8 @@ export default {
       "gain": "What changes",
       "fear": "What you worry about",
       "answer": "How we handle it",
-      "cta": "Price my project"
+      "cta": "Price my project",
+      "cases": "Projects like this"
     },
     "items": [
       {
@@ -272,7 +276,17 @@ export default {
         "answer": "White label: the client and the sign-off stay with you, and every screen is checked against your designer's mockup. Each task passes code review and tests, and the code lives in your repository. Two of our projects are built for an agency, under NDA.",
         "preset": {
           "for": 0
-        }
+        },
+        "cases": [
+          {
+            "label": "NDA: course and club app",
+            "href": "/work/nda-courses/"
+          },
+          {
+            "label": "NDA: companion app for an education product",
+            "href": "/work/nda-companion/"
+          }
+        ]
       },
       {
         "title": "Small business",
@@ -283,7 +297,13 @@ export default {
         "answer": "A fixed price for an agreed scope by the next business day. You see a working test build from the first week and accept every step. Tvaity, a financial-literacy school, runs on an app we build and support.",
         "preset": {
           "for": 1
-        }
+        },
+        "cases": [
+          {
+            "label": "Tvaity — a financial literacy school",
+            "href": "/work/tvaity/"
+          }
+        ]
       },
       {
         "title": "Startup founder",
@@ -294,7 +314,13 @@ export default {
         "answer": "Have an MVP? We start with a code review: continue or rebuild, with a price for each path. The first paid stage is small, so you decide on a result. The code is yours, on an open framework.",
         "preset": {
           "for": 1
-        }
+        },
+        "cases": [
+          {
+            "label": "U90 — from a brief to the App Store and Google Play",
+            "href": "/work/u90/"
+          }
+        ]
       }
     ]
   }

@@ -76,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
           { screen: 'u90-meal', alt: 'U90 meal recognised from a photo, with its items and a portion slider', caption: 'A meal recognised from a photo: items, calories and protein, one slider for the portion.' },
           { screen: 'u90-progress', alt: 'U90 Progress screen: summary, the 90-day line and a weight forecast', caption: 'Progress over the 90-day cycle: summary, plan line, weight forecast.' },
         ],
-        screensNote: 'Screens taken from the app design as live HTML.',
+        screensNote: 'Screens taken from the app design as live HTML. Meal photo: January Food Benchmark, CC BY 4.0.',
         links: [
           { label: 'App Store', href: 'https://apps.apple.com/th/app/u90-90-day-weight-loss/id6822748008' },
           { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=ai.u90.app&hl=en' },
@@ -116,7 +116,7 @@ export const caseStudies: CaseStudy[] = [
           { screen: 'u90-meal', alt: 'Блюдо, распознанное по фото, с составом и ползунком порции', caption: 'Блюдо по фото: состав, калории и белок, порция одним ползунком.' },
           { screen: 'u90-progress', alt: 'Экран «Прогресс» в U90: итоги, линия 90 дней, прогноз веса', caption: 'Прогресс за цикл 90 дней: итоги, линия плана, прогноз веса.' },
         ],
-        screensNote: 'Экраны — из макетов приложения, переведены на русский; само приложение — на английском.',
+        screensNote: 'Экраны — из макетов приложения, переведены на русский; само приложение — на английском. Фото блюда: January Food Benchmark, CC BY 4.0.',
         links: [
           { label: 'App Store', href: 'https://apps.apple.com/ru/app/u90-90-day-weight-loss/id6822748008' },
           { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=ai.u90.app&hl=en' },
@@ -380,13 +380,15 @@ export const caseStudies: CaseStudy[] = [
         ],
         result: [
           'The first internal TestFlight build became available on November 9, 2026, followed by an updated build on November 10. This is a verified distribution milestone for testing, with further implementation and validation continuing.',
-          'The current focus is internal testing and refinement of the core experience. Public distribution and paid subscriptions follow that validation. The visual below is the design prototype used as a reference during development.',
+          'The current focus is internal testing and refinement of the core experience. Public distribution and paid subscriptions follow that validation. The screens below are from the app design it is built to.',
         ],
         features: ['Daily questions', 'Guess and compare answers', 'Solo and couple scenarios', 'Relationship questionnaire', 'Detailed interaction prototype', 'Internal TestFlight distribution'],
         visuals: [
-          { src: '/cases/paradogz-prototype.png', alt: 'Love Paradogz welcome screen', caption: 'Design prototype the app is built to. The app is in Russian and in internal testing.' },
-          { src: '/cases/paradogz-sphere.png', alt: 'A life sphere the couple works through together', caption: 'Prototype: the topic of a sphere and where the couple is in it.' },
+          { screen: 'para-today', alt: 'Love Paradogz Today screen: theme of the week, date plan and question of the day', caption: 'Today: the theme of the week, a date to plan and the question of the day.' },
+          { screen: 'para-pair', alt: 'Love Paradogz Couple screen: a wheel of what the couple worked through, with a private rating inside', caption: 'Couple: what you worked through together, and your own rating only you see.' },
+          { screen: 'para-ai', alt: 'Love Paradogz AI chat suggesting a gift from what the partner shared', caption: 'The couple’s AI knows the week’s theme and the survey, and keeps each partner’s private answers private.' },
         ],
+        screensNote: 'Screens taken from the app design, translated from Russian; the app itself is in Russian.',
         cta: 'Have a detailed design and a product to validate? Let’s define the first build people can actually try.',
       },
       ru: {
@@ -414,13 +416,15 @@ export const caseStudies: CaseStudy[] = [
         ],
         result: [
           'Первая внутренняя сборка стала доступна в TestFlight 9 ноября 2026 года, обновлённая — 10 ноября. Это подтверждённый этап доставки продукта тестировщикам; реализация и проверка функций продолжаются.',
-          'Сейчас команда проверяет и дорабатывает основные сценарии во внутреннем тестировании. Следом — публичный доступ и подписка. Ниже показан дизайн-прототип, который служит ориентиром для разработки.',
+          'Сейчас команда проверяет и дорабатывает основные сценарии во внутреннем тестировании. Следом — публичный доступ и подписка. Ниже — экраны из макетов, по которым собрано приложение.',
         ],
         features: ['Ежедневные вопросы', 'Угадывание и сравнение ответов', 'Сценарии для одного и для пары', 'Анкета об отношениях', 'Подробный интерактивный прототип', 'Внутренние сборки TestFlight'],
         visuals: [
-          { src: '/cases/paradogz-prototype.png', alt: 'Приветственный экран Love Paradogz', caption: 'Дизайн-прототип, по которому собрано приложение. Приложение во внутреннем тестировании.' },
-          { src: '/cases/paradogz-sphere.png', alt: 'Сфера, которую пара проходит вместе', caption: 'Прототип: тема сферы и где в ней пара.' },
+          { screen: 'para-today', alt: 'Экран «Сегодня» в Love Paradogz: тема недели, план свидания и вопрос дня', caption: 'Сегодня: тема недели, свидание, которое пора спланировать, и вопрос дня.' },
+          { screen: 'para-pair', alt: 'Экран «Пара»: кольцо того, что пара проработала, и личная оценка внутри', caption: 'Пара: что проработали вместе и твоя оценка, которую видишь только ты.' },
+          { screen: 'para-ai', alt: 'ИИ пары подбирает подарок по тому, что рассказал партнёр', caption: 'ИИ пары знает тему недели и анкету, но личное каждого не раскрывает.' },
         ],
+        screensNote: 'Экраны — из макетов приложения.',
         cta: 'Есть подробный дизайн и идея для проверки? Определим первую сборку, которую смогут попробовать люди.',
       },
     },

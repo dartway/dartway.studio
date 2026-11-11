@@ -2,7 +2,9 @@
 /** An app screen taken from the project's published design, in the page's language: `screen` is "<app>-<name>". */
 import Phone from './Phone.astro';
 const { screen, lang = 'en', label, decorative = false } = Astro.props;
-const files: Record<string, string> = { 'u90-today': 'u90-screens/today', 'u90-meal': 'u90-screens/confirm', 'u90-progress': 'u90-screens/progress' };
+const files: Record<string, string> = { 'u90-today': 'u90-screens/today', 'u90-meal': 'u90-screens/confirm', 'u90-progress': 'u90-screens/progress',
+  'para-today': 'paradogz-screens/today', 'para-pair': 'paradogz-screens/pair', 'para-ai': 'paradogz-screens/ai',
+};
 const src = `/cases/${files[screen]}.${lang === 'ru' ? 'ru' : 'en'}.html`;
 ---
 <Phone src={src} label={label} decorative={decorative} />

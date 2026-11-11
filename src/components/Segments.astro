@@ -3,7 +3,7 @@
 // their worry and our answer; the button prices the project with that segment's answers filled in.
 const { s } = Astro.props;
 ---
-<section class="wrap segments seg" aria-labelledby="seg-title">
+<section class="wrap segments seg" id="for" aria-labelledby="seg-title">
   <p class="eyebrow">{s.eyebrow}</p>
   <h2 id="seg-title">{s.title}</h2>
   <p class="section-intro">{s.intro}</p>
@@ -37,6 +37,11 @@ const { s } = Astro.props;
         <p class="seg-label seg-label-ours">{s.labels.answer}</p>
         <p class="seg-answer">{it.answer}</p>
         <a class="btn" href="#contact" data-brief-preset={JSON.stringify(it.preset)} data-cta="segment-price">{s.labels.cta} →</a>
+        {it.cases?.length > 0 && (
+          <p class="seg-cases"><span>{s.labels.cases}:</span> {it.cases.map((c: any, k: number) => (
+            <>{k > 0 && ' · '}<a href={c.href} data-cta="segment-case">{c.label}</a></>
+          ))}</p>
+        )}
       </div>
     </div>
   ))}
@@ -90,6 +95,8 @@ const { s } = Astro.props;
   .seg-situation { margin: 0; color: rgba(255, 255, 255, 0.86); font-size: 1.05rem; }
   .seg-gain { margin: 0; color: #fff; font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 750; line-height: 1.3; text-wrap: balance; }
   .seg-objection blockquote { margin: 0; padding: 0.2rem 0 0.2rem 1rem; border-left: 2px solid rgba(255, 255, 255, 0.25); color: rgba(255, 255, 255, 0.86); font-size: 1.1rem; font-style: italic; }
+  .seg-cases { margin: 1.1rem 0 0; font-size: 0.92rem; color: var(--muted); }
+  .seg-cases a { color: var(--accent-lightest); text-underline-offset: 3px; }
   .seg-answer { margin: 0 0 1.5rem; color: rgba(255, 255, 255, 0.86); }
   @media (max-width: 860px) {
     .seg-tabs { grid-template-columns: 1fr; gap: 0.6rem; }
