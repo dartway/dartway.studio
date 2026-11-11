@@ -119,9 +119,10 @@ const cfg = { ru, email: EMAIL, t };
     do { due.setDate(due.getDate() + 1); } while (due.getDay() === 0 || due.getDay() === 6);
     const dayRu = ['воскресенью', 'понедельнику', 'вторнику', 'среде', 'четвергу', 'пятнице', 'субботе'];
     const date = due.toLocaleDateString(ru ? 'ru-RU' : 'en-GB', { day: 'numeric', month: 'long' });
-    root.querySelector('[data-due]').textContent = ru
+    const dueText = ru
       ? `к ${dayRu[due.getDay()]}, ${date}`
       : `by ${due.toLocaleDateString('en-GB', { weekday: 'long' })}, ${date}`;
+    document.querySelectorAll('[data-due]').forEach((el) => { el.textContent = dueText; });
 
     function text() {
       const L = t.labels;
@@ -145,6 +146,10 @@ const cfg = { ru, email: EMAIL, t };
       pre.textContent = body;
       send.href = `mailto:${email}?subject=${encodeURIComponent(subject())}&body=${encodeURIComponent(body)}`;
       existing.hidden = !state.have.includes(t.groups[0].opts[3]);
+      // Guide: light up the first question still open; when all four are answered, the send button.
+      const open = [...root.querySelectorAll('.brief-q')].find((fs) => !state[fs.dataset.key].length);
+      root.querySelectorAll('.brief-q').forEach((fs) => fs.classList.toggle('is-next', fs === open));
+      send.classList.toggle('is-ready', !open);
     }
 
     root.querySelectorAll('.brief-q').forEach((fs) => {
@@ -165,6 +170,20 @@ const cfg = { ru, email: EMAIL, t };
     });
     link.addEventListener('input', render);
 
+    // The hero ticket answers the first question here and brings the visitor to the next one.
+    document.querySelectorAll('[data-hero-pick]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const chip = root.querySelectorAll('.brief-q[data-key="have"] .brief-chip')[Number(a.dataset.heroPick)];
+        if (chip && chip.getAttribute('aria-pressed') !== 'true') chip.click();
+        const card = root.querySelector('.brief-card');
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        card.classList.remove('arrived'); void card.offsetWidth; card.classList.add('arrived');
+        const next = root.querySelector('.brief-q.is-next .brief-chip');
+        if (next) setTimeout(() => next.focus({ preventScroll: true }), 600);
+      });
+    });
+
     tg.addEventListener('click', () => {
       const done = () => { root.querySelector('[data-copied]').hidden = false; };
       try { navigator.clipboard?.writeText(text()).then(done, () => {}); } catch (e) {}
@@ -184,9 +203,17 @@ const cfg = { ru, email: EMAIL, t };
   .brief-note { font-size: 0.95rem; padding-left: 0.9rem; border-left: 2px solid var(--accent); }
   .brief-direct { font-size: 0.95rem; }
   .brief-direct a { color: #fff; }
-  .brief-card { min-width: 0; padding: 1.5rem; border: 1px solid rgba(255, 209, 102, 0.35); border-radius: 12px;
+  .brief-card { scroll-margin-top: 90px; min-width: 0; padding: 1.5rem; border: 1px solid rgba(255, 209, 102, 0.35); border-radius: 12px;
     background: rgba(24, 24, 26, 0.92); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45); display: grid; gap: 1.1rem; }
   .brief-q { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .brief-q { transition: opacity 0.2s; }
+  .brief-q.is-next legend::after { content: ' ←'; color: var(--accent); }
+  .brief-q.is-next .brief-chip { border-color: rgba(255, 209, 102, 0.55); }
+  .brief-card.arrived { animation: arrived 1.2s ease-out; }
+  @keyframes arrived { 0% { box-shadow: 0 0 0 0 rgba(255, 176, 0, 0.55), 0 20px 60px rgba(0, 0, 0, 0.45); }
+    100% { box-shadow: 0 0 0 18px rgba(255, 176, 0, 0), 0 20px 60px rgba(0, 0, 0, 0.45); } }
+  .btn.is-ready { box-shadow: 0 0 0 4px rgba(255, 176, 0, 0.25), 0 0 28px var(--accent-glow); }
+  @media (prefers-reduced-motion: reduce) { .brief-card.arrived { animation: none; } }
   .brief-q legend { padding: 0; margin-bottom: 0.55rem; color: #fff; font-weight: 700; font-size: 0.95rem; }
   .brief-opts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .brief-chip { font: 600 0.92rem/1.2 var(--sans); color: rgba(255, 255, 255, 0.86); background: transparent; cursor: pointer;

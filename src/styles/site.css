@@ -259,3 +259,37 @@ section.case-visuals { padding-top: 0; padding-bottom: 3rem; display: flex; flex
 
 @keyframes belt { to { background-position: 22px 0; } }
 
+
+/* Hero price ticket: the builder starts on the first screen */
+.ticket { margin-top: 2.5rem; max-width: 460px; padding: 1.25rem 1.25rem 1.1rem; border-radius: 14px;
+  border: 1px solid rgba(255, 209, 102, 0.45); background: linear-gradient(180deg, rgba(36, 30, 18, 0.94), rgba(20, 20, 22, 0.96));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(255, 176, 0, 0.05), 0 0 60px rgba(255, 176, 0, 0.12); }
+.ticket-head { display: flex; align-items: center; gap: 0.75rem; justify-content: space-between; padding-bottom: 0.85rem; margin-bottom: 1rem;
+  border-bottom: 1px dashed rgba(255, 209, 102, 0.35); font: 700 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-lightest); }
+.ticket-steps { display: flex; gap: 4px; flex: 1; max-width: 120px; }
+.ticket-steps i { flex: 1; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.14); }
+.ticket-steps i.on { background: var(--accent); }
+.ticket-price { margin: 0; color: rgba(255, 255, 255, 0.72); font-weight: 700; }
+.ticket-due { margin: 0.1rem 0 1.1rem; color: #fff; font-size: 1.65rem; font-weight: 800; line-height: 1.15; }
+.ticket-q { margin: 0 0 0.6rem; color: #fff; font-weight: 700; }
+.ticket-opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+.ticket-opt { display: grid; grid-template-columns: 22px minmax(0, 1fr); column-gap: 0.6rem; align-items: start; padding: 0.75rem 0.8rem;
+  border: 1px solid var(--line); border-radius: 10px; background: rgba(0, 0, 0, 0.25); color: #fff; text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s; }
+.ticket-opt svg { grid-row: span 2; width: 22px; height: 22px; fill: none; stroke: var(--accent-lightest); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.ticket-opt strong { font-size: 0.95rem; line-height: 1.25; }
+.ticket-opt span { color: var(--muted); font-size: 0.8rem; line-height: 1.35; }
+.ticket-opt:hover { border-color: var(--accent); background: rgba(255, 176, 0, 0.1); transform: translateY(-2px); }
+.ticket-opt:focus-visible { outline-offset: 2px; }
+.ticket-note { margin: 0.9rem 0 0; font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); }
+@media (min-width: 1000px) {
+  .delivery-hero.has-ticket { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 400px); column-gap: 3rem; align-content: center; }
+  .delivery-hero.has-ticket > * { grid-column: 1; }
+  .delivery-hero.has-ticket > .ticket { grid-column: 2; grid-row: 1 / span 6; align-self: center; margin-top: 0; }
+  .delivery-hero.has-ticket h1 { font-size: clamp(2.8rem, 5vw, 4.4rem); text-wrap: balance; }
+  .delivery-hero.has-ticket .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; margin-top: 2.25rem; }
+  .delivery-hero.has-ticket .stat { min-height: 0; }
+}
+@media (max-width: 600px) { .ticket-opts { grid-template-columns: 1fr; } .ticket-due { font-size: 1.4rem; } }
+@media (prefers-reduced-motion: reduce) { .ticket-opt { transition: none; } .ticket-opt:hover { transform: none; } }
