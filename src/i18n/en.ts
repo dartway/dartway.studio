@@ -131,19 +131,19 @@ export default {
     "note": "Red: a check stopped it. It goes back to the agents until it passes.",
     "stats": [
       {
-        "value": "760",
-        "label": "features and fixes passed code review since mid-September"
-      },
-      {
-        "value": "~150",
-        "label": "a week now"
-      },
-      {
         "value": "6",
-        "label": "client apps on the line"
+        "label": "active projects on the line"
+      },
+      {
+        "value": "30",
+        "label": "tasks a week per project, on average"
+      },
+      {
+        "value": "1",
+        "label": "business day from your mockup to a fixed price"
       }
     ],
-    "source": "Counted by our delivery system, client apps only."
+    "source": "Counted by our delivery system: a task counts when it passes code review."
   },
   "founder": {
     "eyebrow": "Who answers for it",
