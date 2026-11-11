@@ -2,6 +2,7 @@ export default {
   "lang": "en",
   "title": "DartWay — a dark factory for apps",
   "description": "AI agents build your client's app all the way to production: pixel-perfect to the design, strict coding rules and tests, senior developer supervision. Fixed price.",
+  "stats": { "inProgress": "apps in progress", "published": "live on the App Store and Google Play" },
   "hero": {
     "eyebrow": "AI-native development",
     "title": "A dark factory for apps.",
@@ -69,7 +70,7 @@ export default {
   },
   "ownership": {
     "title": "The code is yours.",
-    "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in: if you leave, you leave with everything."
+    "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in: if you leave, you leave with everything. White label if you need it: we work under your brand, and your client doesn't have to know about us."
   },
   "pillars": {
     "eyebrow": "Not vibe coding",
