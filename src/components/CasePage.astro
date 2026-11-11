@@ -1,7 +1,6 @@
 ---
 import SiteLayout from './SiteLayout.astro';
 import Contact from './Contact.astro';
-import PhoneScreen from './PhoneScreen.astro';
 const { project, lang = 'en' } = Astro.props;
 const ru = lang === 'ru';
 const content = project.locales[lang];
@@ -18,7 +17,7 @@ const sections = [
   lang={lang}
   title={`${content.title} — DartWay`}
   description={content.summary}
-  image={content.visuals?.find((v: any) => v.src)?.src}
+  image={content.visuals?.[0]?.src}
 >
   <article style={`--case-accent:${project.accent || '#ffb000'}`}>
     <header class="wrap case-intro">
@@ -44,8 +43,8 @@ const sections = [
     {content.visuals?.length > 0 && (
       <section class="wrap case-visuals" aria-label={ru ? 'Материалы проекта' : 'Project visuals'}>
         {content.visuals.map((visual: any) => (
-          <figure>
-            {visual.screen ? <PhoneScreen screen={visual.screen} /> : <img src={visual.src} alt={visual.alt} loading="lazy" />}
+          <figure class:list={[{ wide: visual.wide }]}>
+            <img src={visual.src} alt={visual.alt} loading="lazy" />
             <figcaption>{visual.caption}</figcaption>
           </figure>
         ))}

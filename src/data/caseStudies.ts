@@ -1,22 +1,10 @@
 export type Locale = 'en' | 'ru';
 
-export interface MockScreen {
-  app: string;
-  title: string;
-  sub?: string;
-  player?: string;
-  progress?: number;
-  chips?: string[];
-  rows: { t: string; m?: string; v?: string; done?: boolean }[];
-  cta?: string;
-  tabs?: string[];
-}
-
-/** A real image (`src`) or a screen the site draws in the page's language (`screen`). */
 export interface CaseVisual {
-  src?: string;
-  screen?: MockScreen;
+  src: string;
   alt: string;
+  /** desktop screen: the work card shows it alone */
+  wide?: boolean;
   caption?: string;
 }
 
@@ -117,8 +105,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Обзор дня', 'Питание и AI-коуч', 'Активность и учёт воды', 'Прогресс и круг поддержки', 'Интеграция подписки', 'Публикация на iOS и Android'],
         visuals: [
-          { screen: { app: 'U90', title: 'Сегодня · день 34 из 90', sub: 'Цикл 1 · снижение веса', progress: 60, rows: [{ t: 'Съедено', m: 'из 1610 ккал', v: '918' }, { t: 'Активность', m: 'шаги и тренировки', v: '188' }, { t: 'Вода', m: 'добавь стакан', v: '150 мл' }, { t: 'Белок', m: 'план на день', v: '61 г', done: true }], tabs: ['Сегодня', 'Круг', 'Прогресс', 'Чаты'] }, alt: 'Обзор дня в U90', caption: 'Экран обзора дня, перерисован на русском по опубликованному приложению.' },
-          { screen: { app: 'AI-коуч', title: 'Что ты съел?', sub: 'Опиши словами или пришли фото', rows: [{ t: 'Овсянка с ягодами', m: '≈ 320 ккал · 12 г белка', done: true }, { t: 'Кофе с молоком', m: '≈ 60 ккал' }, { t: 'Коуч', m: 'До цели по белку ещё 49 г — добавь творог' }], cta: 'Записать приём пищи', tabs: ['Сегодня', 'Круг', 'Прогресс', 'Чаты'] }, alt: 'Запись еды через AI-коуча в U90', caption: 'Запись еды через коуча, перерисовано на русском.' },
+          { src: '/cases/u90-today.png', alt: 'Обзор дня в U90', caption: 'Материалы страницы в магазине: обзор дня. Приложение на английском.' },
+          { src: '/cases/u90-coach.png', alt: 'Запись еды через AI-коуча в U90', caption: 'Материалы страницы в магазине: запись еды через коуча.' },
         ],
         links: [
           { label: 'App Store', href: 'https://apps.apple.com/ru/app/u90-90-day-weight-loss/id6822748008' },
@@ -134,21 +122,21 @@ export const caseStudies: CaseStudy[] = [
     locales: {
       en: {
         title: 'Tvaity',
-        category: 'Online programmes · iOS, Android and web',
+        category: 'Financial literacy · iOS, Android and web',
         status: 'Published',
         statusDetail: 'Live on the App Store, Google Play and the web, with paying users. We develop and support it.',
-        summary: 'Development and release work for an educational application where course access, playback and account behaviour affect real learners.',
+        summary: 'Development and releases of a live financial-literacy app: a five-module programme, a financial rating, an AI assistant and clubs with curators.',
         challenge: [
-          'A live educational application has a different delivery context from a new prototype. People already use it to access purchased materials, return to lessons and continue learning. Changes must be assessed against those existing journeys.',
-          'For the product team, support means turning concrete user problems into checked changes and releases. Course access, playback, progress and account recovery all touch the basic expectation that a learner can return to what they paid for.',
+          'A live app has a different delivery context from a new prototype. People already pay for it, go through the programme and come back to their club every day. Changes must be assessed against those existing journeys.',
+          'For the product team, support means turning concrete user problems into checked changes and releases. Access, video, progress and account recovery all touch the basic expectation that a user can return to what they paid for.',
         ],
         clientTeam: [
           'The client has its own product team and project management. Priorities and reported issues are coordinated through the client’s workflow, with acceptance on their side.',
-          'DartWay’s role in the project covers application development and production support. The client continues to own the educational offer, content and product priorities.',
+          'DartWay’s role in the project covers application development and production support. The client continues to own the programme, content and product priorities.',
         ],
         ourWork: [
-          'The application serves educational content on iOS and Android. The relevant product flows include courses and lessons, content playback, personal accounts, learning progress and access connected to purchases. Around them sit personal goals, a community feed and a chat with the curators.',
-          'Our work has included implementing changes, investigating reported application problems and preparing fixes for release. Playback, course availability and account-recovery behaviour are examples of the areas addressed in the support workflow.',
+          'The app teaches people to keep their finances under control on iOS, Android and the web. Its core is a step-by-step programme in five modules: budget, debts, a safety cushion, financial resilience and investing. A 15-question test gives a financial rating, an AI assistant answers money questions, and clubs by track (crypto, bonds, real estate) run daily reviews with curators. Around them sit lessons with video, a community feed and paid access.',
+          'Our work has included implementing changes, investigating reported application problems and preparing fixes for release. Video playback, access to paid content and account recovery are examples of the areas addressed in the support workflow.',
           'Delivery is organised around the existing product: understand the reported scenario, make the change, verify the behaviour and prepare a version the client can accept. Release work belongs to the same responsibility as the code change itself.',
         ],
         collaboration: [
@@ -159,30 +147,32 @@ export const caseStudies: CaseStudy[] = [
           'The client named the quality bar himself: the service has to work steadily. The app ships regular releases to both stores and the web, and its community feed has grown past 63,000 posts.',
           'For a delivery partner, the practical result is the ability to work within an established product process: take a reported problem through investigation, verification and a client-reviewed release.',
         ],
-        features: ['iOS and Android application', 'Courses and lesson access', 'Content playback', 'Accounts and progress', 'Community feed and curator chat', 'Fixes, verification and releases'],
+        features: ['iOS, Android and web', 'Five-module finance programme', 'Financial rating test', 'AI assistant', 'Clubs by track with curators', 'Releases to both stores'],
         visuals: [
-          { screen: { app: 'TVAITY', title: 'Day 12. Lesson: the first step', sub: 'Programme · 3 of 8 modules', player: 'Video · 18:05', progress: 38, rows: [{ t: 'My goal for the week', m: 'Set by you on Monday', done: true }, { t: 'Next lesson', m: 'Opens tomorrow' }, { t: 'Saved for offline', m: '2 videos' }], tabs: ['Learn', 'Feed', 'Chat', 'Profile'] }, alt: 'Lesson with a video player in an online programme app', caption: 'Recreated screen in English; the live app is in Russian.' },
-          { screen: { app: 'TVAITY', title: 'Chat with the curator', rows: [{ t: 'You', m: 'The video won’t load on my phone' }, { t: 'Curator', m: 'Try “Saved for offline” — it plays without the network', done: true }, { t: 'You', m: 'Works, thank you!' }], cta: 'Write a message', tabs: ['Learn', 'Feed', 'Chat', 'Profile'] }, alt: 'Chat between a participant and a curator', caption: 'Curator chat, recreated.' },
+          { src: '/cases/tvaity-programme.jpg', alt: 'Step-by-step finance programme in five modules', caption: 'App Store screenshot. The app is in Russian.' },
+          { src: '/cases/tvaity-rating.jpg', alt: 'Financial rating from a 15-question test', caption: 'App Store screenshot: the financial rating.' },
+          { src: '/cases/tvaity-assistant.jpg', alt: 'AI assistant answering money questions', caption: 'App Store screenshot: the AI assistant.' },
+          { src: '/cases/tvaity-clubs.jpg', alt: 'Clubs by track with curators', caption: 'App Store screenshot: a club with daily reviews.' },
         ],
         cta: 'Need a technical partner for an existing application? Share the product and the changes your team needs to deliver.',
       },
       ru: {
         title: 'Tvaity',
-        category: 'Онлайн-программы · iOS, Android и веб',
+        category: 'Финансовая грамотность · iOS, Android и веб',
         status: 'В магазинах',
         statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Развиваем и сопровождаем.',
-        summary: 'Разработка и выпуск изменений в образовательном приложении, где доступ к курсам, плеер и аккаунты ежедневно нужны ученикам.',
+        summary: 'Развитие и релизы действующего приложения по финансовой грамотности: тренажёр из пяти модулей, финансовый рейтинг, ИИ-помощник и клубы с кураторами.',
         challenge: [
-          'У действующего образовательного приложения другой контекст, чем у нового прототипа. Люди уже открывают купленные материалы, возвращаются к урокам и продолжают обучение. Изменения нужно оценивать с учётом этих существующих сценариев.',
-          'Для продуктовой команды сопровождение означает превращение конкретных обращений пользователей в проверенные исправления и релизы. Доступ к курсу, воспроизведение, прогресс и восстановление аккаунта связаны с базовым ожиданием ученика: вернуться к оплаченным материалам.',
+          'У действующего приложения другой контекст, чем у нового прототипа. Люди уже платят, проходят тренажёр и каждый день возвращаются в свой клуб. Изменения нужно оценивать с учётом этих существующих сценариев.',
+          'Для продуктовой команды сопровождение означает превращение конкретных обращений пользователей в проверенные исправления и релизы. Доступ, видео, прогресс и восстановление аккаунта связаны с базовым ожиданием пользователя: вернуться к тому, за что он заплатил.',
         ],
         clientTeam: [
           'У заказчика есть собственная продуктовая команда и управление проектом. Приоритеты и обращения проходят через её рабочий процесс, приёмка также остаётся на стороне клиента.',
-          'Роль DartWay включает развитие приложения и техническое сопровождение. Заказчик продолжает отвечать за образовательный продукт, содержание и порядок продуктовых изменений.',
+          'Роль DartWay включает развитие приложения и техническое сопровождение. Заказчик продолжает отвечать за программу, содержание и порядок продуктовых изменений.',
         ],
         ourWork: [
-          'Приложение предоставляет образовательные материалы на iOS и Android. Основные сценарии охватывают курсы и уроки, воспроизведение контента, личный кабинет, прогресс и доступ, связанный с покупками. Вокруг них — личные цели, лента сообщества и чат с кураторами.',
-          'В нашу работу входят реализация изменений, разбор проблем в приложении и подготовка исправлений к выпуску. Среди направлений сопровождения — воспроизведение, доступность курсов и поведение при восстановлении аккаунта.',
+          'Приложение учит держать финансы под контролем — на iOS, Android и в вебе. В основе пошаговый тренажёр из пяти модулей: бюджет, долги, подушка безопасности, финансовая устойчивость и инвестиции. Тест из 15 вопросов даёт финансовый рейтинг, ИИ-помощник отвечает на вопросы о деньгах, в клубах по трекам (крипта, облигации, недвижимость) кураторы ведут ежедневные разборы. Вокруг — уроки с видео, лента сообщества и платный доступ.',
+          'В нашу работу входят реализация изменений, разбор проблем в приложении и подготовка исправлений к выпуску. Среди направлений сопровождения — воспроизведение видео, доступ к платному и восстановление аккаунта.',
           'Процесс строится вокруг действующего продукта: разобраться в описанном сценарии, внести изменение, проверить поведение и подготовить версию для приёмки. Выпуск версии относится к той же ответственности, что и изменение кода.',
         ],
         collaboration: [
@@ -193,10 +183,12 @@ export const caseStudies: CaseStudy[] = [
           'Главный критерий заказчик назвал сам: «главное — стабильность работы сервиса». Приложение регулярно выходит в оба магазина и в веб, в ленте сообщества больше 63 000 постов.',
           'Практический результат такого партнёрства — работа внутри сложившегося продуктового процесса: от обращения и диагностики до проверки исправления и релиза, принятого командой заказчика.',
         ],
-        features: ['Приложение для iOS и Android', 'Курсы и доступ к урокам', 'Воспроизведение контента', 'Аккаунты и прогресс', 'Лента сообщества и чат кураторов', 'Исправления, проверки и релизы'],
+        features: ['iOS, Android и веб', 'Тренажёр из пяти модулей', 'Тест на финансовый рейтинг', 'ИИ-помощник', 'Клубы по трекам с кураторами', 'Релизы в оба магазина'],
         visuals: [
-          { screen: { app: 'TVAITY', title: 'День 12. Урок: первый шаг', sub: 'Программа · модуль 3 из 8', player: 'Видео · 18:05', progress: 38, rows: [{ t: 'Моя цель на неделю', m: 'Поставлена в понедельник', done: true }, { t: 'Следующий урок', m: 'Откроется завтра' }, { t: 'Скачано для офлайна', m: '2 видео' }], tabs: ['Учёба', 'Лента', 'Чат', 'Профиль'] }, alt: 'Урок с видеоплеером в приложении онлайн-программы', caption: 'Экран воссоздан по действующему приложению.' },
-          { screen: { app: 'TVAITY', title: 'Чат с куратором', rows: [{ t: 'Вы', m: 'Видео не грузится на телефоне' }, { t: 'Куратор', m: 'Скачайте урок — он пойдёт без сети', done: true }, { t: 'Вы', m: 'Работает, спасибо!' }], cta: 'Написать сообщение', tabs: ['Учёба', 'Лента', 'Чат', 'Профиль'] }, alt: 'Чат участника с куратором', caption: 'Чат с куратором, воссоздан.' },
+          { src: '/cases/tvaity-programme.jpg', alt: 'Пошаговый тренажёр из пяти модулей', caption: 'Скриншот из App Store.' },
+          { src: '/cases/tvaity-rating.jpg', alt: 'Финансовый рейтинг по тесту из 15 вопросов', caption: 'Скриншот из App Store: финансовый рейтинг.' },
+          { src: '/cases/tvaity-assistant.jpg', alt: 'ИИ-помощник отвечает на вопросы о деньгах', caption: 'Скриншот из App Store: ИИ-помощник.' },
+          { src: '/cases/tvaity-clubs.jpg', alt: 'Клубы по трекам с кураторами', caption: 'Скриншот из App Store: клуб с ежедневными разборами.' },
         ],
         cta: 'Нужен технический партнёр для действующего приложения? Покажите продукт и изменения, которые ваша команда хочет выпустить.',
       },
@@ -235,8 +227,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Courses and lessons', 'Video and audio playback', 'Learner progress', 'Membership and club content', 'Content administration', 'Course platform and CRM integration'],
         visuals: [
-          { screen: { app: 'Course club', title: 'Lesson 4. Morning practice', sub: 'Course «Healthy back» · 6 of 12', player: 'Video · 12:40', progress: 64, rows: [{ t: 'Lesson 5. Breathing', m: 'Audio · 9 min' }, { t: 'Lesson 6. Evening routine', m: 'Video · 15 min' }, { t: 'Homework', m: 'Mark when done', done: true }], tabs: ['Courses', 'Club', 'Progress', 'Profile'] }, alt: 'Lesson with a video player in a course app', caption: 'Recreated screen. The real app is under NDA.' },
-          { screen: { app: 'Course club', title: 'Club', chips: ['Broadcasts', 'Articles', 'Practices'], rows: [{ t: 'Live: questions and answers', m: 'Thursday, 19:00', v: 'Live' }, { t: 'How to keep the habit', m: 'Article · 6 min' }, { t: 'Ten-minute stretch', m: 'Practice · audio' }, { t: 'Last week’s broadcast', m: 'Recording · 54 min' }], tabs: ['Courses', 'Club', 'Progress', 'Profile'] }, alt: 'Club section with broadcasts, articles and practices', caption: 'Club section, recreated.' },
+          { src: '/cases/nda-courses-club.jpg', alt: 'Club page: plan for the day, workout video and live sessions', caption: 'Screen from the design the web app is built to. Names hidden; the app is in Russian.', wide: true },
+          { src: '/cases/nda-courses-home.jpg', alt: 'Home: energy index, current course and club workout', caption: 'Home screen from the same design.', wide: true },
         ],
         cta: 'Your team owns design and product management? Send us the scope to discuss the implementation.',
       },
@@ -269,8 +261,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Курсы и уроки', 'Видео- и аудиоплеер', 'Прогресс обучения', 'Клубные материалы', 'Управление контентом', 'Интеграция с платформой курсов и CRM'],
         visuals: [
-          { screen: { app: 'Клуб курсов', title: 'Урок 4. Утренняя практика', sub: 'Курс «Здоровая спина» · 6 из 12', player: 'Видео · 12:40', progress: 64, rows: [{ t: 'Урок 5. Дыхание', m: 'Аудио · 9 мин' }, { t: 'Урок 6. Вечерний ритуал', m: 'Видео · 15 мин' }, { t: 'Домашнее задание', m: 'Отметить выполнение', done: true }], tabs: ['Курсы', 'Клуб', 'Прогресс', 'Профиль'] }, alt: 'Урок с видеоплеером в приложении курсов', caption: 'Экран воссоздан. Само приложение — под NDA.' },
-          { screen: { app: 'Клуб курсов', title: 'Клуб', chips: ['Эфиры', 'Статьи', 'Практики'], rows: [{ t: 'Эфир: вопросы и ответы', m: 'Четверг, 19:00', v: 'Live' }, { t: 'Как удержать привычку', m: 'Статья · 6 мин' }, { t: 'Растяжка за 10 минут', m: 'Практика · аудио' }, { t: 'Эфир прошлой недели', m: 'Запись · 54 мин' }], tabs: ['Курсы', 'Клуб', 'Прогресс', 'Профиль'] }, alt: 'Клуб: эфиры, статьи и практики', caption: 'Раздел клуба, воссоздан.' },
+          { src: '/cases/nda-courses-club.jpg', alt: 'Клуб: план на день, видео тренировки и эфиры', caption: 'Экран из макета, по которому собрано веб-приложение. Названия скрыты.', wide: true },
+          { src: '/cases/nda-courses-home.jpg', alt: 'Главная: индекс энергии, текущий курс и тренировка клуба', caption: 'Главная из того же макета.', wide: true },
         ],
         cta: 'У вас есть дизайн и управление продуктом? Обсудим техническую реализацию проекта.',
       },
@@ -309,8 +301,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Participant sign-in', 'Personalised content profile', 'Mood check-ins and history', 'Community and moderation', 'Course access integration', 'Web deployment and launch preparation'],
         visuals: [
-          { screen: { app: 'Companion', title: 'How do you feel today?', chips: ['Calm', 'Tired', 'Inspired', 'Anxious'], rows: [{ t: 'Yesterday', m: 'Calm · a short note', done: true }, { t: 'Monday', m: 'Inspired' }, { t: 'Sunday', m: 'Tired · slept badly' }], cta: 'Save check-in', tabs: ['Today', 'Profile', 'Community', 'Me'] }, alt: 'Daily mood check-in with history', caption: 'Recreated screen. The real app is under NDA.' },
-          { screen: { app: 'Companion', title: 'Your personal profile', sub: 'Built from your materials, section by section', rows: [{ t: 'Strengths', m: '4 notes' }, { t: 'What drains energy', m: '3 notes' }, { t: 'Practices for you', m: '5 practices', v: 'New' }, { t: 'Ask the assistant', m: 'About your profile' }], tabs: ['Today', 'Profile', 'Community', 'Me'] }, alt: 'Personalised profile split into sections', caption: 'Personal profile, recreated.' },
+          { src: '/cases/nda-companion-home.jpg', alt: 'Home: profile card, daily mood check-in and calendar', caption: 'Screen from the design the app is built to. Names hidden; the app is in Russian.' },
+          { src: '/cases/nda-companion-chat.jpg', alt: 'Group chat of the programme', caption: 'Programme chat from the same design.' },
         ],
         cta: 'Extending an existing course or membership business? Let’s map the app and the systems it needs to connect.',
       },
@@ -343,8 +335,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Вход участника', 'Персональные материалы', 'Настроение и история отметок', 'Сообщество и модерация', 'Интеграция доступа к курсам', 'Подготовка веб-продукта к запуску'],
         visuals: [
-          { screen: { app: 'Компаньон', title: 'Как ты сегодня?', chips: ['Спокойно', 'Устала', 'Вдохновение', 'Тревожно'], rows: [{ t: 'Вчера', m: 'Спокойно · короткая заметка', done: true }, { t: 'Понедельник', m: 'Вдохновение' }, { t: 'Воскресенье', m: 'Устала · плохо спала' }], cta: 'Сохранить отметку', tabs: ['Сегодня', 'Профиль', 'Сообщество', 'Я'] }, alt: 'Ежедневная отметка настроения с историей', caption: 'Экран воссоздан. Само приложение — под NDA.' },
-          { screen: { app: 'Компаньон', title: 'Твой личный профиль', sub: 'Собран из твоих материалов по разделам', rows: [{ t: 'Сильные стороны', m: '4 заметки' }, { t: 'Что забирает силы', m: '3 заметки' }, { t: 'Практики для тебя', m: '5 практик', v: 'Новое' }, { t: 'Спросить ассистента', m: 'О своём профиле' }], tabs: ['Сегодня', 'Профиль', 'Сообщество', 'Я'] }, alt: 'Персональный профиль по разделам', caption: 'Личный профиль, воссоздан.' },
+          { src: '/cases/nda-companion-home.jpg', alt: 'Главная: карточка профиля, отметка самочувствия и календарь', caption: 'Экран из макета, по которому собрано приложение. Названия скрыты.' },
+          { src: '/cases/nda-companion-chat.jpg', alt: 'Общий чат программы', caption: 'Чат программы из того же макета.' },
         ],
         cta: 'Развиваете образовательный продукт или клуб? Разберём приложение и необходимые связи с вашими системами.',
       },
@@ -383,8 +375,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Daily questions', 'Guess and compare answers', 'Solo and couple scenarios', 'Relationship questionnaire', 'Detailed interaction prototype', 'Internal TestFlight distribution'],
         visuals: [
-          { screen: { app: 'paradogs', title: 'Five minutes a day — for the two of you', sub: 'Weekly topics, dates and questions about each other. The heart moon hints where to start.', rows: [{ t: 'Question of the day', m: 'What would make this week easier for you?' }, { t: 'Guess the answer', m: 'Then compare' }], cta: 'Start' }, alt: 'Love Paradogz welcome screen', caption: 'Recreated in English from the design prototype; the app is in internal testing.' },
-          { screen: { app: 'paradogs', title: 'Today’s question', chips: ['Us', 'Dates', 'Memories'], rows: [{ t: 'Your answer', m: 'A walk by the sea', done: true }, { t: 'Your guess about them', m: 'A quiet evening at home' }, { t: 'Their answer', m: 'Opens when both have answered', v: '🔒' }], cta: 'Compare answers' }, alt: 'Daily question: answer, guess and compare', caption: 'Daily question, recreated from the prototype.' },
+          { src: '/cases/paradogz-prototype.png', alt: 'Love Paradogz welcome screen', caption: 'Design prototype the app is built to. The app is in Russian and in internal testing.' },
+          { src: '/cases/paradogz-sphere.png', alt: 'A life sphere the couple works through together', caption: 'Prototype: the topic of a sphere and where the couple is in it.' },
         ],
         cta: 'Have a detailed design and a product to validate? Let’s define the first build people can actually try.',
       },
@@ -417,7 +409,8 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Ежедневные вопросы', 'Угадывание и сравнение ответов', 'Сценарии для одного и для пары', 'Анкета об отношениях', 'Подробный интерактивный прототип', 'Внутренние сборки TestFlight'],
         visuals: [
-          { src: '/cases/paradogz-prototype.png', alt: 'Приветственный экран прототипа Love Paradogz', caption: 'Дизайн-прототип, использованный как ориентир для разработки. Это не скриншот опубликованного приложения.' },
+          { src: '/cases/paradogz-prototype.png', alt: 'Приветственный экран Love Paradogz', caption: 'Дизайн-прототип, по которому собрано приложение. Приложение во внутреннем тестировании.' },
+          { src: '/cases/paradogz-sphere.png', alt: 'Сфера, которую пара проходит вместе', caption: 'Прототип: тема сферы и где в ней пара.' },
         ],
         cta: 'Есть подробный дизайн и идея для проверки? Определим первую сборку, которую смогут попробовать люди.',
       },

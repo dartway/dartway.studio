@@ -1,6 +1,5 @@
 ---
 import { caseStudies } from '../data/caseStudies';
-import PhoneScreen from './PhoneScreen.astro';
 const { lang = 'en', limit } = Astro.props;
 const prefix = lang === 'ru' ? '/ru' : '';
 const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
@@ -15,11 +14,9 @@ const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
       style={`--case-accent:${project.accent || '#ffb000'}`}
       data-cta={`case-${project.slug}`}
     >
-      <div class:list={['work-cover', { 'has-image': !!visual && !visual.screen, 'has-screens': !!visual?.screen }]}>
-        {visual?.screen ? (
-          <div class="work-screens">{content.visuals.slice(0, 2).map((v) => v.screen && <PhoneScreen screen={v.screen} small />)}</div>
-        ) : visual ? (
-          <img src={visual.src} alt={visual.alt} loading="lazy" />
+      <div class:list={['work-cover', { 'has-image': !!visual }]}>
+        {visual ? (
+          content.visuals.slice(0, visual.wide ? 1 : 2).map((v) => <img src={v.src} alt={v.alt} loading="lazy" />)
         ) : (
           <div class="work-type">
             <span>{content.category}</span>
