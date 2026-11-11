@@ -1,7 +1,10 @@
 export type Locale = 'en' | 'ru';
 
 export interface CaseVisual {
-  src: string;
+  /** a real image */
+  src?: string;
+  /** an app screen recreated in HTML in the page's language: "<app>-<screen>", see Replica.astro */
+  screen?: string;
   alt: string;
   /** desktop screen: the work card shows it alone */
   wide?: boolean;
@@ -21,6 +24,8 @@ export interface CaseStudyContent {
   result: string[];
   features: string[];
   visuals: CaseVisual[];
+  /** one line under the recreated screens */
+  screensNote?: string;
   links?: { label: string; href: string }[];
   cta: string;
 }
@@ -67,9 +72,11 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Daily overview', 'Nutrition and AI coach', 'Activity and water tracking', 'Progress and support circle', 'Subscription integration', 'iOS and Android releases'],
         visuals: [
-          { src: '/cases/u90-today.png', alt: 'U90 store visual showing the daily overview', caption: 'Published store material: the daily overview.' },
-          { src: '/cases/u90-coach.png', alt: 'U90 store visual showing the AI meal coach', caption: 'Published store material: logging a meal through the coach.' },
+          { screen: 'u90-today', alt: 'U90 Today screen: day score, calories eaten and burned, quick logging, meals waiting for a check', caption: 'Today: the day score, what was eaten and burned, meals waiting for a check.' },
+          { screen: 'u90-meal', alt: 'U90 meal recognised from a photo, with its items and a portion slider', caption: 'A meal recognised from a photo: items, calories and protein, one slider for the portion.' },
+          { screen: 'u90-progress', alt: 'U90 Progress screen: summary, the 90-day line and a weight forecast', caption: 'Progress over the 90-day cycle: summary, plan line, weight forecast.' },
         ],
+        screensNote: 'Screens recreated in HTML from the app design.',
         links: [
           { label: 'App Store', href: 'https://apps.apple.com/th/app/u90-90-day-weight-loss/id6822748008' },
           { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=ai.u90.app&hl=en' },
@@ -105,9 +112,11 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Обзор дня', 'Питание и AI-коуч', 'Активность и учёт воды', 'Прогресс и круг поддержки', 'Интеграция подписки', 'Публикация на iOS и Android'],
         visuals: [
-          { src: '/cases/u90-today.png', alt: 'Обзор дня в U90', caption: 'Материалы страницы в магазине: обзор дня. Приложение на английском.' },
-          { src: '/cases/u90-coach.png', alt: 'Запись еды через AI-коуча в U90', caption: 'Материалы страницы в магазине: запись еды через коуча.' },
+          { screen: 'u90-today', alt: 'Экран «Сегодня» в U90: оценка дня, съеденное и сожжённое, быстрая запись, блюда на проверку', caption: 'Сегодня: оценка дня, съедено и потрачено, блюда ждут проверки.' },
+          { screen: 'u90-meal', alt: 'Блюдо, распознанное по фото, с составом и ползунком порции', caption: 'Блюдо по фото: состав, калории и белок, порция одним ползунком.' },
+          { screen: 'u90-progress', alt: 'Экран «Прогресс» в U90: итоги, линия 90 дней, прогноз веса', caption: 'Прогресс за цикл 90 дней: итоги, линия плана, прогноз веса.' },
         ],
+        screensNote: 'Экраны свёрстаны по макетам приложения и переведены; само приложение — на английском.',
         links: [
           { label: 'App Store', href: 'https://apps.apple.com/ru/app/u90-90-day-weight-loss/id6822748008' },
           { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=ai.u90.app&hl=en' },

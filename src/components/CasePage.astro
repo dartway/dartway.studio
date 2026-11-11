@@ -1,33 +1,40 @@
 ---
 import SiteLayout from './SiteLayout.astro';
 import Contact from './Contact.astro';
+import Replica from './Replica.astro';
+import { caseStudies } from '../data/caseStudies';
 const { project, lang = 'en' } = Astro.props;
 const ru = lang === 'ru';
 const content = project.locales[lang];
 const prefix = ru ? '/ru' : '';
+const live = ['Published', 'В магазинах'].includes(content.status);
+const idx = caseStudies.findIndex((p) => p.slug === project.slug);
+const next = caseStudies[(idx + 1) % caseStudies.length];
+const nextContent = next.locales[lang as 'en' | 'ru'];
+const screens = content.visuals.filter((v: any) => v.screen);
+const images = content.visuals.filter((v: any) => !v.screen && v.src);
 const sections = [
-  { id: 'challenge', title: ru ? 'Продуктовая задача' : 'The product challenge', paragraphs: content.challenge },
-  { id: 'team', title: ru ? 'Команда и ответственность' : 'The team and responsibilities', paragraphs: content.clientTeam },
-  { id: 'delivery', title: ru ? 'Что мы реализовали' : 'What we delivered', paragraphs: content.ourWork },
-  { id: 'collaboration', title: ru ? 'Как строилась работа' : 'How the work came together', paragraphs: content.collaboration },
-  { id: 'result', title: ru ? 'Результат и текущий этап' : 'The result and current stage', paragraphs: content.result },
+  { id: 'challenge', title: ru ? 'Задача' : 'The challenge', paragraphs: content.challenge },
+  { id: 'delivery', title: ru ? 'Что мы сделали' : 'What we built', paragraphs: content.ourWork },
+  { id: 'team', title: ru ? 'Кто за что отвечал' : 'Who owned what', paragraphs: [...content.clientTeam, ...content.collaboration] },
+  { id: 'result', title: ru ? 'Результат' : 'The result', paragraphs: content.result },
 ];
 ---
 <SiteLayout
   lang={lang}
   title={`${content.title} — DartWay`}
   description={content.summary}
-  image={content.visuals?.[0]?.src}
+  image={project.cover || images[0]?.src}
 >
-  <article style={`--case-accent:${project.accent || '#ffb000'}`}>
+  <article class="case" style={`--case-accent:${project.accent || '#ffb000'}`}>
     <header class="wrap case-intro">
       <a class="back-link" href={`${prefix}/work/`}>← {ru ? 'Все проекты' : 'All projects'}</a>
       <p class="eyebrow">{content.category}</p>
       <h1>{content.title}</h1>
       <p class="lead">{content.summary}</p>
-      <div class="case-status">
-        <strong>{content.status}</strong>
-        <p>{content.statusDetail}</p>
+      <div class="case-meta">
+        <span class:list={['work-status', live ? 'st-live' : 'st-soon']}>{content.status}</span>
+        <span class="case-meta-detail">{content.statusDetail}</span>
       </div>
       {content.links?.length > 0 && (
         <div class="case-store-links">
@@ -40,9 +47,25 @@ const sections = [
       )}
     </header>
 
-    {content.visuals?.length > 0 && (
+    {screens.length > 0 && (
+      <section class="case-screens" aria-label={ru ? 'Экраны приложения' : 'App screens'}>
+        <div class="wrap">
+          <div class="case-screens-row">
+            {screens.map((visual: any) => (
+              <figure>
+                <Replica screen={visual.screen} lang={lang} label={visual.alt} />
+                <figcaption>{visual.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+          {content.screensNote && <p class="case-screens-note">{content.screensNote}</p>}
+        </div>
+      </section>
+    )}
+
+    {images.length > 0 && (
       <section class="wrap case-visuals" aria-label={ru ? 'Материалы проекта' : 'Project visuals'}>
-        {content.visuals.map((visual: any) => (
+        {images.map((visual: any) => (
           <figure class:list={[{ wide: visual.wide }]}>
             <img src={visual.src} alt={visual.alt} loading="lazy" />
             <figcaption>{visual.caption}</figcaption>
@@ -52,13 +75,6 @@ const sections = [
     )}
 
     <div class="wrap case-body">
-      <aside class="case-sidebar">
-        <h2>{ru ? 'В проекте' : 'Inside the project'}</h2>
-        <ul>{content.features.map((feature: string) => <li>{feature}</li>)}</ul>
-        <nav aria-label={ru ? 'Разделы кейса' : 'Case sections'}>
-          {sections.map(section => <a href={`#${section.id}`}>{section.title}</a>)}
-        </nav>
-      </aside>
       <div class="case-story">
         {sections.map(section => (
           <section id={section.id}>
@@ -67,7 +83,19 @@ const sections = [
           </section>
         ))}
       </div>
+      <aside class="case-facts">
+        <h2>{ru ? 'В проекте' : 'Inside the project'}</h2>
+        <ul>{content.features.map((feature: string) => <li>{feature}</li>)}</ul>
+      </aside>
     </div>
+
+    <nav class="wrap case-next" aria-label={ru ? 'Следующий проект' : 'Next project'}>
+      <a href={`${prefix}/work/${next.slug}/`} style={`--case-accent:${next.accent || '#ffb000'}`} data-cta={`case-next-${next.slug}`}>
+        <small>{ru ? 'Следующий проект' : 'Next project'}</small>
+        <strong>{nextContent.title} <span aria-hidden="true">→</span></strong>
+        <span>{nextContent.category}</span>
+      </a>
+    </nav>
   </article>
   <Contact lang={lang} />
 </SiteLayout>

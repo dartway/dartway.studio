@@ -1,5 +1,6 @@
 ---
 import { caseStudies } from '../data/caseStudies';
+import Replica from './Replica.astro';
 const { lang = 'en', limit, slider = false } = Astro.props;
 const ru = lang === 'ru';
 const prefix = lang === 'ru' ? '/ru' : '';
@@ -18,14 +19,17 @@ const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
   {projects.map((project) => {
     const content = project.locales[lang as 'en' | 'ru'];
     const visual = content.visuals?.[0];
+    const screens = (content.visuals || []).filter((v) => v.screen).slice(0, 3);
     return <a
       class="work-card"
       href={`${prefix}/work/${project.slug}/`}
       style={`--case-accent:${project.accent || '#ffb000'}`}
       data-cta={`case-${project.slug}`}
     >
-      <div class:list={['work-cover', { 'has-image': !!visual }]}>
-        {visual ? (
+      <div class:list={['work-cover', { 'has-image': !!visual && !screens.length, 'has-screens': screens.length > 0 }]}>
+        {screens.length > 0 ? (
+          <div class="work-screens">{screens.map((v) => <Replica screen={v.screen} lang={lang} decorative />)}</div>
+        ) : visual ? (
           content.visuals.slice(0, visual.wide ? 1 : 2).map((v) => <img src={v.src} alt={v.alt} loading="lazy" />)
         ) : (
           <div class="work-type">

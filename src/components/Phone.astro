@@ -1,0 +1,7 @@
+---
+/** A phone frame. Its screen is a size container: a replica sets 1em = 1/23.4375 of the width, so it is laid out in the app's own 375-pt points. */
+const { label, decorative = false } = Astro.props;
+---
+<div class="phone" role={decorative ? undefined : 'img'} aria-label={decorative ? undefined : label} aria-hidden={decorative ? 'true' : undefined}>
+  <div class="phone-screen"><slot /></div>
+</div>

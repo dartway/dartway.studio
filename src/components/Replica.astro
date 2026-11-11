@@ -1,0 +1,11 @@
+---
+/** An app screen recreated in HTML, in the page's language: `screen` is "<app>-<name>". */
+import Phone from './Phone.astro';
+import U90 from './replicas/U90.astro';
+const { screen, lang = 'en', label, decorative = false } = Astro.props;
+const [app, ...rest] = screen.split('-');
+const name = rest.join('-');
+---
+<Phone label={label} decorative={decorative}>
+  {app === 'u90' && <U90 screen={name} lang={lang} />}
+</Phone>
