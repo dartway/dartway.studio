@@ -236,9 +236,11 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Courses and lessons', 'Video and audio playback', 'Learner progress', 'Membership and club content', 'Content administration', 'Course platform and CRM integration'],
         visuals: [
-          { src: '/cases/nda-courses-club.jpg', alt: 'Club page: plan for the day, workout video and live sessions', caption: 'Screen from the design the web app is built to. Names hidden; the app is in Russian.', wide: true },
-          { src: '/cases/nda-courses-home.jpg', alt: 'Home: energy index, current course and club workout', caption: 'Home screen from the same design.', wide: true },
+          { screen: 'courses-home', alt: 'Home: energy index, current course and club workout', caption: 'Home: the index, the course and the club workout.' },
+          { screen: 'courses-club', alt: 'Club: plan for the day with practices', caption: 'Club: the plan for the day.' },
+          { screen: 'courses-lesson', alt: 'Lesson with a video player and the next lessons', caption: 'A lesson with video and the course programme.' },
         ],
+        screensNote: 'Screens rebuilt from the app code and design, translated from Russian; names and photos replaced under NDA.',
         cta: 'Your team owns design and product management? Send us the scope to discuss the implementation.',
       },
       ru: {
@@ -270,9 +272,11 @@ export const caseStudies: CaseStudy[] = [
         ],
         features: ['Курсы и уроки', 'Видео- и аудиоплеер', 'Прогресс обучения', 'Клубные материалы', 'Управление контентом', 'Интеграция с платформой курсов и CRM'],
         visuals: [
-          { src: '/cases/nda-courses-club.jpg', alt: 'Клуб: план на день, видео тренировки и эфиры', caption: 'Экран из макета, по которому собрано веб-приложение. Названия скрыты.', wide: true },
-          { src: '/cases/nda-courses-home.jpg', alt: 'Главная: индекс энергии, текущий курс и тренировка клуба', caption: 'Главная из того же макета.', wide: true },
+          { screen: 'courses-home', alt: 'Главная: индекс энергии, текущий курс и тренировка клуба', caption: 'Главная: индекс, курс и тренировка клуба.' },
+          { screen: 'courses-club', alt: 'Клуб: план на день с практиками', caption: 'Клуб: план на сегодня.' },
+          { screen: 'courses-lesson', alt: 'Урок с видеоплеером и следующими уроками', caption: 'Урок с видео и программа курса.' },
         ],
+        screensNote: 'Экраны собраны по коду и макетам приложения; названия и фото заменены по NDA.',
         cta: 'У вас есть дизайн и управление продуктом? Обсудим техническую реализацию проекта.',
       },
     },
