@@ -3,6 +3,7 @@ import SiteLayout from './SiteLayout.astro';
 import WorkGrid from './WorkGrid.astro';
 import Contact from './Contact.astro';
 import FactoryLine from './FactoryLine.astro';
+import SplitRoles from './SplitRoles.astro';
 import { caseStudies } from '../data/caseStudies';
 const { t, agency = false } = Astro.props;
 const prefix = t.lang === 'ru' ? '/ru' : '';
@@ -94,6 +95,8 @@ const stats = [
     </section>
   )}
 
+  {agency ? (
+    <>
   <section class="wrap" id="delivery">
     <h2>{t.delivery.title}</h2>
     <p class="section-intro">{t.delivery.intro}</p>
@@ -109,6 +112,8 @@ const stats = [
     <h2>{t.ownership.title}</h2>
     <p>{t.ownership.text}</p>
   </section>
+    </>
+  ) : <SplitRoles lang={t.lang} />}
   {!agency && (
     <section class="wrap founder">
       <div class="founder-mark" aria-hidden="true">EN</div>

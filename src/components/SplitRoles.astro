@@ -1,0 +1,109 @@
+---
+// Who does what on a project: the agency's side and ours, phase by phase, and what always stays with the agency.
+const { lang = 'en' } = Astro.props;
+const ru = lang === 'ru';
+const t = ru
+  ? {
+      eyebrow: 'Кто что делает',
+      title: 'Заказчик остаётся вашим. Сборка — наша.',
+      intro: 'С вашей стороны — один человек, который решает по продукту. Остальное на нас.',
+      you: 'Ваша сторона',
+      we: 'DartWay',
+      rows: [
+        { phase: 'Старт', you: 'Присылаете макет, прототип или описание.', we: 'За один рабочий день — объём, фиксированная цена и срок.' },
+        { phase: 'Сборка', you: 'Отвечаете на вопросы по продукту. Это один человек, не команда.', we: 'Агенты собирают, проверяют и сверяют каждый экран с макетом. Тестовая версия — с первой недели.' },
+        { phase: 'Правки', you: 'Открываете тестовую сборку, присылаете замечания или показываете заказчику.', we: 'Замечание становится правкой в тот же день, а не задачей на следующий спринт.' },
+        { phase: 'Выпуск', you: 'Принимаете работу. Заказчик принимает её у вас.', we: 'Публикуем в магазины в ваших аккаунтах или аккаунтах заказчика, остаёмся на правки и следующую версию.' },
+      ],
+      keepTitle: 'Всегда остаётся у вас',
+      keep: ['Заказчик', 'Решения по продукту и дизайну', 'Код', 'Данные', 'Инфраструктура', 'Аккаунты магазинов', 'Ваш бренд — white label'],
+      keepNote: 'Без привязки к нам: уходите — забираете всё. Если нужно, работаем под вашим брендом: заказчик о нас может не знать.',
+    }
+  : {
+      eyebrow: 'Who does what',
+      title: 'Your client stays yours. The build is ours.',
+      intro: 'One person on your side decides on the product. Everything else is on us.',
+      you: 'Your side',
+      we: 'DartWay',
+      rows: [
+        { phase: 'Start', you: 'Send a mockup, a prototype or a brief.', we: 'Within one business day: the scope, a fixed price and the timeline.' },
+        { phase: 'Build', you: 'Answer product questions. That is one person, not a team.', we: 'Agents build, review and compare every screen with your design. A working test version from the first week.' },
+        { phase: 'Changes', you: 'Open the test build, send feedback, or show it to your client.', we: 'Your feedback becomes a change the same day, not a ticket for the next sprint.' },
+        { phase: 'Release', you: 'Accept the work. Your client accepts it from you.', we: "We publish to the stores in your or your client's accounts and stay on for fixes and the next version." },
+      ],
+      keepTitle: 'Always stays with you',
+      keep: ['The client', 'Product and design decisions', 'Code', 'Data', 'Infrastructure', 'Store accounts', 'Your brand — white label'],
+      keepNote: "No lock-in: if you leave, you leave with everything. White label if you need it: your client doesn't have to know about us.",
+    };
+---
+<section class="roles-split" id="delivery" aria-labelledby="split-title">
+  <div class="wrap">
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h2 id="split-title">{t.title}</h2>
+    <p class="section-intro">{t.intro}</p>
+
+    <div class="split-board">
+      <div class="split-head split-you"><span class="split-dot"></span>{t.you}</div>
+      <div class="split-head-gap" aria-hidden="true"></div>
+      <div class="split-head split-we"><span class="split-dot"></span>{t.we}</div>
+      {t.rows.map((r, i) => (
+        <>
+          <div class="split-cell split-you" style={`--i:${i}`}><span class="split-tag">{t.you}</span><p>{r.you}</p></div>
+          <div class="split-phase" style={`--i:${i}`}><span>{String(i + 1).padStart(2, '0')}</span><strong>{r.phase}</strong></div>
+          <div class="split-cell split-we" style={`--i:${i}`}><span class="split-tag">{t.we}</span><p>{r.we}</p></div>
+        </>
+      ))}
+    </div>
+
+    <div class="split-keep">
+      <h3>{t.keepTitle}</h3>
+      <ul>{t.keep.map((k) => <li>{k}</li>)}</ul>
+      <p>{t.keepNote}</p>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .roles-split { padding: 5rem 0; border-top: 1px solid var(--line); }
+  .roles-split h2 { text-wrap: balance; }
+  .split-board { --you: #8cc8ff; --we: var(--accent); position: relative; display: grid;
+    grid-template-columns: minmax(0, 1fr) 9rem minmax(0, 1fr); gap: 0.9rem 0; margin-top: 2.75rem; }
+  .split-board::before { content: ''; position: absolute; left: 50%; top: 3.2rem; bottom: 1rem; width: 2px; margin-left: -1px;
+    background: linear-gradient(var(--you), var(--we)); opacity: 0.35; }
+  .split-head { display: flex; align-items: center; gap: 0.6rem; padding: 0 0 0.6rem; font-size: 0.82rem; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase; }
+  .split-head.split-you { color: #b9dcff; justify-content: flex-end; }
+  .split-head.split-we { color: var(--accent-lightest); }
+  .split-dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+  .split-head.split-you .split-dot { order: 2; }
+  .split-cell { position: relative; padding: 1.15rem 1.3rem; border-radius: 10px; min-width: 0; }
+  .split-cell p { margin: 0; color: rgba(240, 240, 240, 0.9); font-size: 1rem; line-height: 1.5; }
+  .split-cell.split-you { text-align: right; border: 1px solid rgba(140, 200, 255, 0.28); background: linear-gradient(270deg, rgba(140, 200, 255, 0.1), rgba(140, 200, 255, 0.02)); }
+  .split-cell.split-we { border: 1px solid rgba(255, 176, 0, 0.32); background: linear-gradient(90deg, rgba(255, 176, 0, 0.11), rgba(255, 176, 0, 0.02)); }
+  .split-tag { display: none; }
+  .split-phase { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.15rem; }
+  .split-phase span { font: 600 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; color: rgba(255, 255, 255, 0.45); }
+  .split-phase strong { padding: 0.35rem 0.8rem; border-radius: 999px; background: #18181a; border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff; font-size: 0.92rem; white-space: nowrap; }
+  .split-keep { margin-top: 2.5rem; padding: 1.6rem 1.75rem; border-radius: 12px; border: 1px solid rgba(140, 200, 255, 0.3);
+    background: radial-gradient(ellipse 60% 120% at 0% 0%, rgba(140, 200, 255, 0.1), transparent 70%), #151517; }
+  .split-keep h3 { margin: 0 0 0.9rem; color: #b9dcff; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .split-keep ul { list-style: none; margin: 0 0 1.1rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.55rem; }
+  .split-keep li { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.42rem 0.85rem; border-radius: 999px;
+    border: 1px solid rgba(140, 200, 255, 0.4); color: #e6f2ff; font-weight: 600; font-size: 0.95rem; }
+  .split-keep li::before { content: ''; width: 9px; height: 11px; border-radius: 2px; background: #8cc8ff;
+    clip-path: polygon(0 45%, 15% 45%, 15% 25%, 50% 0, 85% 25%, 85% 45%, 100% 45%, 100% 100%, 0 100%); }
+  .split-keep p { margin: 0; max-width: 760px; font-size: 1.05rem; }
+  @media (max-width: 760px) {
+    .roles-split { padding: 3.5rem 0; }
+    .split-board { grid-template-columns: 1fr; gap: 0; }
+    .split-board::before, .split-head, .split-head-gap { display: none; }
+    .split-phase { order: calc(var(--i) * 3); flex-direction: row; justify-content: flex-start; gap: 0.6rem; margin: 1.4rem 0 0.6rem; }
+    .split-cell { text-align: left !important; margin-bottom: 0.5rem; }
+    .split-cell.split-you { order: calc(var(--i) * 3 + 1); }
+    .split-cell.split-we { order: calc(var(--i) * 3 + 2); }
+    .split-tag { display: block; margin-bottom: 0.3rem; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .split-cell.split-you .split-tag { color: #b9dcff; }
+    .split-cell.split-we .split-tag { color: var(--accent-lightest); }
+  }
+</style>
