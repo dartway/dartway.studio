@@ -33,6 +33,7 @@ const t = ru
       about: 'Пара слов о приложении:',
       sign: '(имя, компания)',
       none: '—',
+      dock: { tag: 'Фиксированная цена', next: 'Дальше →', ready: 'Письмо готово', go: 'Проверить и отправить →', close: 'Скрыть' },
     }
   : {
       eyebrow: 'Price your project',
@@ -60,6 +61,7 @@ const t = ru
       about: 'A few words about the app:',
       sign: '(name, company)',
       none: '—',
+      dock: { tag: 'Your fixed price', next: 'Next →', ready: 'Your message is ready', go: 'Review and send →', close: 'Hide' },
     };
 const cfg = { ru, email: EMAIL, t };
 ---
@@ -101,6 +103,19 @@ const cfg = { ru, email: EMAIL, t };
     </div>
   </div>
 </section>
+
+<!-- The price ticket travels with the reader: the next open question, answered from anywhere on the page. -->
+<div class="dock" data-dock role="region" aria-label={t.dock.tag} inert>
+  <div class="dock-in">
+    <p class="dock-meta"><span>{t.dock.tag}</span> <strong data-due>{t.title[1]}</strong></p>
+    <div class="dock-ask">
+      <p class="dock-q" data-dock-q></p>
+      <div class="dock-opts" data-dock-opts></div>
+    </div>
+    <span class="dock-step" aria-hidden="true"><span class="dock-segs"><i></i><i></i><i></i><i></i></span><span data-dock-n>0 / 4</span></span>
+    <button type="button" class="dock-close" data-dock-close aria-label={t.dock.close}>×</button>
+  </div>
+</div>
 
 <script is:inline define:vars={{ cfg }}>
   (() => {
@@ -150,7 +165,75 @@ const cfg = { ru, email: EMAIL, t };
       const open = [...root.querySelectorAll('.brief-q')].find((fs) => !state[fs.dataset.key].length);
       root.querySelectorAll('.brief-q').forEach((fs) => fs.classList.toggle('is-next', fs === open));
       send.classList.toggle('is-ready', !open);
+      renderDock();
     }
+
+    // Dock: the same questions, one at a time, wherever the reader is.
+    const dock = document.querySelector('[data-dock]');
+    const dq = dock.querySelector('[data-dock-q]');
+    const dopts = dock.querySelector('[data-dock-opts]');
+    const dn = dock.querySelector('[data-dock-n]');
+    const segs = dock.querySelectorAll('.dock-segs i');
+    let stay = null; // a multi-choice question stays until "Next"
+    function goToCard() {
+      const card = root.querySelector('.brief-card');
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      card.classList.remove('arrived'); void card.offsetWidth; card.classList.add('arrived');
+    }
+    function dockBtn(label, cls, onClick, pressed) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = cls; b.textContent = label;
+      if (pressed !== undefined) b.setAttribute('aria-pressed', String(pressed));
+      b.addEventListener('click', onClick);
+      return b;
+    }
+    function renderDock() {
+      const qs = [...root.querySelectorAll('.brief-q')];
+      const done = qs.filter((fs) => state[fs.dataset.key].length).length;
+      dn.textContent = `${done} / ${qs.length}`;
+      segs.forEach((s, i) => s.classList.toggle('on', i < done));
+      const fs = qs.find((f) => f.dataset.key === stay) || qs.find((f) => !state[f.dataset.key].length);
+      dopts.replaceChildren();
+      dock.classList.toggle('is-ready', !fs);
+      if (!fs) {
+        dq.textContent = t.dock.ready;
+        const go = dockBtn(t.dock.go, 'dock-go', goToCard);
+        go.dataset.cta = 'dock-send';
+        dopts.append(go);
+        return;
+      }
+      dq.textContent = fs.querySelector('legend').textContent;
+      fs.querySelectorAll('.brief-chip').forEach((chip) => {
+        const b = dockBtn(chip.textContent.trim(), 'dock-chip', () => {
+          if (fs.dataset.multi === '1') stay = fs.dataset.key;
+          chip.click();
+        }, chip.getAttribute('aria-pressed') === 'true');
+        b.dataset.cta = 'dock-chip';
+        dopts.append(b);
+      });
+      if (stay === fs.dataset.key && state[stay].length) {
+        dopts.append(dockBtn(t.dock.next, 'dock-next', () => { stay = null; renderDock(); }));
+      }
+    }
+    // Shown once the hero (or the page title) is behind, hidden again at the builder itself.
+    let closed = false;
+    try { closed = sessionStorage.getItem('dock-closed') === '1'; } catch (e) {}
+    let topSeen = true;
+    let atBuilder = false;
+    const sync = () => {
+      const on = !closed && !topSeen && !atBuilder;
+      dock.classList.toggle('on', on);
+      dock.inert = !on;
+    };
+    const top = document.querySelector('.hero .ticket') || document.querySelector('h1');
+    if ('IntersectionObserver' in window) {
+      if (top) new IntersectionObserver(([e]) => { topSeen = e.isIntersecting || e.boundingClientRect.top > 0; sync(); }).observe(top);
+      new IntersectionObserver(([e]) => { atBuilder = e.isIntersecting || e.boundingClientRect.top < 0; sync(); }, { rootMargin: '0px 0px -25% 0px' }).observe(root);
+    }
+    dock.querySelector('[data-dock-close]').addEventListener('click', () => {
+      closed = true; sync();
+      try { sessionStorage.setItem('dock-closed', '1'); } catch (e) {}
+    });
 
     root.querySelectorAll('.brief-q').forEach((fs) => {
       const key = fs.dataset.key;
@@ -176,9 +259,7 @@ const cfg = { ru, email: EMAIL, t };
         e.preventDefault();
         const chip = root.querySelectorAll('.brief-q[data-key="have"] .brief-chip')[Number(a.dataset.heroPick)];
         if (chip && chip.getAttribute('aria-pressed') !== 'true') chip.click();
-        const card = root.querySelector('.brief-card');
-        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        card.classList.remove('arrived'); void card.offsetWidth; card.classList.add('arrived');
+        goToCard();
         const next = root.querySelector('.brief-q.is-next .brief-chip');
         if (next) setTimeout(() => next.focus({ preventScroll: true }), 600);
       });
@@ -234,6 +315,45 @@ const cfg = { ru, email: EMAIL, t };
     font: 400 0.84rem/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; }
   .brief-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
   .brief-copied { margin: -0.4rem 0 0; font-size: 0.9rem; color: #d4f7a6; }
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; pointer-events: none;
+    padding: 0 max(1rem, env(safe-area-inset-right, 0px)) calc(1rem + env(safe-area-inset-bottom, 0px)) max(1rem, env(safe-area-inset-left, 0px));
+    transform: translateY(calc(100% + 1rem)); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .dock.on { transform: none; }
+  .dock-in { pointer-events: auto; max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center; gap: 0.6rem 1.4rem; padding: 0.75rem 0.8rem 0.75rem 1.2rem; border-radius: 14px;
+    border: 1px solid rgba(255, 209, 102, 0.45); background: rgba(20, 18, 14, 0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 0, 0, 0.4); }
+  .dock-meta { margin: 0; display: grid; line-height: 1.25; }
+  .dock-meta span { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+  .dock-meta strong { color: var(--accent-lightest); font-size: 1rem; white-space: nowrap; }
+  .dock-ask { display: flex; align-items: center; gap: 0.5rem 0.9rem; min-width: 0; padding-left: 1.4rem; border-left: 1px solid rgba(255, 255, 255, 0.12); }
+  .dock-q { margin: 0; color: #fff; font-weight: 700; white-space: nowrap; }
+  .dock-opts { display: flex; gap: 0.45rem; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .dock-opts::-webkit-scrollbar { display: none; }
+  .dock-chip, .dock-next, .dock-go { flex: none; font: 600 0.88rem/1.2 var(--sans); cursor: pointer; padding: 0.48rem 0.85rem; border-radius: 999px;
+    border: 1px solid rgba(255, 209, 102, 0.4); background: transparent; color: rgba(255, 255, 255, 0.9); transition: border-color 0.15s, background 0.15s; }
+  .dock-chip:hover { border-color: var(--accent); background: rgba(255, 176, 0, 0.1); }
+  .dock-chip[aria-pressed='true'] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .dock-next, .dock-go { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .dock-go { box-shadow: 0 0 22px var(--accent-glow); }
+  .dock-chip:focus-visible, .dock-next:focus-visible, .dock-go:focus-visible, .dock-close:focus-visible { outline: 2px solid var(--accent-lightest); outline-offset: 2px; }
+  .dock-step { display: flex; align-items: center; gap: 0.55rem; color: var(--muted); font: 600 0.78rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .dock-segs { display: flex; gap: 3px; }
+  .dock-segs i { width: 14px; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, 0.18); transition: background 0.2s; }
+  .dock-segs i.on { background: var(--accent); }
+  .dock-close { width: 34px; height: 34px; border-radius: 50%; border: 0; background: transparent; color: var(--muted); font-size: 1.35rem; line-height: 1; cursor: pointer; }
+  .dock-close:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+  @media (max-width: 860px) {
+    .dock { padding-left: 0.6rem; padding-right: 0.6rem; padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px)); }
+    .dock-in { grid-template-columns: minmax(0, 1fr) auto auto; gap: 0.5rem 0.6rem; padding: 0.65rem 0.4rem 0.75rem 0.9rem; }
+    .dock-meta { display: block; }
+    .dock-meta span { font-size: 0.68rem; }
+    .dock-meta strong { display: block; font-size: 0.92rem; }
+    .dock-ask { grid-column: 1 / -1; grid-row: 2; padding-left: 0; border-left: 0; flex-direction: column; align-items: stretch; gap: 0.4rem; }
+    .dock-q { font-size: 0.9rem; }
+    .dock-segs { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .dock { transition: none; } }
   @media (max-width: 860px) {
     .brief { padding: 3.5rem 0; }
     .brief-grid { grid-template-columns: 1fr; gap: 1.75rem; }
