@@ -4,14 +4,8 @@ import WorkGrid from './WorkGrid.astro';
 import Contact from './Contact.astro';
 import FactoryLine from './FactoryLine.astro';
 import SplitRoles from './SplitRoles.astro';
-import { caseStudies } from '../data/caseStudies';
 const { t, agency = false } = Astro.props;
 const prefix = t.lang === 'ru' ? '/ru' : '';
-const published = caseStudies.filter((c) => c.locales.en.status === 'Published').length;
-const stats = [
-  { value: 5, label: t.stats.inProgress },
-  { value: published, label: t.stats.published },
-];
 // The price ticket: the builder's first question on the first screen.
 const ru = t.lang === 'ru';
 const q = ru
@@ -44,11 +38,6 @@ const icons = [
     <div class="meta">
       {t.hero.meta.map((item: string) => <span>{item}</span>)}
     </div>
-    {!agency && (
-      <div class="stats">
-        {stats.map((st) => <div class="stat"><strong>{st.value}</strong><span>{st.label}</span></div>)}
-      </div>
-    )}
     <aside class="ticket" aria-labelledby="ticket-q">
       <div class="ticket-head">
         <span>{q.tag}</span>

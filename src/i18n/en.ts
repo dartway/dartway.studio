@@ -16,11 +16,11 @@ export default {
     ]
   },
   "agency": {
-    "title": "Your team leads the product. We deliver the app.",
+    "title": "Your team leads the product. We deliver the app",
     "description": "Mobile development for agencies with their own designers and project managers. From your brief and design to tested releases and ongoing support.",
     "eyebrow": "For design & product agencies",
     "lead": "Keep the client relationship, design and product decisions with your team. We take care of implementation, technical checks, release and the next round of improvements.",
-    "heading": "One project. Clear responsibilities.",
+    "heading": "One project. Clear responsibilities",
     "intro": "Start with a real brief and a product owner on your side. Together we agree what the first delivery should achieve and how your team will review it.",
     "yourTitle": "Your agency",
     "yourItems": [
@@ -37,12 +37,12 @@ export default {
   },
   "work": {
     "eyebrow": "Built this way",
-    "title": "Apps in production and in progress.",
+    "title": "Apps in production and in progress",
     "text": "U90 and Tvaity are live on the App Store and Google Play. Two projects are under NDA: built for an agency that keeps the client, the product and the design.",
     "all": "All projects"
   },
   "delivery": {
-    "title": "How a project runs.",
+    "title": "How a project runs",
     "intro": "One person on your side decides on the product. Everything else is on us.",
     "steps": [
       {
@@ -64,17 +64,17 @@ export default {
     ]
   },
   "proof": {
-    "title": "Live on iOS and Android.",
+    "title": "Live on iOS and Android",
     "text": "U90 brings nutrition, activity and a personalised plan into one app, published in the App Store and Google Play.",
     "link": "Read the U90 case"
   },
   "ownership": {
-    "title": "The code is yours.",
+    "title": "The code is yours",
     "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in: if you leave, you leave with everything. White label if you need it: we work under your brand, and your client doesn't have to know about us."
   },
   "factory": {
     "eyebrow": "Inside the factory",
-    "title": "Every feature goes down the same line.",
+    "title": "Every feature goes down the same line",
     "intro": "Agents do the work. Checks stop anything that isn't right and send it back. A person signs off the release.",
     "stations": [
       {
@@ -166,7 +166,7 @@ export default {
   },
   "faq": {
     "eyebrow": "Questions agencies ask",
-    "title": "Before you send a project.",
+    "title": "Before you send a project",
     "items": [
       {
         "q": "How much does it cost?",
@@ -208,7 +208,7 @@ export default {
   },
   "pillars": {
     "eyebrow": "Not vibe coding",
-    "title": "Anyone can generate an app in a day. Shipping one is different.",
+    "title": "Anyone can generate an app in a day. Shipping one is different",
     "items": [
       {
         "title": "Pixel-perfect to the design",
@@ -226,7 +226,7 @@ export default {
   },
   "segments": {
     "eyebrow": "Who it is for",
-    "title": "You own the product. We build it.",
+    "title": "You own the product. We build it",
     "items": [
       {
         "title": "Agencies that build",

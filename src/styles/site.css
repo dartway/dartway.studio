@@ -286,7 +286,9 @@ section.case-visuals { padding-top: 0; padding-bottom: 3rem; display: flex; flex
 @media (min-width: 1000px) {
   .delivery-hero.has-ticket { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 400px); column-gap: 3rem; align-content: center; }
   .delivery-hero.has-ticket > * { grid-column: 1; }
-  .delivery-hero.has-ticket > .ticket { grid-column: 2; grid-row: 1 / span 6; align-self: center; margin-top: 0; }
+  .delivery-hero.has-ticket > .ticket { grid-column: 2; grid-row: 1 / span 5; align-self: center; margin-top: 0; }
+  /* hero sized by its content, so the factory line shows at the bottom of the first screen */
+  .delivery-hero.has-ticket { min-height: 0; padding-top: 7.5rem; padding-bottom: 2.5rem; }
   .delivery-hero.has-ticket h1 { font-size: clamp(2.8rem, 5vw, 4.4rem); text-wrap: balance; }
   .delivery-hero.has-ticket .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; margin-top: 2.25rem; }
   .delivery-hero.has-ticket .stat { min-height: 0; }
