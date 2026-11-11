@@ -2,10 +2,10 @@ export default {
   "lang": "en",
   "title": "DartWay — a dark factory for apps",
   "description": "AI agents build your client's app all the way to production: pixel-perfect to the design, strict coding rules and tests, senior developer supervision. Fixed price.",
-  "stats": { "inProgress": "active projects", "published": "live on the App Store and Google Play" },
+  "stats": { "inProgress": "projects in progress", "published": "live on the App Store and Google Play" },
   "hero": {
     "eyebrow": "AI-native development",
-    "title": "A dark factory for apps.",
+    "title": "A dark factory for apps",
     "lead": "AI agents build the whole app, from design to production. You own the product.",
     "primary": "Get a price for your project",
     "secondary": "See the work",
@@ -131,16 +131,16 @@ export default {
     "note": "Red: a check stopped it. It goes back to the agents until it passes.",
     "stats": [
       {
+        "value": "5",
+        "label": "projects on the line"
+      },
+      {
         "value": "30",
         "label": "tasks a week per project, on average"
       },
       {
-        "value": "~10 h",
-        "label": "average from the start of work to code that passed review"
-      },
-      {
-        "value": "1",
-        "label": "business day from your mockup to a fixed price"
+        "value": "10 h",
+        "label": "per task on average, from the start of work to code that passed review"
       }
     ],
     "source": "Counted by our delivery system: a task counts when it passes code review. Delivery hours are our current estimate until the system measures them."

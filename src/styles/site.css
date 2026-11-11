@@ -293,3 +293,29 @@ section.case-visuals { padding-top: 0; padding-bottom: 3rem; display: flex; flex
 }
 @media (max-width: 600px) { .ticket-opts { grid-template-columns: 1fr; } .ticket-due { font-size: 1.4rem; } }
 @media (prefers-reduced-motion: reduce) { .ticket-opt { transition: none; } .ticket-opt:hover { transform: none; } }
+
+/* Cases slider: every project in one row, scroll-snap, arrows and a counter */
+.work-slider.is-slider { position: relative; margin-top: 2rem; }
+.slider-bar { display: flex; align-items: center; gap: 1rem; justify-content: flex-end; margin-bottom: 1.25rem; }
+.slider-count { margin-right: auto; color: var(--muted); font: 600 0.95rem ui-monospace, SFMono-Regular, Menlo, monospace; }
+.slider-count b { color: var(--accent-lightest); }
+.slider-dots { display: flex; gap: 6px; }
+.slider-dots i { width: 18px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.16); transition: background 0.2s, width 0.2s; }
+.slider-dots i.on { width: 32px; background: var(--accent); }
+.slider-btn { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03); color: #fff;
+  font: 700 1.15rem var(--sans); cursor: pointer; transition: border-color 0.15s, background 0.15s, opacity 0.15s; }
+.slider-btn:hover:not(:disabled) { border-color: var(--accent); background: rgba(255, 176, 0, 0.12); }
+.slider-btn:disabled { opacity: 0.35; cursor: default; }
+.is-slider .work-grid { display: flex; gap: 1.7rem; margin-top: 0; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  overscroll-behavior-x: contain; scrollbar-width: none; padding-bottom: 0.5rem; }
+.is-slider .work-grid::-webkit-scrollbar { display: none; }
+.is-slider .work-card { flex: 0 0 calc((100% - 1.7rem) / 2.25); min-width: 0; scroll-snap-align: start; }
+.work-slider.is-slider::after { content: ''; position: absolute; right: 0; top: 4.5rem; bottom: 0; width: 64px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--bg)); }
+@media (max-width: 760px) {
+  .is-slider .work-card { flex-basis: 86%; }
+  .is-slider .work-grid { gap: 1rem; }
+  .slider-dots { display: none; }
+  .work-slider.is-slider::after { width: 32px; }
+}
+@media (prefers-reduced-motion: reduce) { .is-slider .work-grid { scroll-behavior: auto; } }

@@ -1,10 +1,20 @@
 ---
 import { caseStudies } from '../data/caseStudies';
-const { lang = 'en', limit } = Astro.props;
+const { lang = 'en', limit, slider = false } = Astro.props;
+const ru = lang === 'ru';
 const prefix = lang === 'ru' ? '/ru' : '';
 const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
 ---
-<div class="work-grid">
+<div class:list={['work-slider', { 'is-slider': slider }]} data-slider={slider ? '' : undefined}>
+{slider && (
+  <div class="slider-bar">
+    <span class="slider-count" aria-live="polite"><b data-cur>1</b> / {projects.length}</span>
+    <div class="slider-dots" aria-hidden="true">{projects.map((_, i) => <i class:list={[{ on: i === 0 }]}></i>)}</div>
+    <button type="button" class="slider-btn" data-prev aria-label={ru ? 'Предыдущий проект' : 'Previous project'} disabled>←</button>
+    <button type="button" class="slider-btn" data-next aria-label={ru ? 'Следующий проект' : 'Next project'}>→</button>
+  </div>
+)}
+<div class="work-grid" data-track>
   {projects.map((project) => {
     const content = project.locales[lang as 'en' | 'ru'];
     const visual = content.visuals?.[0];
@@ -40,3 +50,30 @@ const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
     </a>;
   })}
 </div>
+</div>
+
+<script is:inline>
+  document.querySelectorAll('[data-slider]').forEach((root) => {
+    const track = root.querySelector('[data-track]');
+    const cards = [...track.children];
+    const prev = root.querySelector('[data-prev]');
+    const next = root.querySelector('[data-next]');
+    const cur = root.querySelector('[data-cur]');
+    const dots = [...root.querySelectorAll('.slider-dots i')];
+    const step = () => cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
+    const index = () => Math.round(track.scrollLeft / step());
+    const update = () => {
+      const i = Math.min(index(), cards.length - 1);
+      const end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      cur.textContent = String(end ? cards.length : i + 1);
+      dots.forEach((d, k) => d.classList.toggle('on', end ? k === cards.length - 1 : k === i));
+      prev.disabled = track.scrollLeft <= 4;
+      next.disabled = end;
+    };
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
