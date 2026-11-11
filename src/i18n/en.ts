@@ -37,7 +37,7 @@ export default {
   },
   "work": {
     "eyebrow": "Built this way",
-    "title": "Apps in production and in progress",
+    "title": "Apps that came off this line",
     "text": "U90 and Tvaity are live on the App Store and Google Play. Two more are under NDA.",
     "all": "All projects"
   },
@@ -137,13 +137,9 @@ export default {
       {
         "value": "30",
         "label": "tasks a week per project, on average"
-      },
-      {
-        "value": "10 h",
-        "label": "per task on average, from the start of work to code that passed review"
       }
     ],
-    "source": "Counted by our delivery system: a task counts when it passes code review. Delivery hours are our current estimate until the system measures them."
+    "source": "Counted by our delivery system: a task counts when it passes code review."
   },
   "founder": {
     "eyebrow": "Who answers for it",
@@ -166,7 +162,7 @@ export default {
   },
   "faq": {
     "eyebrow": "Questions product teams ask",
-    "title": "Before you send a project",
+    "title": "Straight answers before you send a project",
     "items": [
       {
         "q": "How much does it cost?",
@@ -209,46 +205,51 @@ export default {
   "pillars": {
     "eyebrow": "Not vibe coding",
     "title": "Anyone can generate an app in a day. Shipping one is different",
-    "intro": "Vibe coding gets you a demo. A product needs structure, checks and someone who answers for it. Here is what changes when your app goes down our line.",
+    "intro": "Vibe coding gets you a demo. A product needs structure, checks and someone who answers for it.",
     "cols": {
       "vibe": "Vibe coding",
-      "ours": "DartWay line",
-      "proof": "How you can check"
+      "ours": "DartWay line"
     },
     "rows": [
       {
         "topic": "Structure",
-        "vibe": "Every prompt invents its own structure. By the tenth feature nobody knows how the app holds together.",
-        "ours": "Every app stands on DartWay, our open framework: one architecture and the same rules for every agent.",
-        "proof": "The framework is open source on GitHub",
-        "href": "https://github.com/dartway/dartway"
+        "vibe": "Each prompt invents its own",
+        "ours": "One open framework, the same rules for every agent"
       },
       {
         "topic": "Checks",
-        "vibe": "It works in the demo. The edge cases are left for your users to find.",
-        "ours": "A second agent reviews every task and the tests run. What fails goes back to the agents, not to you.",
-        "proof": "Code review and CI on every task"
+        "vibe": "Works in the demo",
+        "ours": "Code review and tests on every task"
       },
       {
         "topic": "Design",
-        "vibe": "Close enough to the mockup.",
-        "ours": "Every screen is compared with your mockup before you see it. A mismatch goes back in the same round.",
-        "proof": "Your designer accepts the screens"
+        "vibe": "Close enough to the mockup",
+        "ours": "Every screen compared with your mockup"
       },
       {
         "topic": "Responsibility",
-        "vibe": "When it breaks, nobody answers for it.",
-        "ours": "A senior engineer agrees the spec with you and signs off every release.",
-        "proof": "Evgenii Novikov: in IT since 2016, five years running a Flutter studio"
+        "vibe": "Nobody answers for it",
+        "ours": "A senior engineer signs off every release"
       },
       {
         "topic": "After launch",
-        "vibe": "It rarely reaches the stores, and once it does, it is scary to touch.",
-        "ours": "Released to the App Store and Google Play, then supported on the same line. The code is yours: any Flutter developer can continue it.",
-        "proof": "U90 and Tvaity are live in both stores",
-        "href": "/work/"
+        "vibe": "Rarely reaches the stores",
+        "ours": "In the stores, supported, and the code is yours"
       }
-    ]
+    ],
+    "check": {
+      "label": "Check it yourself",
+      "links": [
+        {
+          "text": "The framework on GitHub",
+          "href": "https://github.com/dartway/dartway"
+        },
+        {
+          "text": "U90 and Tvaity in the stores",
+          "href": "/work/"
+        }
+      ]
+    }
   },
   "segments": {
     "eyebrow": "Who it is for",
@@ -279,7 +280,7 @@ export default {
         "situation": "You run a business (a school, a clinic, a studio, a service) and your customers need an app: booking, payments, courses, a loyalty card. Studios quote months and open-ended budgets; freelancers disappear.",
         "gain": "Your app in the App Store and Google Play, at a price fixed before work starts.",
         "fear": "“It'll cost a fortune, and we won't understand what we're paying for.”",
-        "answer": "A fixed price for an agreed scope by the next business day. You see a working test build from the first week and accept every step. Tvaity, an online programmes business, runs on an app we build and support.",
+        "answer": "A fixed price for an agreed scope by the next business day. You see a working test build from the first week and accept every step. Tvaity, a financial-literacy school, runs on an app we build and support.",
         "preset": {
           "for": 1
         }

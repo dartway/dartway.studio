@@ -79,8 +79,7 @@ const tickets = f.tickets.map((label: string, i: number) => ({
 
 <style is:global set:html={css}></style>
 <style is:global>
-  .factory { position: relative; padding: 0.5rem 0 4.5rem; border-bottom: 1px solid var(--line);
-    background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255, 176, 0, 0.06), transparent 70%), #121214; overflow: hidden; }
+  .factory { position: relative; padding: 0.5rem 0 var(--sy); background: #121214; overflow: hidden; }
   .factory .line { position: relative; margin-top: 0.5rem; padding-top: 4.2rem; }
   .factory .factory-head { margin-top: 3.5rem; }
   .factory .factory-head h2 { margin-top: 0; }
@@ -110,8 +109,8 @@ const tickets = f.tickets.map((label: string, i: number) => ({
   .factory .ticket.rework { animation-name: fr-x; }
   .factory .line-note { display: flex; align-items: center; gap: 0.6rem; margin: 2rem 0 0; font-size: 0.95rem; }
   .factory .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #ff5d5d; background: rgba(255, 93, 93, 0.2); flex: none; }
-  .factory .flow-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
-  .factory .flow-stats div { padding: 1.25rem; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 8px; background: rgba(255, 255, 255, 0.02); }
+  .factory .flow-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+  .factory .flow-stats div { padding: 1.25rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.02); }
   .factory .flow-stats strong { display: block; color: var(--accent-lightest); font-size: 2.3rem; font-weight: 800; line-height: 1.1; }
   .factory .flow-stats span { display: block; margin-top: 0.4rem; color: var(--muted); }
   .factory .flow-source { margin: 0.9rem 0 0; font-size: 0.82rem; color: rgba(227, 227, 227, 0.5); }

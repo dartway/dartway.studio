@@ -201,7 +201,7 @@ export const caseStudies: CaseStudy[] = [
       en: {
         title: 'NDA: course and club app',
         category: 'Wellness education · Agency partnership',
-        status: 'Client acceptance',
+        status: 'Launching soon',
         statusDetail: 'A working staging version is undergoing client review before production launch.',
         summary: 'A course and membership experience built with an agency that retains product management, design and the client relationship.',
         challenge: [
@@ -235,7 +235,7 @@ export const caseStudies: CaseStudy[] = [
       ru: {
         title: 'NDA: приложение курсов и клуба',
         category: 'Обучение и wellness · Партнёрство с агентством',
-        status: 'В приёмке',
+        status: 'Скоро релиз',
         statusDetail: 'Рабочая тестовая версия проходит проверку заказчика перед промышленным запуском.',
         summary: 'Приложение с курсами и клубом: агентство ведёт продукт, дизайн и клиента, DartWay отвечает за реализацию.',
         challenge: [
@@ -275,7 +275,7 @@ export const caseStudies: CaseStudy[] = [
       en: {
         title: 'NDA: companion app for an education product',
         category: 'Education companion · Agency partnership',
-        status: 'Preparing launch',
+        status: 'Launching soon',
         statusDetail: 'Web environments are deployed. Integration configuration and client launch checks continue.',
         summary: 'A companion experience for an established educational product, connecting personalised content, daily check-ins and a community.',
         challenge: [
@@ -309,7 +309,7 @@ export const caseStudies: CaseStudy[] = [
       ru: {
         title: 'NDA: приложение-компаньон к обучению',
         category: 'Приложение для обучения · Партнёрство с агентством',
-        status: 'Подготовка к запуску',
+        status: 'Скоро релиз',
         statusDetail: 'Веб-версии развёрнуты. Продолжаются настройка интеграций и проверки перед запуском.',
         summary: 'Приложение для участников образовательного продукта: персональные материалы, ежедневные отметки состояния и сообщество.',
         challenge: [
@@ -349,7 +349,7 @@ export const caseStudies: CaseStudy[] = [
       en: {
         title: 'Love Paradogz',
         category: 'Relationships · Our own product',
-        status: 'In TestFlight',
+        status: 'Launching soon',
         statusDetail: 'Internal iOS testing began in November 2026. The product is not yet publicly launched.',
         summary: 'Our own relationship app: turning a designed prototype into a testable product built around small daily moments of understanding.',
         challenge: [
@@ -383,7 +383,7 @@ export const caseStudies: CaseStudy[] = [
       ru: {
         title: 'Love Paradogz',
         category: 'Отношения · Собственный продукт',
-        status: 'В TestFlight',
+        status: 'Скоро релиз',
         statusDetail: 'Внутреннее тестирование на iOS началось в ноябре 2026 года. Публичного запуска ещё нет.',
         summary: 'Наше приложение об отношениях: превращаем подробный прототип в продукт, который помогает узнавать друг друга через небольшие ежедневные действия.',
         challenge: [
@@ -413,74 +413,6 @@ export const caseStudies: CaseStudy[] = [
           { src: '/cases/paradogz-sphere.png', alt: 'Сфера, которую пара проходит вместе', caption: 'Прототип: тема сферы и где в ней пара.' },
         ],
         cta: 'Есть подробный дизайн и идея для проверки? Определим первую сборку, которую смогут попробовать люди.',
-      },
-    },
-  },
-  {
-    slug: 'portal',
-    accent: '#9dc7ff',
-    locales: {
-      en: {
-        title: 'Portal',
-        category: 'Expert platform · Product redevelopment',
-        status: 'In development',
-        statusDetail: 'Core entry and profile flows are available in a test version. Further product work continues.',
-        summary: 'Reworking an existing expert-led product around a clearer entry journey, personal content and a web-first application.',
-        challenge: [
-          'Portal started from an existing product and an expert community. The redevelopment needed a clear path from first interest to a useful experience: arrive through an expert’s recommendation, answer a questionnaire and receive a personalised starting point.',
-          'The project also required decisions about how daily content, expert materials and consultation requests should fit together. Rebuilding the interface was only one part of defining a product that the client could continue to develop.',
-        ],
-        clientTeam: [
-          'The client owns the expert network, the underlying content and the commercial operation. DartWay participates in shaping the product concept as well as delivering the application.',
-          'This is a commissioned product redevelopment with a broader product role for DartWay. The client’s answers about content, access and operations remain necessary inputs to implementation.',
-        ],
-        ourWork: [
-          'We started with the entry journey and built a web-first Flutter application. The test version covers the landing experience, questionnaire, guest session and personalised profile generated from the client’s rules.',
-          'The implementation also includes the phone-entry flow and the technical foundation for continuing into the daily product experience. The existing product and its data were preserved while work moved to the new implementation.',
-          'The wider product scope connects personal guidance with expert profiles, materials and consultation inquiries. Daily tasks and the supporting integrations are being developed as the product decisions are clarified with the client.',
-        ],
-        collaboration: [
-          'The working test version gives the client a concrete way to assess the concept. Instead of reviewing only a list of features, the team can follow the same path as a new participant and decide what should happen next.',
-          'DartWay translates those decisions into interface behaviour and backend work. The client provides the content rules and operational answers that make the experience specific to its expert business.',
-        ],
-        result: [
-          'The core entry journey has been implemented and checked in a test environment: landing, questionnaire, guest session, client-defined calculations, profile display and phone entry.',
-          'The project remains in development. The next work connects the entry journey to daily use. Subscription and referral capabilities are part of the wider product scope for subsequent delivery.',
-        ],
-        features: ['Web-first Flutter application', 'Landing and questionnaire', 'Guest session', 'Personalised profile', 'Phone-entry flow', 'Existing product redevelopment'],
-        visuals: [],
-        cta: 'Have an existing product that needs a clearer next version? Let’s review the current experience and the first journey to rebuild.',
-      },
-      ru: {
-        title: 'Портал',
-        category: 'Платформа экспертов · Перезапуск продукта',
-        status: 'В разработке',
-        statusDetail: 'Основной путь входа и персональный профиль доступны в тестовой версии. Работа над продуктом продолжается.',
-        summary: 'Перезапуск существующего продукта экспертов: понятный вход, персональные материалы и приложение с приоритетом веб-версии.',
-        challenge: [
-          'Портал развивался на основе существующего продукта и сообщества экспертов. Для новой версии требовался ясный путь от первого интереса к полезному действию: прийти по рекомендации эксперта, пройти анкету и получить персональную отправную точку.',
-          'Нужно было также определить, как связать ежедневные материалы, экспертный контент и запросы на консультации. Обновление интерфейса стало частью более широкой задачи — сформировать продукт, который заказчик сможет последовательно развивать.',
-        ],
-        clientTeam: [
-          'Заказчик отвечает за сеть экспертов, содержание материалов и коммерческую работу. DartWay участвует в проработке продуктовой концепции и реализует приложение.',
-          'Это заказная переработка продукта с расширенной продуктовой ролью DartWay. Ответы клиента о контенте, доступе и операционных процессах остаются необходимой частью работы.',
-        ],
-        ourWork: [
-          'Начали с пути нового пользователя и создали приложение на Flutter с приоритетом веб-версии. В тестовой реализации доступны посадочная страница, анкета, гостевая сессия и персональный профиль, формируемый по правилам заказчика.',
-          'Реализован сценарий ввода телефона и техническая основа перехода к ежедневному использованию продукта. Прежний продукт и его данные сохранены на время перехода к новой реализации.',
-          'Более широкий объём проекта связывает персональные рекомендации с профилями экспертов, материалами и заявками на консультации. Ежедневные задания и необходимые интеграции развиваются по мере уточнения продуктовых решений вместе с заказчиком.',
-        ],
-        collaboration: [
-          'Рабочая тестовая версия позволяет предметно оценить концепцию. Команда проходит тот же путь, что и новый участник, и на конкретных экранах обсуждает следующий шаг, содержание и необходимые действия.',
-          'DartWay переводит эти решения в поведение интерфейса и серверную логику. Заказчик предоставляет правила работы с контентом и ответы о процессах, которые связывают приложение с его экспертным бизнесом.',
-        ],
-        result: [
-          'В тестовой среде реализован и проверен основной путь входа: посадочная страница, анкета, гостевая сессия, расчёты по правилам клиента, отображение профиля и ввод телефона.',
-          'Проект остаётся в разработке. Следующая работа связывает путь входа с ежедневным использованием. Подписка и реферальные механики входят в более широкий объём последующего развития продукта.',
-        ],
-        features: ['Веб-приложение на Flutter', 'Посадочная страница и анкета', 'Гостевая сессия', 'Персональный профиль', 'Сценарий ввода телефона', 'Переработка действующего продукта'],
-        visuals: [],
-        cta: 'Есть действующий продукт, которому нужна следующая версия? Разберём текущий опыт и первый сценарий для переработки.',
       },
     },
   },

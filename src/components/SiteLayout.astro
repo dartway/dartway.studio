@@ -51,11 +51,27 @@ const email = 'mailto:evgenii@dartway.studio';
         </nav>
         <div class="top-actions">
           <a class="lang" href={switchHref} data-lang={ru ? 'en' : 'ru'} data-cta="lang" aria-label={ru ? 'English version' : 'Русская версия'}>{ru ? 'EN' : 'RU'}</a>
-          <a class="btn btn-small" href={email} data-cta="nav-email">{ru ? 'Получить цену' : 'Get a price'}</a>
+          <a class="btn btn-small" href={`${prefix}/#contact`} data-to-contact data-cta="nav-price">{ru ? 'Получить цену' : 'Get a price'}</a>
         </div>
       </div>
     </header>
     <main id="main"><slot /></main>
+    <a class="float-cta" href={`${prefix}/#contact`} data-to-contact data-float-cta data-cta="float-price" aria-hidden="true" tabindex="-1">{ru ? 'Получить цену' : 'Get a price'}</a>
+    <script is:inline>
+      (() => {
+        // The request is one click away from anywhere: same page if it has the builder, else the home page's.
+        const c = document.getElementById('contact');
+        if (c) document.querySelectorAll('[data-to-contact]').forEach((a) => a.setAttribute('href', '#contact'));
+        const f = document.querySelector('[data-float-cta]');
+        if (!f || !('IntersectionObserver' in window)) return;
+        // Shown once the first call to action is behind, hidden again at the builder itself.
+        const top = document.querySelector('.hero .actions') || document.querySelector('.top .btn-small');
+        let topSeen = true, atContact = false;
+        const sync = () => { const on = !topSeen && !atContact; f.classList.toggle('on', on); f.setAttribute('aria-hidden', String(!on)); f.tabIndex = on ? 0 : -1; };
+        if (top) new IntersectionObserver(([e]) => { topSeen = e.isIntersecting || e.boundingClientRect.top > 0; sync(); }).observe(top);
+        if (c) new IntersectionObserver(([e]) => { atContact = e.isIntersecting || e.boundingClientRect.top < 0; sync(); }, { rootMargin: '0px 0px -30% 0px' }).observe(c);
+      })();
+    </script>
     <footer class="wrap foot">
       <span>© {new Date().getFullYear()} DartWay</span>
       <a href={email} data-cta="footer-email">Email</a>

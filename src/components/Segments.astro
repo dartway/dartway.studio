@@ -79,8 +79,8 @@ const { s } = Astro.props;
     transform: rotate(45deg); background: #17150f; border-left: 1px solid var(--accent); border-top: 1px solid var(--accent); z-index: 2; }
   .seg-tab:focus-visible { outline: 2px solid var(--accent-lightest); outline-offset: 3px; }
   .seg-panel { position: relative; margin-top: 0.9rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 0;
-    border: 1px solid rgba(255, 176, 0, 0.45); border-radius: 14px; overflow: hidden;
-    background: radial-gradient(ellipse 60% 90% at 100% 0%, rgba(255, 176, 0, 0.1), transparent 70%), #17150f; animation: seg-in 0.35s ease-out; }
+    border: 1px solid rgba(255, 176, 0, 0.4); border-radius: 12px; overflow: hidden;
+    background: #17150f; animation: seg-in 0.35s ease-out; }
   .seg-panel[hidden] { display: none; }
   @keyframes seg-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .seg-case { display: grid; align-content: start; gap: 1.6rem; padding: 2rem; border-right: 1px solid rgba(255, 255, 255, 0.08); }
@@ -89,7 +89,7 @@ const { s } = Astro.props;
   .seg-label-ours { color: var(--accent-lightest); margin-top: 1.4rem; }
   .seg-situation { margin: 0; color: rgba(255, 255, 255, 0.86); font-size: 1.05rem; }
   .seg-gain { margin: 0; color: #fff; font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 750; line-height: 1.3; text-wrap: balance; }
-  .seg-objection blockquote { margin: 0; padding: 0.2rem 0 0.2rem 1rem; border-left: 2px solid #ff5d5d; color: #ffd0d0; font-size: 1.1rem; font-style: italic; }
+  .seg-objection blockquote { margin: 0; padding: 0.2rem 0 0.2rem 1rem; border-left: 2px solid rgba(255, 255, 255, 0.25); color: rgba(255, 255, 255, 0.86); font-size: 1.1rem; font-style: italic; }
   .seg-answer { margin: 0 0 1.5rem; color: rgba(255, 255, 255, 0.86); }
   @media (max-width: 860px) {
     .seg-tabs { grid-template-columns: 1fr; gap: 0.6rem; }
