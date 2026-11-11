@@ -227,18 +227,48 @@ export default {
   "segments": {
     "eyebrow": "Who it is for",
     "title": "You own the product. We build it",
+    "intro": "Pick the one that sounds like you.",
+    "labels": {
+      "situation": "Sounds familiar",
+      "gain": "What changes",
+      "fear": "What you worry about",
+      "answer": "How we handle it",
+      "cta": "Price my project"
+    },
     "items": [
       {
         "title": "Agencies that build",
-        "text": "Keep more margin on every build, without trading quality for budget."
+        "text": "Keep more margin on every build, without trading quality for budget.",
+        "situation": "One to five developers of your own, or freelancers. The client pushes on price and deadline, and rework eats the margin.",
+        "gain": "More margin on every project, without choosing between the budget and the quality.",
+        "fear": "“AI code will fall apart, and we'll be the ones cleaning it up.”",
+        "answer": "Every app stands on DartWay, our open framework. Each task passes code review and tests before it counts, and the code lives in your repository. A fixed price for the agreed scope.",
+        "preset": {
+          "for": 0
+        }
       },
       {
         "title": "Agencies that hand the build off",
-        "text": "Sell the development yourselves instead of passing it, and the result, to someone else."
+        "text": "Sell the development yourselves instead of passing it, and the result, to someone else.",
+        "situation": "Design and product are yours, the code is a contractor's. The result isn't yours, the deadlines sit with someone else, and so does the margin.",
+        "gain": "You sell the development yourselves and keep the result.",
+        "fear": "“They'll take our client, and we won't see what's going on.”",
+        "answer": "White label: the client and the sign-off stay with you. Every screen is checked against your design before you see it, and your designer accepts it. A test build from the first week.",
+        "preset": {
+          "for": 0
+        }
       },
       {
         "title": "Builders who vibe-code",
-        "text": "Ship apps you can stand behind once real users and real money come in."
+        "text": "Ship apps you can stand behind once real users and real money come in.",
+        "situation": "An MVP built in Lovable, Cursor or Bolt. Users or money have arrived, and now nobody trusts the code, it's scary to touch, and it never reaches the stores.",
+        "gain": "An app you can stand behind, in the App Store and Google Play.",
+        "fear": "“It'll be expensive and slow, and they'll say ‘we have to rewrite everything’.”",
+        "answer": "We start with a code review: continue or rebuild, with a price for each path. The first paid stage is small, so you decide on a result.",
+        "preset": {
+          "for": 1,
+          "have": 3
+        }
       }
     ]
   }

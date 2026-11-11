@@ -265,6 +265,23 @@ const cfg = { ru, email: EMAIL, t };
       });
     });
 
+    // A segment's button fills in its answers (only where the visitor hasn't answered) and opens the builder.
+    document.querySelectorAll('[data-brief-preset]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        let preset = {};
+        try { preset = JSON.parse(a.dataset.briefPreset); } catch (err) {}
+        Object.entries(preset).forEach(([key, i]) => {
+          if (state[key] && state[key].length) return;
+          const chip = root.querySelectorAll(`.brief-q[data-key="${key}"] .brief-chip`)[i];
+          if (chip) chip.click();
+        });
+        goToCard();
+        const next = root.querySelector('.brief-q.is-next .brief-chip');
+        if (next) setTimeout(() => next.focus({ preventScroll: true }), 600);
+      });
+    });
+
     tg.addEventListener('click', () => {
       const done = () => { root.querySelector('[data-copied]').hidden = false; };
       try { navigator.clipboard?.writeText(text()).then(done, () => {}); } catch (e) {}

@@ -4,6 +4,7 @@ import WorkGrid from './WorkGrid.astro';
 import Contact from './Contact.astro';
 import FactoryLine from './FactoryLine.astro';
 import SplitRoles from './SplitRoles.astro';
+import Segments from './Segments.astro';
 const { t, agency = false } = Astro.props;
 const prefix = t.lang === 'ru' ? '/ru' : '';
 // The price ticket: the builder's first question on the first screen.
@@ -108,15 +109,7 @@ const icons = [
 
 
   {!agency && (
-    <section class="wrap segments">
-      <p class="eyebrow">{t.segments.eyebrow}</p>
-      <h2>{t.segments.title}</h2>
-      <div class="delivery-steps pillar-grid">
-        {t.segments.items.map((item: { title: string; text: string }) => (
-          <article><h3>{item.title}</h3><p>{item.text}</p></article>
-        ))}
-      </div>
-    </section>
+    <Segments s={t.segments} />
   )}
 
   {agency ? (
