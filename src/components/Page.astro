@@ -5,30 +5,16 @@ import Contact from './Contact.astro';
 import FactoryLine from './FactoryLine.astro';
 import SplitRoles from './SplitRoles.astro';
 import Segments from './Segments.astro';
+import NotVibe from './NotVibe.astro';
 const { t, agency = false } = Astro.props;
 const prefix = t.lang === 'ru' ? '/ru' : '';
-// The price ticket: the builder's first question on the first screen.
-const ru = t.lang === 'ru';
-const q = ru
-  ? { tag: 'Заявка на цену', price: 'Фиксированная цена', due: 'на следующий рабочий день', q: 'Что у вас есть?',
-      opts: [['Макет в Figma', 'цена прямо по экранам'], ['Прототип', 'кликабельный или в коде'], ['Только описание', 'объём соберём вместе'], ['Готовое приложение', 'осмотр кода, два пути']],
-      note: 'Ещё три клика — и письмо готово. Отправляете сами: без форм и созвонов.' }
-  : { tag: 'Price ticket', price: 'Your fixed price', due: 'by the next business day', q: 'What do you have?',
-      opts: [['Figma mockup', 'priced straight from the screens'], ['Prototype', 'clickable or in code'], ['Just a brief', 'we shape the scope together'], ['An existing app', 'code review, two paths']],
-      note: 'Three more taps and your message is written. You send it yourself: no forms, no calls.' };
-const icons = [
-  '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 8h16M9 8v13"/>',
-  '<path d="M6 3l12 8-5 1.5L10 18z"/>',
-  '<path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/>',
-  '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>',
-];
 ---
 <SiteLayout
   lang={t.lang}
   title={agency ? `${t.agency.title} — DartWay` : t.title}
   description={agency ? t.agency.description : t.description}
 >
-  <section class="hero delivery-hero has-ticket">
+  <section class="hero delivery-hero lean">
     <p class="eyebrow">{agency ? t.agency.eyebrow : t.hero.eyebrow}</p>
     <h1>{agency ? t.agency.title : t.hero.title}</h1>
     <p class="lead">{agency ? t.agency.lead : t.hero.lead}</p>
@@ -39,42 +25,12 @@ const icons = [
     <div class="meta">
       {t.hero.meta.map((item: string) => <span>{item}</span>)}
     </div>
-    <aside class="ticket" aria-labelledby="ticket-q">
-      <div class="ticket-head">
-        <span>{q.tag}</span>
-        <span class="ticket-steps" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>
-        <span>1 / 4</span>
-      </div>
-      <p class="ticket-price">{q.price}</p>
-      <p class="ticket-due" data-due>{q.due}</p>
-      <p class="ticket-q" id="ticket-q">{q.q}</p>
-      <div class="ticket-opts">
-        {q.opts.map(([label, sub], i) => (
-          <a class="ticket-opt" href="#contact" data-hero-pick={i} data-cta="hero-ticket">
-            <svg viewBox="0 0 24 24" aria-hidden="true" set:html={icons[i]} />
-            <strong>{label}</strong>
-            <span>{sub}</span>
-          </a>
-        ))}
-      </div>
-      <p class="ticket-note">{q.note}</p>
-    </aside>
   </section>
 
 
   {!agency && <FactoryLine f={t.factory} />}
 
-  {!agency && (
-    <section class="wrap pillars">
-      <p class="eyebrow">{t.pillars.eyebrow}</p>
-      <h2>{t.pillars.title}</h2>
-      <div class="delivery-steps pillar-grid">
-        {t.pillars.items.map((item: { title: string; text: string }) => (
-          <article><h3>{item.title}</h3><p>{item.text}</p></article>
-        ))}
-      </div>
-    </section>
-  )}
+  {!agency && <NotVibe p={t.pillars} />}
 
 
   {agency && (

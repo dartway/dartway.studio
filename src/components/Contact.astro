@@ -225,7 +225,7 @@ const cfg = { ru, email: EMAIL, t };
       dock.classList.toggle('on', on);
       dock.inert = !on;
     };
-    const top = document.querySelector('.hero .ticket') || document.querySelector('h1');
+    const top = document.querySelector('.hero .actions') || document.querySelector('h1');
     if ('IntersectionObserver' in window) {
       if (top) new IntersectionObserver(([e]) => { topSeen = e.isIntersecting || e.boundingClientRect.top > 0; sync(); }).observe(top);
       new IntersectionObserver(([e]) => { atBuilder = e.isIntersecting || e.boundingClientRect.top < 0; sync(); }, { rootMargin: '0px 0px -25% 0px' }).observe(root);
@@ -252,18 +252,6 @@ const cfg = { ru, email: EMAIL, t };
       });
     });
     link.addEventListener('input', render);
-
-    // The hero ticket answers the first question here and brings the visitor to the next one.
-    document.querySelectorAll('[data-hero-pick]').forEach((a) => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const chip = root.querySelectorAll('.brief-q[data-key="have"] .brief-chip')[Number(a.dataset.heroPick)];
-        if (chip && chip.getAttribute('aria-pressed') !== 'true') chip.click();
-        goToCard();
-        const next = root.querySelector('.brief-q.is-next .brief-chip');
-        if (next) setTimeout(() => next.focus({ preventScroll: true }), 600);
-      });
-    });
 
     // A segment's button fills in its answers (only where the visitor hasn't answered) and opens the builder.
     document.querySelectorAll('[data-brief-preset]').forEach((a) => {

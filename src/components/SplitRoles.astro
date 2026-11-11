@@ -1,39 +1,39 @@
 ---
-// Who does what on a project: the agency's side and ours, phase by phase, and what always stays with the agency.
+// Who does what on a project: the product team's side and ours, phase by phase, and what always stays with the team.
 const { lang = 'en' } = Astro.props;
 const ru = lang === 'ru';
 const t = ru
   ? {
       eyebrow: 'Кто что делает',
-      title: 'Заказчик остаётся вашим. Сборка — наша',
+      title: 'Продукт остаётся вашим. Сборка — наша',
       intro: 'С вашей стороны — один человек, который решает по продукту. Остальное на нас.',
       you: 'Ваша сторона',
       we: 'DartWay',
       rows: [
         { phase: 'Старт', you: 'Присылаете макет, прототип или описание.', we: 'За один рабочий день — объём, фиксированная цена и срок.' },
         { phase: 'Сборка', you: 'Отвечаете на вопросы по продукту. Это один человек, не команда.', we: 'Агенты собирают, проверяют и сверяют каждый экран с макетом. Тестовая версия — с первой недели.' },
-        { phase: 'Правки', you: 'Открываете тестовую сборку, присылаете замечания или показываете заказчику.', we: 'Замечание становится правкой в тот же день, а не задачей на следующий спринт.' },
-        { phase: 'Выпуск', you: 'Принимаете работу. Заказчик принимает её у вас.', we: 'Публикуем в магазины в ваших аккаунтах или аккаунтах заказчика, остаёмся на правки и следующую версию.' },
+        { phase: 'Правки', you: 'Открываете тестовую сборку, присылаете замечания, показываете пользователям.', we: 'Замечание становится правкой в тот же день, а не задачей на следующий спринт.' },
+        { phase: 'Выпуск', you: 'Принимаете работу. Без вашего «да» ничего не выходит.', we: 'Публикуем в магазины в ваших аккаунтах, остаёмся на правки и следующую версию.' },
       ],
       keepTitle: 'Всегда остаётся у вас',
-      keep: ['Заказчик', 'Решения по продукту и дизайну', 'Код', 'Данные', 'Инфраструктура', 'Аккаунты магазинов', 'Ваш бренд — white label'],
-      keepNote: 'Без привязки к нам: уходите — забираете всё. Если нужно, работаем под вашим брендом: заказчик о нас может не знать.',
+      keep: ['Решения по продукту и дизайну', 'Код', 'Данные', 'Инфраструктура', 'Аккаунты магазинов', 'Ваш бренд — white label'],
+      keepNote: 'Без привязки к нам: уходите — забираете всё. Агентствам — white label: ваш заказчик о нас может не знать.',
     }
   : {
       eyebrow: 'Who does what',
-      title: 'Your client stays yours. The build is ours',
+      title: 'The product stays yours. The build is ours',
       intro: 'One person on your side decides on the product. Everything else is on us.',
       you: 'Your side',
       we: 'DartWay',
       rows: [
         { phase: 'Start', you: 'Send a mockup, a prototype or a brief.', we: 'Within one business day: the scope, a fixed price and the timeline.' },
         { phase: 'Build', you: 'Answer product questions. That is one person, not a team.', we: 'Agents build, review and compare every screen with your design. A working test version from the first week.' },
-        { phase: 'Changes', you: 'Open the test build, send feedback, or show it to your client.', we: 'Your feedback becomes a change the same day, not a ticket for the next sprint.' },
-        { phase: 'Release', you: 'Accept the work. Your client accepts it from you.', we: "We publish to the stores in your or your client's accounts and stay on for fixes and the next version." },
+        { phase: 'Changes', you: 'Open the test build, send feedback, show it to your users.', we: 'Your feedback becomes a change the same day, not a ticket for the next sprint.' },
+        { phase: 'Release', you: 'Accept the work. Nothing ships without your OK.', we: 'We publish to the stores in your accounts and stay on for fixes and the next version.' },
       ],
       keepTitle: 'Always stays with you',
-      keep: ['The client', 'Product and design decisions', 'Code', 'Data', 'Infrastructure', 'Store accounts', 'Your brand — white label'],
-      keepNote: "No lock-in: if you leave, you leave with everything. White label if you need it: your client doesn't have to know about us.",
+      keep: ['Product and design decisions', 'Code', 'Data', 'Infrastructure', 'Store accounts', 'Your brand — white label'],
+      keepNote: "No lock-in: if you leave, you leave with everything. For agencies, white label: your client doesn't have to know about us.",
     };
 ---
 <section class="roles-split" id="delivery" aria-labelledby="split-title">

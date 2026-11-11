@@ -1,12 +1,12 @@
 export default {
   "lang": "en",
   "title": "DartWay — a dark factory for apps",
-  "description": "AI agents build your client's app all the way to production: pixel-perfect to the design, strict coding rules and tests, senior developer supervision. Fixed price.",
+  "description": "AI agents build your app all the way to production: pixel-perfect to your design, strict coding rules and tests, senior developer supervision. Fixed price.",
   "stats": { "inProgress": "projects in progress", "published": "live on the App Store and Google Play" },
   "hero": {
     "eyebrow": "AI-native development",
     "title": "A dark factory for apps",
-    "lead": "AI agents build the whole app, from design to production. You own the product.",
+    "lead": "AI agents build your app all the way to production, pixel-perfect to your design. Your product, your code.",
     "primary": "Get a price for your project",
     "secondary": "See the work",
     "meta": [
@@ -38,7 +38,7 @@ export default {
   "work": {
     "eyebrow": "Built this way",
     "title": "Apps in production and in progress",
-    "text": "U90 and Tvaity are live on the App Store and Google Play. Two projects are under NDA: built for an agency that keeps the client, the product and the design.",
+    "text": "U90 and Tvaity are live on the App Store and Google Play. Two more are under NDA.",
     "all": "All projects"
   },
   "delivery": {
@@ -165,7 +165,7 @@ export default {
     ]
   },
   "faq": {
-    "eyebrow": "Questions agencies ask",
+    "eyebrow": "Questions product teams ask",
     "title": "Before you send a project",
     "items": [
       {
@@ -185,8 +185,8 @@ export default {
         "a": "Every screen is compared with the mockup before you see it. Your designer accepts the result."
       },
       {
-        "q": "Who talks to our client?",
-        "a": "You do. We can work under your brand, and your client doesn't have to know about us."
+        "q": "Who decides on the product?",
+        "a": "You do. One person on your side answers product questions and accepts the work. We never decide them for you."
       },
       {
         "q": "What stack do you build on?",
@@ -209,25 +209,51 @@ export default {
   "pillars": {
     "eyebrow": "Not vibe coding",
     "title": "Anyone can generate an app in a day. Shipping one is different",
-    "items": [
+    "intro": "Vibe coding gets you a demo. A product needs structure, checks and someone who answers for it. Here is what changes when your app goes down our line.",
+    "cols": {
+      "vibe": "Vibe coding",
+      "ours": "DartWay line",
+      "proof": "How you can check"
+    },
+    "rows": [
       {
-        "title": "Pixel-perfect to the design",
-        "text": "Every screen is compared with the mockup. A mismatch goes back to the agents in the same round, not to your client."
+        "topic": "Structure",
+        "vibe": "Every prompt invents its own structure. By the tenth feature nobody knows how the app holds together.",
+        "ours": "Every app stands on DartWay, our open framework: one architecture and the same rules for every agent.",
+        "proof": "The framework is open source on GitHub",
+        "href": "https://github.com/dartway/dartway"
       },
       {
-        "title": "Strict coding rules and tests",
-        "text": "Agents build on DartWay, our own production framework: one architecture, automated tests and code review for every change."
+        "topic": "Checks",
+        "vibe": "It works in the demo. The edge cases are left for your users to find.",
+        "ours": "A second agent reviews every task and the tests run. What fails goes back to the agents, not to you.",
+        "proof": "Code review and CI on every task"
       },
       {
-        "title": "Senior developer supervision",
-        "text": "Evgenii Novikov, the founder, owns the technical result: decisions, releases and what happens after launch. Ten years in IT, five of them running a mobile studio."
+        "topic": "Design",
+        "vibe": "Close enough to the mockup.",
+        "ours": "Every screen is compared with your mockup before you see it. A mismatch goes back in the same round.",
+        "proof": "Your designer accepts the screens"
+      },
+      {
+        "topic": "Responsibility",
+        "vibe": "When it breaks, nobody answers for it.",
+        "ours": "A senior engineer agrees the spec with you and signs off every release.",
+        "proof": "Evgenii Novikov: in IT since 2016, five years running a Flutter studio"
+      },
+      {
+        "topic": "After launch",
+        "vibe": "It rarely reaches the stores, and once it does, it is scary to touch.",
+        "ours": "Released to the App Store and Google Play, then supported on the same line. The code is yours: any Flutter developer can continue it.",
+        "proof": "U90 and Tvaity are live in both stores",
+        "href": "/work/"
       }
     ]
   },
   "segments": {
     "eyebrow": "Who it is for",
-    "title": "You own the product. We build it",
-    "intro": "Pick the one that sounds like you.",
+    "title": "Agency, business or startup: the same line",
+    "intro": "Pick yours: what usually hurts, what you worry about and how we handle it.",
     "labels": {
       "situation": "Sounds familiar",
       "gain": "What changes",
@@ -237,37 +263,36 @@ export default {
     },
     "items": [
       {
-        "title": "Agencies that build",
-        "text": "Keep more margin on every build, without trading quality for budget.",
-        "situation": "One to five developers of your own, or freelancers. The client pushes on price and deadline, and rework eats the margin.",
-        "gain": "More margin on every project, without choosing between the budget and the quality.",
-        "fear": "“AI code will fall apart, and we'll be the ones cleaning it up.”",
-        "answer": "Every app stands on DartWay, our open framework. Each task passes code review and tests before it counts, and the code lives in your repository. A fixed price for the agreed scope.",
+        "title": "Agency",
+        "text": "Sell app development under your brand and keep the margin.",
+        "situation": "The client, the design and the product are yours. The code is built by a small team of your own or handed to a contractor, and rework or the contractor's share eats the margin.",
+        "gain": "You sell the development yourselves: more margin on every project, and the client stays yours.",
+        "fear": "“AI code will fall apart, and they'll take our client.”",
+        "answer": "White label: the client and the sign-off stay with you, and every screen is checked against your designer's mockup. Each task passes code review and tests, and the code lives in your repository. Two of our projects are built for an agency, under NDA.",
         "preset": {
           "for": 0
         }
       },
       {
-        "title": "Agencies that hand the build off",
-        "text": "Sell the development yourselves instead of passing it, and the result, to someone else.",
-        "situation": "Design and product are yours, the code is a contractor's. The result isn't yours, the deadlines sit with someone else, and so does the margin.",
-        "gain": "You sell the development yourselves and keep the result.",
-        "fear": "“They'll take our client, and we won't see what's going on.”",
-        "answer": "White label: the client and the sign-off stay with you. Every screen is checked against your design before you see it, and your designer accepts it. A test build from the first week.",
+        "title": "Small business",
+        "text": "Your own app for your customers, at a fixed price, without hiring a team.",
+        "situation": "You run a business (a school, a clinic, a studio, a service) and your customers need an app: booking, payments, courses, a loyalty card. Studios quote months and open-ended budgets; freelancers disappear.",
+        "gain": "Your app in the App Store and Google Play, at a price fixed before work starts.",
+        "fear": "“It'll cost a fortune, and we won't understand what we're paying for.”",
+        "answer": "A fixed price for an agreed scope by the next business day. You see a working test build from the first week and accept every step. Tvaity, an online programmes business, runs on an app we build and support.",
         "preset": {
-          "for": 0
+          "for": 1
         }
       },
       {
-        "title": "Builders who vibe-code",
-        "text": "Ship apps you can stand behind once real users and real money come in.",
-        "situation": "An MVP built in Lovable, Cursor or Bolt. Users or money have arrived, and now nobody trusts the code, it's scary to touch, and it never reaches the stores.",
-        "gain": "An app you can stand behind, in the App Store and Google Play.",
-        "fear": "“It'll be expensive and slow, and they'll say ‘we have to rewrite everything’.”",
-        "answer": "We start with a code review: continue or rebuild, with a price for each path. The first paid stage is small, so you decide on a result.",
+        "title": "Startup founder",
+        "text": "From an idea or a vibe-coded MVP to a product in the stores.",
+        "situation": "You have an idea, a prototype or an MVP built in Lovable, Cursor or Bolt. Users or investors are coming, the code can't take it, and hiring a team takes months.",
+        "gain": "A production app on code you own, which any Flutter developer can continue.",
+        "fear": "“They'll say ‘we have to rewrite everything’, burn the budget and lock me in.”",
+        "answer": "Have an MVP? We start with a code review: continue or rebuild, with a price for each path. The first paid stage is small, so you decide on a result. The code is yours, on an open framework.",
         "preset": {
-          "for": 1,
-          "have": 3
+          "for": 1
         }
       }
     ]
