@@ -29,7 +29,7 @@ const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
       <div class="work-head">
         <div class="work-meta">
           <span>{content.category}</span>
-          <span class:list={['work-status', ['Published', 'В магазинах', 'Handed over to support', 'Передано на поддержку'].includes(content.status) ? 'st-live' : 'st-soon']}>{content.status}</span>
+          <span class:list={['work-status', ['Published', 'В магазинах'].includes(content.status) ? 'st-live' : 'st-soon']}>{content.status}</span>
         </div>
         <h3>{content.title}<span aria-hidden="true">↗</span></h3>
       </div>

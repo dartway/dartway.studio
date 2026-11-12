@@ -132,8 +132,8 @@ export const caseStudies: CaseStudy[] = [
       en: {
         title: 'Tvaity',
         category: 'Financial literacy · iOS, Android and web',
-        status: 'Handed over to support',
-        statusDetail: 'Live on the App Store, Google Play and the web, with paying users. Our part is complete and handed over to support.',
+        status: 'Published',
+        statusDetail: 'Live on the App Store, Google Play and the web, with paying users. Our part is complete; the app is handed over to the client’s in-house team.',
         summary: 'Development and releases of a live financial-literacy app: a step-by-step programme, a financial rating, lessons with video and a community by track.',
         challenge: [
           'A live app has a different delivery context from a new prototype. People already pay for it, go through the programme and come back to their track’s community every day. Changes must be assessed against those existing journeys.',
@@ -168,8 +168,8 @@ export const caseStudies: CaseStudy[] = [
       ru: {
         title: 'Tvaity',
         category: 'Финансовая грамотность · iOS, Android и веб',
-        status: 'Передано на поддержку',
-        statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Наша часть завершена и передана на поддержку.',
+        status: 'В магазинах',
+        statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Наша часть завершена, приложение передано внутренней команде заказчика.',
         summary: 'Развитие и релизы действующего приложения по финансовой грамотности: пошаговый тренажёр, финансовый рейтинг, уроки с видео и сообщество по трекам.',
         challenge: [
           'У действующего приложения другой контекст, чем у нового прототипа. Люди уже платят, проходят тренажёр и каждый день возвращаются в сообщество своего трека. Изменения нужно оценивать с учётом этих существующих сценариев.',

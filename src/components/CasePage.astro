@@ -7,7 +7,7 @@ const { project, lang = 'en' } = Astro.props;
 const ru = lang === 'ru';
 const content = project.locales[lang];
 const prefix = ru ? '/ru' : '';
-const live = ['Published', 'В магазинах', 'Handed over to support', 'Передано на поддержку'].includes(content.status);
+const live = ['Published', 'В магазинах'].includes(content.status);
 const idx = caseStudies.findIndex((p) => p.slug === project.slug);
 const next = caseStudies[(idx + 1) % caseStudies.length];
 const nextContent = next.locales[lang as 'en' | 'ru'];
