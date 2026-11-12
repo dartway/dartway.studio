@@ -17,7 +17,6 @@ const sections = [
   { id: 'challenge', title: ru ? 'Задача' : 'The challenge', paragraphs: content.challenge },
   { id: 'delivery', title: ru ? 'Что умеет приложение' : 'What the app does', paragraphs: content.ourWork },
   ...(content.hardPart ? [{ id: 'hard-part', eyebrow: ru ? 'Самое сложное' : 'The hard part', title: content.hardPart.title, paragraphs: content.hardPart.text }] : []),
-  { id: 'team', title: ru ? 'Как шла работа' : 'How it was built', paragraphs: [...content.clientTeam, ...content.collaboration] },
   { id: 'result', title: ru ? 'Где сейчас' : 'Where it is now', paragraphs: content.result },
 ];
 ---
