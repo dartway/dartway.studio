@@ -80,6 +80,8 @@ const tickets = f.tickets.map((label: string, i: number) => ({
 <style is:global set:html={css}></style>
 <style is:global>
   .factory { position: relative; padding: 0.5rem 0 var(--sy); background: #121214; overflow: hidden; }
+  /* a hairline under the hero's buttons, so the line reads as its own block */
+  .factory > .wrap::before { content: ''; display: block; height: 1px; margin-bottom: 2.5rem; background: rgba(255, 255, 255, 0.1); }
   .factory .line { position: relative; margin-top: 0.5rem; padding-top: 4.2rem; }
   .factory .factory-head { margin-top: 3.5rem; }
   .factory .factory-head h2 { margin-top: 0; }
@@ -117,6 +119,7 @@ const tickets = f.tickets.map((label: string, i: number) => ({
 
   @media (max-width: 860px) {
     .factory .line { padding-top: 0; padding-left: 8.4rem; }
+    .factory > .wrap::before { margin-bottom: 1rem; }
     .factory .track { left: 7.2rem; right: auto; top: calc(50% / var(--n)); bottom: calc(50% / var(--n)); width: 2px; height: auto;
       background: repeating-linear-gradient(180deg, rgba(255, 176, 0, 0.55) 0 14px, transparent 14px 22px); background-size: 2px 22px; animation-name: belt-y; }
     @keyframes belt-y { to { background-position: 0 22px; } }

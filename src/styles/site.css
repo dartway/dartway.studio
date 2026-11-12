@@ -304,9 +304,10 @@ section.case-visuals { padding-top: 0; padding-bottom: 3rem; display: flex; flex
 @keyframes belt { to { background-position: 22px 0; } }
 
 
+/* home hero sized by its content at every width, so the first stations of the factory line show on the first screen */
+.delivery-hero.lean { min-height: 0; padding-top: 6.5rem; padding-bottom: 2.5rem; }
 @media (min-width: 1000px) {
-  /* hero sized by its content, so the factory line shows at the bottom of the first screen */
-  .delivery-hero.lean { min-height: 0; padding-top: 7.5rem; padding-bottom: 2.5rem; }
+  .delivery-hero.lean { padding-top: 7.5rem; padding-bottom: 3.5rem; }
   .delivery-hero.lean h1 { font-size: clamp(3rem, 6vw, 5.2rem); text-wrap: balance; }
   .delivery-hero.lean .lead { max-width: 640px; }
 }

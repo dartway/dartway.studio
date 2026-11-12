@@ -18,12 +18,10 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
     <p class="eyebrow">{agency ? t.agency.eyebrow : t.hero.eyebrow}</p>
     <h1>{agency ? t.agency.title : t.hero.title}</h1>
     <p class="lead">{agency ? t.agency.lead : t.hero.lead}</p>
-    {agency && (
-      <div class="actions" data-first-cta>
-        <a class="btn" href="#contact" data-cta="hero-contact">{t.hero.primary}</a>
-        <a class="more" href={`${prefix}/work/`} data-cta="hero-work">{t.hero.secondary}</a>
-      </div>
-    )}
+    <div class="actions">
+      <a class="btn" href="#contact" data-cta="hero-contact">{t.hero.primary}</a>
+      <a class="more" href={`${prefix}/work/`} data-cta="hero-work">{t.hero.secondary}</a>
+    </div>
   </section>
 
 
