@@ -26,6 +26,13 @@ const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
       style={`--case-accent:${project.accent || '#ffb000'}`}
       data-cta={`case-${project.slug}`}
     >
+      <div class="work-head">
+        <div class="work-meta">
+          <span>{content.category}</span>
+          <span class:list={['work-status', ['Published', 'В магазинах', 'Handed over to support', 'Передано на поддержку'].includes(content.status) ? 'st-live' : 'st-soon']}>{content.status}</span>
+        </div>
+        <h3>{content.title}<span aria-hidden="true">↗</span></h3>
+      </div>
       <div class:list={['work-cover', { 'has-image': !!visual && !screens.length, 'has-screens': screens.length > 0 }]}>
         {screens.length > 0 ? (
           <div class="work-screens">{screens.map((v) => <Replica screen={v.screen} lang={lang} decorative />)}</div>
@@ -40,11 +47,6 @@ const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
         )}
       </div>
       <div class="work-copy">
-        <div class="work-meta">
-          <span>{content.category}</span>
-          <span class:list={['work-status', ['Published', 'В магазинах'].includes(content.status) ? 'st-live' : 'st-soon']}>{content.status}</span>
-        </div>
-        <h3>{content.title}<span aria-hidden="true">↗</span></h3>
         <p>{content.summary}</p>
         <span class="read-case">
           {lang === 'ru' ? 'История проекта' : 'Explore the project'}

@@ -39,9 +39,9 @@ export default {
     ]
   },
   "work": {
-    "eyebrow": "Собрано так",
-    "title": "Приложения, которые сошли с этой линии",
-    "text": "U90 и Твайти работают в App Store и Google Play. Ещё два — под NDA.",
+    "eyebrow": "Портфолио",
+    "title": "Кейсы",
+    "text": "U90 и Твайти — в App Store и Google Play, остальные готовятся к релизу. Два проекта — под NDA.",
     "all": "Все проекты"
   },
   "delivery": {

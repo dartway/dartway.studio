@@ -132,8 +132,8 @@ export const caseStudies: CaseStudy[] = [
       en: {
         title: 'Tvaity',
         category: 'Financial literacy · iOS, Android and web',
-        status: 'Published',
-        statusDetail: 'Live on the App Store, Google Play and the web, with paying users. We develop and support it.',
+        status: 'Handed over to support',
+        statusDetail: 'Live on the App Store, Google Play and the web, with paying users. Our part is complete and handed over to support.',
         summary: 'Development and releases of a live financial-literacy app: a step-by-step programme, a financial rating, lessons with video and a community by track.',
         challenge: [
           'A live app has a different delivery context from a new prototype. People already pay for it, go through the programme and come back to their track’s community every day. Changes must be assessed against those existing journeys.',
@@ -141,7 +141,7 @@ export const caseStudies: CaseStudy[] = [
         ],
         clientTeam: [
           'The client has its own product team and project management. Priorities and reported issues are coordinated through the client’s workflow, with acceptance on their side.',
-          'DartWay’s role in the project covers application development and production support. The client continues to own the programme, content and product priorities.',
+          'DartWay’s role in the project covered application development and production support. The client continues to own the programme, content and product priorities.',
         ],
         ourWork: [
           'The app teaches people to keep their finances under control on iOS, Android and the web. Its core is a step-by-step programme in modules: budget, debts, a safety cushion, financial resilience. A test gives a financial rating and a level, the home screen keeps the current lesson and a personal financial goal in view, and each track has its own community feed with topics, posts and reactions. Around them sit lessons with video, offline viewing and paid access to courses.',
@@ -168,8 +168,8 @@ export const caseStudies: CaseStudy[] = [
       ru: {
         title: 'Tvaity',
         category: 'Финансовая грамотность · iOS, Android и веб',
-        status: 'В магазинах',
-        statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Развиваем и сопровождаем.',
+        status: 'Передано на поддержку',
+        statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Наша часть завершена и передана на поддержку.',
         summary: 'Развитие и релизы действующего приложения по финансовой грамотности: пошаговый тренажёр, финансовый рейтинг, уроки с видео и сообщество по трекам.',
         challenge: [
           'У действующего приложения другой контекст, чем у нового прототипа. Люди уже платят, проходят тренажёр и каждый день возвращаются в сообщество своего трека. Изменения нужно оценивать с учётом этих существующих сценариев.',
@@ -177,7 +177,7 @@ export const caseStudies: CaseStudy[] = [
         ],
         clientTeam: [
           'У заказчика есть собственная продуктовая команда и управление проектом. Приоритеты и обращения проходят через её рабочий процесс, приёмка также остаётся на стороне клиента.',
-          'Роль DartWay включает развитие приложения и техническое сопровождение. Заказчик продолжает отвечать за программу, содержание и порядок продуктовых изменений.',
+          'Роль DartWay включала развитие приложения и техническое сопровождение. Заказчик продолжает отвечать за программу, содержание и порядок продуктовых изменений.',
         ],
         ourWork: [
           'Приложение учит держать финансы под контролем — на iOS, Android и в вебе. В основе пошаговый тренажёр по модулям: бюджет, долги, подушка безопасности, финансовая устойчивость. Тест даёт финансовый рейтинг и уровень, на главной — текущий урок и личная финансовая цель, у каждого трека своя лента сообщества с темами, постами и реакциями. Вокруг — уроки с видео, в том числе офлайн, и платный доступ к курсам.',

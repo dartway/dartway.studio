@@ -166,11 +166,13 @@ h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 0.6rem; }
 .work-type > span { color: var(--case-accent); font-size: 0.85rem; }
 .work-type strong { display: block; font-size: clamp(2.2rem, 4vw, 3.5rem); line-height: 1.1; margin: 1rem 0; letter-spacing: -0.04em; }
 .work-type p { max-width: 360px; margin: 0; }
-.work-copy { padding: 1.3rem 0 0; }
+.work-copy { padding: 1rem 0 0; }
+.work-copy p { margin-top: 0; }
 .work-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; justify-content: space-between; color: var(--muted); font-size: 0.8rem; }
 .work-meta span:last-child { color: var(--case-accent); }
-.work-copy h3 { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.8rem; font-size: 1.7rem; }
-.work-copy h3 > span { color: var(--case-accent); }
+.work-head { padding-top: 1.1rem; }
+.work-head h3 { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; min-height: 2lh; margin: 0.6rem 0 0; font-size: 1.7rem; }
+.work-head h3 > span { color: var(--case-accent); }
 .work-copy p { font-size: 1rem; }
 .read-case { font-weight: 600; color: var(--text); }
 .release-proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }

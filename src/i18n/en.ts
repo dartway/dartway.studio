@@ -39,9 +39,9 @@ export default {
     ]
   },
   "work": {
-    "eyebrow": "Built this way",
-    "title": "Apps that came off this line",
-    "text": "U90 and Tvaity are live on the App Store and Google Play. Two more are under NDA.",
+    "eyebrow": "Our work",
+    "title": "Case studies",
+    "text": "U90 and Tvaity are on the App Store and Google Play; the rest are preparing for release. Two projects are under NDA.",
     "all": "All projects"
   },
   "delivery": {
