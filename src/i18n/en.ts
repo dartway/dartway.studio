@@ -41,7 +41,6 @@ export default {
   "work": {
     "eyebrow": "Our work",
     "title": "Case studies",
-    "text": "U90 and Tvaity are on the App Store and Google Play; the rest are preparing for release. Two projects are under NDA.",
     "all": "All projects"
   },
   "delivery": {

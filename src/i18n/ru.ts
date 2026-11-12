@@ -41,7 +41,6 @@ export default {
   "work": {
     "eyebrow": "Портфолио",
     "title": "Кейсы",
-    "text": "U90 и Твайти — в App Store и Google Play, остальные готовятся к релизу. Два проекта — под NDA.",
     "all": "Все проекты"
   },
   "delivery": {
