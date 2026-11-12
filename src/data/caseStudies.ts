@@ -126,84 +126,6 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
-    slug: 'tvaity',
-    accent: '#ffca8c',
-    locales: {
-      en: {
-        title: 'Tvaity',
-        category: 'Financial literacy · iOS, Android and web',
-        status: 'Published',
-        statusDetail: 'Live on the App Store, Google Play and the web, with paying users. Our part is complete; the app is handed over to the client’s in-house team.',
-        summary: 'Development and releases of a live financial-literacy app: a step-by-step programme, a financial rating, lessons with video and a community by track.',
-        challenge: [
-          'A live app has a different delivery context from a new prototype. People already pay for it, go through the programme and come back to their track’s community every day. Changes must be assessed against those existing journeys.',
-          'For the product team, support means turning concrete user problems into checked changes and releases. Access, video, progress and account recovery all touch the basic expectation that a user can return to what they paid for.',
-        ],
-        clientTeam: [
-          'The client has its own product team and project management. Priorities and reported issues are coordinated through the client’s workflow, with acceptance on their side.',
-          'DartWay’s role in the project covered application development and production support. The client continues to own the programme, content and product priorities.',
-        ],
-        ourWork: [
-          'The app teaches people to keep their finances under control on iOS, Android and the web. Its core is a step-by-step programme in modules: budget, debts, a safety cushion, financial resilience. A test gives a financial rating and a level, the home screen keeps the current lesson and a personal financial goal in view, and each track has its own community feed with topics, posts and reactions. Around them sit lessons with video, offline viewing and paid access to courses.',
-          'Our work has included implementing changes, investigating reported application problems and preparing fixes for release. Video playback, access to paid content and account recovery are examples of the areas addressed in the support workflow.',
-          'Delivery is organised around the existing product: understand the reported scenario, make the change, verify the behaviour and prepare a version the client can accept. Release work belongs to the same responsibility as the code change itself.',
-        ],
-        collaboration: [
-          'The client’s product team provides priorities and the context behind a reported issue. DartWay works through the technical investigation and implementation, then returns a change that can be checked against the original scenario.',
-          'This keeps support connected to the product owner. It is particularly relevant for agencies that want a technical partner for an existing app while retaining planning, client communication and acceptance within their own team.',
-        ],
-        result: [
-          'The client named the quality bar himself: the service has to work steadily. The app ships regular releases to both stores and the web, and its community feed has grown past 63,000 posts.',
-          'For a delivery partner, the practical result is the ability to work within an established product process: take a reported problem through investigation, verification and a client-reviewed release.',
-        ],
-        features: ['iOS, Android and web', 'Step-by-step finance programme', 'Financial rating test', 'Lessons with video, offline too', 'Community feed by track', 'Releases to both stores'],
-        visuals: [
-          { screen: 'tvaity-home', alt: 'Home: streak, current lesson, financial goal and partner offers', caption: 'Home: the current lesson and the financial goal.' },
-          { screen: 'tvaity-programme', alt: 'Step-by-step finance programme by modules', caption: 'The step-by-step programme.' },
-          { screen: 'tvaity-rating', alt: 'Financial rating and level after the test', caption: 'The financial rating after the test.' },
-        ],
-        screensNote: 'Screens rebuilt from the code of the version we develop, translated from Russian; the app itself is in Russian. Names and figures are demo data.',
-        cta: 'Need a technical partner for an existing application? Share the product and the changes your team needs to deliver.',
-      },
-      ru: {
-        title: 'Tvaity',
-        category: 'Финансовая грамотность · iOS, Android и веб',
-        status: 'В магазинах',
-        statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Наша часть завершена, приложение передано внутренней команде заказчика.',
-        summary: 'Развитие и релизы действующего приложения по финансовой грамотности: пошаговый тренажёр, финансовый рейтинг, уроки с видео и сообщество по трекам.',
-        challenge: [
-          'У действующего приложения другой контекст, чем у нового прототипа. Люди уже платят, проходят тренажёр и каждый день возвращаются в сообщество своего трека. Изменения нужно оценивать с учётом этих существующих сценариев.',
-          'Для продуктовой команды сопровождение означает превращение конкретных обращений пользователей в проверенные исправления и релизы. Доступ, видео, прогресс и восстановление аккаунта связаны с базовым ожиданием пользователя: вернуться к тому, за что он заплатил.',
-        ],
-        clientTeam: [
-          'У заказчика есть собственная продуктовая команда и управление проектом. Приоритеты и обращения проходят через её рабочий процесс, приёмка также остаётся на стороне клиента.',
-          'Роль DartWay включала развитие приложения и техническое сопровождение. Заказчик продолжает отвечать за программу, содержание и порядок продуктовых изменений.',
-        ],
-        ourWork: [
-          'Приложение учит держать финансы под контролем — на iOS, Android и в вебе. В основе пошаговый тренажёр по модулям: бюджет, долги, подушка безопасности, финансовая устойчивость. Тест даёт финансовый рейтинг и уровень, на главной — текущий урок и личная финансовая цель, у каждого трека своя лента сообщества с темами, постами и реакциями. Вокруг — уроки с видео, в том числе офлайн, и платный доступ к курсам.',
-          'В нашу работу входят реализация изменений, разбор проблем в приложении и подготовка исправлений к выпуску. Среди направлений сопровождения — воспроизведение видео, доступ к платному и восстановление аккаунта.',
-          'Процесс строится вокруг действующего продукта: разобраться в описанном сценарии, внести изменение, проверить поведение и подготовить версию для приёмки. Выпуск версии относится к той же ответственности, что и изменение кода.',
-        ],
-        collaboration: [
-          'Продуктовая команда заказчика передаёт приоритеты и контекст обращения. DartWay выполняет техническую диагностику и реализацию, после чего возвращает изменение, которое можно проверить по исходному сценарию.',
-          'Так сопровождение остаётся связанным с владельцем продукта. Эта модель подходит агентствам, которым нужен технический партнёр для существующего приложения, при сохранении планирования, общения с клиентом и приёмки внутри своей команды.',
-        ],
-        result: [
-          'Главный критерий заказчик назвал сам: «главное — стабильность работы сервиса». Приложение регулярно выходит в оба магазина и в веб, в ленте сообщества больше 63 000 постов.',
-          'Практический результат такого партнёрства — работа внутри сложившегося продуктового процесса: от обращения и диагностики до проверки исправления и релиза, принятого командой заказчика.',
-        ],
-        features: ['iOS, Android и веб', 'Пошаговый тренажёр', 'Тест на финансовый рейтинг', 'Уроки с видео, в том числе офлайн', 'Лента сообщества по трекам', 'Релизы в оба магазина'],
-        visuals: [
-          { screen: 'tvaity-home', alt: 'Главная: серия, текущий урок, финансовая цель и предложения партнёров', caption: 'Главная: текущий урок и финансовая цель.' },
-          { screen: 'tvaity-programme', alt: 'Пошаговый тренажёр по модулям', caption: 'Пошаговый тренажёр.' },
-          { screen: 'tvaity-rating', alt: 'Финансовый рейтинг и уровень после теста', caption: 'Финансовый рейтинг после теста.' },
-        ],
-        screensNote: 'Экраны собраны по коду версии, которую развиваем мы; имена и цифры — демонстрационные.',
-        cta: 'Нужен технический партнёр для действующего приложения? Покажите продукт и изменения, которые ваша команда хочет выпустить.',
-      },
-    },
-  },
-  {
     slug: 'nda-courses',
     accent: '#e4b3ff',
     locales: {
@@ -434,6 +356,84 @@ export const caseStudies: CaseStudy[] = [
         ],
         screensNote: 'Экраны — из макетов приложения.',
         cta: 'Есть подробный дизайн и идея для проверки? Определим первую сборку, которую смогут попробовать люди.',
+      },
+    },
+  },
+  {
+    slug: 'tvaity',
+    accent: '#ffca8c',
+    locales: {
+      en: {
+        title: 'Tvaity',
+        category: 'Financial literacy · iOS, Android and web',
+        status: 'Published',
+        statusDetail: 'Live on the App Store, Google Play and the web, with paying users. Our part is complete; the app is handed over to the client’s in-house team.',
+        summary: 'Development and releases of a live financial-literacy app: a step-by-step programme, a financial rating, lessons with video and a community by track.',
+        challenge: [
+          'A live app has a different delivery context from a new prototype. People already pay for it, go through the programme and come back to their track’s community every day. Changes must be assessed against those existing journeys.',
+          'For the product team, support means turning concrete user problems into checked changes and releases. Access, video, progress and account recovery all touch the basic expectation that a user can return to what they paid for.',
+        ],
+        clientTeam: [
+          'The client has its own product team and project management. Priorities and reported issues are coordinated through the client’s workflow, with acceptance on their side.',
+          'DartWay’s role in the project covered application development and production support. The client continues to own the programme, content and product priorities.',
+        ],
+        ourWork: [
+          'The app teaches people to keep their finances under control on iOS, Android and the web. Its core is a step-by-step programme in modules: budget, debts, a safety cushion, financial resilience. A test gives a financial rating and a level, the home screen keeps the current lesson and a personal financial goal in view, and each track has its own community feed with topics, posts and reactions. Around them sit lessons with video, offline viewing and paid access to courses.',
+          'Our work has included implementing changes, investigating reported application problems and preparing fixes for release. Video playback, access to paid content and account recovery are examples of the areas addressed in the support workflow.',
+          'Delivery is organised around the existing product: understand the reported scenario, make the change, verify the behaviour and prepare a version the client can accept. Release work belongs to the same responsibility as the code change itself.',
+        ],
+        collaboration: [
+          'The client’s product team provides priorities and the context behind a reported issue. DartWay works through the technical investigation and implementation, then returns a change that can be checked against the original scenario.',
+          'This keeps support connected to the product owner. It is particularly relevant for agencies that want a technical partner for an existing app while retaining planning, client communication and acceptance within their own team.',
+        ],
+        result: [
+          'The client named the quality bar himself: the service has to work steadily. The app ships regular releases to both stores and the web, and its community feed has grown past 63,000 posts.',
+          'For a delivery partner, the practical result is the ability to work within an established product process: take a reported problem through investigation, verification and a client-reviewed release.',
+        ],
+        features: ['iOS, Android and web', 'Step-by-step finance programme', 'Financial rating test', 'Lessons with video, offline too', 'Community feed by track', 'Releases to both stores'],
+        visuals: [
+          { screen: 'tvaity-home', alt: 'Home: streak, current lesson, financial goal and partner offers', caption: 'Home: the current lesson and the financial goal.' },
+          { screen: 'tvaity-programme', alt: 'Step-by-step finance programme by modules', caption: 'The step-by-step programme.' },
+          { screen: 'tvaity-rating', alt: 'Financial rating and level after the test', caption: 'The financial rating after the test.' },
+        ],
+        screensNote: 'Screens rebuilt from the code of the version we develop, translated from Russian; the app itself is in Russian. Names and figures are demo data.',
+        cta: 'Need a technical partner for an existing application? Share the product and the changes your team needs to deliver.',
+      },
+      ru: {
+        title: 'Tvaity',
+        category: 'Финансовая грамотность · iOS, Android и веб',
+        status: 'В магазинах',
+        statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Наша часть завершена, приложение передано внутренней команде заказчика.',
+        summary: 'Развитие и релизы действующего приложения по финансовой грамотности: пошаговый тренажёр, финансовый рейтинг, уроки с видео и сообщество по трекам.',
+        challenge: [
+          'У действующего приложения другой контекст, чем у нового прототипа. Люди уже платят, проходят тренажёр и каждый день возвращаются в сообщество своего трека. Изменения нужно оценивать с учётом этих существующих сценариев.',
+          'Для продуктовой команды сопровождение означает превращение конкретных обращений пользователей в проверенные исправления и релизы. Доступ, видео, прогресс и восстановление аккаунта связаны с базовым ожиданием пользователя: вернуться к тому, за что он заплатил.',
+        ],
+        clientTeam: [
+          'У заказчика есть собственная продуктовая команда и управление проектом. Приоритеты и обращения проходят через её рабочий процесс, приёмка также остаётся на стороне клиента.',
+          'Роль DartWay включала развитие приложения и техническое сопровождение. Заказчик продолжает отвечать за программу, содержание и порядок продуктовых изменений.',
+        ],
+        ourWork: [
+          'Приложение учит держать финансы под контролем — на iOS, Android и в вебе. В основе пошаговый тренажёр по модулям: бюджет, долги, подушка безопасности, финансовая устойчивость. Тест даёт финансовый рейтинг и уровень, на главной — текущий урок и личная финансовая цель, у каждого трека своя лента сообщества с темами, постами и реакциями. Вокруг — уроки с видео, в том числе офлайн, и платный доступ к курсам.',
+          'В нашу работу входят реализация изменений, разбор проблем в приложении и подготовка исправлений к выпуску. Среди направлений сопровождения — воспроизведение видео, доступ к платному и восстановление аккаунта.',
+          'Процесс строится вокруг действующего продукта: разобраться в описанном сценарии, внести изменение, проверить поведение и подготовить версию для приёмки. Выпуск версии относится к той же ответственности, что и изменение кода.',
+        ],
+        collaboration: [
+          'Продуктовая команда заказчика передаёт приоритеты и контекст обращения. DartWay выполняет техническую диагностику и реализацию, после чего возвращает изменение, которое можно проверить по исходному сценарию.',
+          'Так сопровождение остаётся связанным с владельцем продукта. Эта модель подходит агентствам, которым нужен технический партнёр для существующего приложения, при сохранении планирования, общения с клиентом и приёмки внутри своей команды.',
+        ],
+        result: [
+          'Главный критерий заказчик назвал сам: «главное — стабильность работы сервиса». Приложение регулярно выходит в оба магазина и в веб, в ленте сообщества больше 63 000 постов.',
+          'Практический результат такого партнёрства — работа внутри сложившегося продуктового процесса: от обращения и диагностики до проверки исправления и релиза, принятого командой заказчика.',
+        ],
+        features: ['iOS, Android и веб', 'Пошаговый тренажёр', 'Тест на финансовый рейтинг', 'Уроки с видео, в том числе офлайн', 'Лента сообщества по трекам', 'Релизы в оба магазина'],
+        visuals: [
+          { screen: 'tvaity-home', alt: 'Главная: серия, текущий урок, финансовая цель и предложения партнёров', caption: 'Главная: текущий урок и финансовая цель.' },
+          { screen: 'tvaity-programme', alt: 'Пошаговый тренажёр по модулям', caption: 'Пошаговый тренажёр.' },
+          { screen: 'tvaity-rating', alt: 'Финансовый рейтинг и уровень после теста', caption: 'Финансовый рейтинг после теста.' },
+        ],
+        screensNote: 'Экраны собраны по коду версии, которую развиваем мы; имена и цифры — демонстрационные.',
+        cta: 'Нужен технический партнёр для действующего приложения? Покажите продукт и изменения, которые ваша команда хочет выпустить.',
       },
     },
   },
