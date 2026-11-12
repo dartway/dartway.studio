@@ -1,7 +1,8 @@
 ---
 import '../styles/site.css';
-const { lang = 'en', title, description, image = '/og.png?v=3' } = Astro.props;
+const { lang = 'en', title, description, image: pageImage } = Astro.props;
 const ru = lang === 'ru';
+const image = pageImage ?? (ru ? '/og-ru.png' : '/og-en.png');
 const prefix = ru ? '/ru' : '';
 const enPath = Astro.url.pathname.replace(/^\/ru(?=\/|$)/, '') || '/';
 const ruPath = '/ru' + (enPath.startsWith('/') ? enPath : '/' + enPath);

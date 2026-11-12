@@ -1,7 +1,7 @@
 export default {
   "lang": "en",
   "title": "DartWay — a dark factory for apps",
-  "description": "AI agents build your app all the way to production: pixel-perfect to your design, strict coding rules and tests, senior developer supervision. Fixed price.",
+  "description": "AI agents build your app from design to release on the App Store and Google Play. Pixel Perfect, fixed price, same-day fixes, your product and your code.",
   "stats": {
     "inProgress": "projects in progress",
     "published": "live on the App Store and Google Play"
@@ -13,67 +13,16 @@ export default {
     "primary": "Get a price for your project",
     "secondary": "See the work",
     "guarantees": [
-        "Pixel Perfect",
-        "Fixed price",
-        "Same-day fixes",
-        "Your product, your code"
-      ]
-  },
-  "agency": {
-    "title": "Your team leads the product. We deliver the app",
-    "description": "Mobile development for agencies with their own designers and project managers. From your brief and design to tested releases and ongoing support.",
-    "eyebrow": "For design & product agencies",
-    "lead": "Keep the client relationship, design and product decisions with your team. We take care of implementation, technical checks, release and the next round of improvements.",
-    "heading": "One project. Clear responsibilities",
-    "intro": "Start with a real brief and a product owner on your side. Together we agree what the first delivery should achieve and how your team will review it.",
-    "yourTitle": "Your agency",
-    "yourItems": [
-      "Lead the client relationship and product priorities.",
-      "Provide the design and clarify product behaviour.",
-      "Review working versions and decide what comes next."
-    ],
-    "ourTitle": "DartWay",
-    "ourItems": [
-      "Implement the app, backend and agreed integrations.",
-      "Review the code, test changes and prepare releases.",
-      "Resolve technical questions and maintain the delivered system."
+      "Pixel Perfect",
+      "Fixed price",
+      "Same-day fixes",
+      "Your product, your code"
     ]
   },
   "work": {
     "eyebrow": "Our work",
     "title": "Our projects",
     "all": "All projects"
-  },
-  "delivery": {
-    "title": "How a project runs",
-    "intro": "One person on your side decides on the product. Everything else is on us.",
-    "steps": [
-      {
-        "title": "Send the design",
-        "text": "A mockup, a prototype or a brief. Within one business day we return the scope, a fixed price and the timeline."
-      },
-      {
-        "title": "Agents build",
-        "text": "Implementation, code review and the comparison with the design run every day. You see a working test version from the first week."
-      },
-      {
-        "title": "Change on the go",
-        "text": "Your feedback becomes a change the same day, not a ticket for the next sprint."
-      },
-      {
-        "title": "Release",
-        "text": "We publish to the stores in your or your client's accounts and stay on for fixes and the next version."
-      }
-    ]
-  },
-  "proof": {
-    "title": "Live on iOS and Android",
-    "text": "U90 brings nutrition, activity and a personalised plan into one app, published in the App Store and Google Play.",
-    "link": "Read the U90 case"
-  },
-  "ownership": {
-    "title": "The code is yours",
-    "text": "Code, data, infrastructure and store accounts stay with you or your client. No lock-in: if you leave, you leave with everything. White label if you need it: we work under your brand, and your client doesn't have to know about us."
   },
   "factory": {
     "eyebrow": "Inside the factory",
@@ -184,16 +133,12 @@ export default {
         "a": "Every screen is compared with the mockup before you see it. Your designer accepts the result."
       },
       {
-        "q": "Who decides on the product?",
-        "a": "You do. One person on your side answers product questions and accepts the work. We never decide them for you."
-      },
-      {
         "q": "What stack do you build on?",
         "a": "Flutter for iOS, Android and web, with a Dart backend on our open-source DartWay framework. One codebase that any Flutter developer can pick up."
       },
       {
         "q": "What do you need from us?",
-        "a": "A design or a prototype, one person who makes product decisions, and access to the store accounts when it's time to release."
+        "a": "A design or a prototype and one person who makes product decisions: answers questions and accepts the work. We never decide them for you. At release time, access to the store accounts."
       },
       {
         "q": "What happens after release?",
@@ -248,8 +193,12 @@ export default {
           "href": "https://github.com/dartway/dartway"
         },
         {
-          "text": "U90 and Tvaity in the stores",
-          "href": "/work/"
+          "text": "U90 in the stores",
+          "href": "/work/u90/"
+        },
+        {
+          "text": "Tvaity in the stores",
+          "href": "/work/tvaity/"
         }
       ]
     }

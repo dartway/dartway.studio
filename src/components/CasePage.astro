@@ -15,9 +15,10 @@ const screens = content.visuals.filter((v: any) => v.screen);
 const images = content.visuals.filter((v: any) => !v.screen && v.src);
 const sections = [
   { id: 'challenge', title: ru ? 'Задача' : 'The challenge', paragraphs: content.challenge },
-  { id: 'delivery', title: ru ? 'Что мы сделали' : 'What we built', paragraphs: content.ourWork },
-  { id: 'team', title: ru ? 'Кто за что отвечал' : 'Who owned what', paragraphs: [...content.clientTeam, ...content.collaboration] },
-  { id: 'result', title: ru ? 'Результат' : 'The result', paragraphs: content.result },
+  { id: 'delivery', title: ru ? 'Что умеет приложение' : 'What the app does', paragraphs: content.ourWork },
+  ...(content.hardPart ? [{ id: 'hard-part', eyebrow: ru ? 'Самое сложное' : 'The hard part', title: content.hardPart.title, paragraphs: content.hardPart.text }] : []),
+  { id: 'team', title: ru ? 'Как шла работа' : 'How it was built', paragraphs: [...content.clientTeam, ...content.collaboration] },
+  { id: 'result', title: ru ? 'Где сейчас' : 'Where it is now', paragraphs: content.result },
 ];
 ---
 <SiteLayout
@@ -36,6 +37,9 @@ const sections = [
         <span class:list={['work-status', live ? 'st-live' : 'st-soon']}>{content.status}</span>
         <span class="case-meta-detail">{content.statusDetail}</span>
       </div>
+      {content.highlights?.length > 0 && (
+        <ul class="case-highlights">{content.highlights.map((h: string) => <li>{h}</li>)}</ul>
+      )}
       {content.links?.length > 0 && (
         <div class="case-store-links">
           {content.links.map((link: { label: string; href: string }) => (
@@ -77,7 +81,8 @@ const sections = [
     <div class="wrap case-body">
       <div class="case-story">
         {sections.map(section => (
-          <section id={section.id}>
+          <section id={section.id} class:list={[{ 'hard-part': section.eyebrow }]}>
+            {section.eyebrow && <p class="eyebrow">{section.eyebrow}</p>}
             <h2>{section.title}</h2>
             {section.paragraphs.map((paragraph: string) => <p>{paragraph}</p>)}
           </section>

@@ -6,48 +6,22 @@ import FactoryLine from './FactoryLine.astro';
 import SplitRoles from './SplitRoles.astro';
 import Segments from './Segments.astro';
 import NotVibe from './NotVibe.astro';
-const { t, agency = false } = Astro.props;
+const { t } = Astro.props;
 const prefix = t.lang === 'ru' ? '/ru' : '';
 ---
-<SiteLayout
-  lang={t.lang}
-  title={agency ? `${t.agency.title} — DartWay` : t.title}
-  description={agency ? t.agency.description : t.description}
->
+<SiteLayout lang={t.lang} title={t.title} description={t.description}>
   <section class="hero delivery-hero lean">
-    <p class="eyebrow">{agency ? t.agency.eyebrow : t.hero.eyebrow}</p>
-    <h1>{agency ? t.agency.title : t.hero.title}</h1>
-    <p class="lead">{agency ? t.agency.lead : t.hero.lead}</p>
-    {!agency && <ul class="guarantees">{t.hero.guarantees.map((g: string) => <li>{g}</li>)}</ul>}
+    <p class="eyebrow">{t.hero.eyebrow}</p>
+    <h1>{t.hero.title}</h1>
+    <p class="lead">{t.hero.lead}</p>
+    <ul class="guarantees">{t.hero.guarantees.map((g: string) => <li>{g}</li>)}</ul>
     <div class="actions">
       <a class="btn" href="#contact" data-cta="hero-contact">{t.hero.primary}</a>
       <a class="more" href={`${prefix}/work/`} data-cta="hero-work">{t.hero.secondary}</a>
     </div>
   </section>
 
-
-  {!agency && <FactoryLine f={t.factory} />}
-
-  {!agency && <NotVibe p={t.pillars} />}
-
-
-  {agency && (
-    <section class="wrap agency-roles">
-      <p class="eyebrow">{t.agency.eyebrow}</p>
-      <h2>{t.agency.heading}</h2>
-      <p class="section-intro">{t.agency.intro}</p>
-      <div class="roles-grid">
-        <article>
-          <h3>{t.agency.yourTitle}</h3>
-          <ul>{t.agency.yourItems.map((item: string) => <li>{item}</li>)}</ul>
-        </article>
-        <article class="our-role">
-          <h3>{t.agency.ourTitle}</h3>
-          <ul>{t.agency.ourItems.map((item: string) => <li>{item}</li>)}</ul>
-        </article>
-      </div>
-    </section>
-  )}
+  <FactoryLine f={t.factory} />
 
   <section class="wrap work-section">
     <div class="section-heading">
@@ -59,32 +33,13 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
     <WorkGrid lang={t.lang} slider />
   </section>
 
+  <NotVibe p={t.pillars} />
 
-  {!agency && (
-    <Segments s={t.segments} />
-  )}
+  <Segments s={t.segments} />
 
-  {agency ? (
-    <>
-  <section class="wrap" id="delivery">
-    <h2>{t.delivery.title}</h2>
-    <p class="section-intro">{t.delivery.intro}</p>
-    <div class="delivery-steps">
-      {t.delivery.steps.map((step: { title: string; text: string }) => (
-        <article><h3>{step.title}</h3><p>{step.text}</p></article>
-      ))}
-    </div>
-  </section>
+  <SplitRoles lang={t.lang} />
 
-
-  <section class="wrap ownership">
-    <h2>{t.ownership.title}</h2>
-    <p>{t.ownership.text}</p>
-  </section>
-    </>
-  ) : <SplitRoles lang={t.lang} />}
-  {!agency && (
-    <section class="wrap founder">
+  <section class="wrap founder">
       <img class="founder-photo" src="/img/founder.jpg" alt={t.founder.name} width="360" height="360" loading="lazy" decoding="async" />
       <div>
         <p class="eyebrow">{t.founder.eyebrow}</p>
@@ -95,11 +50,9 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
           {t.founder.links.map((l: { label: string; href: string }) => <a class="more" href={l.href} data-cta="founder-link">{l.label}</a>)}
         </div>
       </div>
-    </section>
-  )}
+  </section>
 
-  {!agency && (
-    <section class="wrap faq" id="faq">
+  <section class="wrap faq" id="faq">
       <p class="eyebrow">{t.faq.eyebrow}</p>
       <h2>{t.faq.title}</h2>
       <div class="faq-list">
@@ -107,7 +60,7 @@ const prefix = t.lang === 'ru' ? '/ru' : '';
           <details data-cta="faq"><summary>{item.q}</summary><p>{item.a}</p></details>
         ))}
       </div>
-    </section>
-  )}
+  </section>
+
   <Contact lang={t.lang} />
 </SiteLayout>
