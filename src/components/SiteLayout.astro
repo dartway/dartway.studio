@@ -68,7 +68,7 @@ const email = 'mailto:evgenii@dartway.studio';
         const f = document.querySelector('[data-float-cta]');
         if (!f || !('IntersectionObserver' in window)) return;
         // Shown once the first call to action is behind, hidden again at the builder itself.
-        const top = document.querySelector('.hero .actions') || document.querySelector('.top .btn-small');
+        const top = document.querySelector('[data-first-cta]') || document.querySelector('.top .btn-small');
         let topSeen = true, atContact = false;
         const sync = () => { const on = !topSeen && !atContact; f.classList.toggle('on', on); f.setAttribute('aria-hidden', String(!on)); f.tabIndex = on ? 0 : -1; };
         if (top) new IntersectionObserver(([e]) => { topSeen = e.isIntersecting || e.boundingClientRect.top > 0; sync(); }).observe(top);
