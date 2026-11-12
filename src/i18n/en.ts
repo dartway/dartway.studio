@@ -40,7 +40,7 @@ export default {
   },
   "work": {
     "eyebrow": "Our work",
-    "title": "Case studies",
+    "title": "Our projects",
     "all": "All projects"
   },
   "delivery": {

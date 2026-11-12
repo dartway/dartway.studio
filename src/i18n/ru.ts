@@ -40,7 +40,7 @@ export default {
   },
   "work": {
     "eyebrow": "Портфолио",
-    "title": "Кейсы",
+    "title": "Наши проекты",
     "all": "Все проекты"
   },
   "delivery": {
