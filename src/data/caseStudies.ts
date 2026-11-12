@@ -48,7 +48,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Nutrition & activity · iOS and Android',
         status: 'Published',
         statusDetail: 'Available on Google Play and the App Store. First store releases: November 2026.',
-        summary: 'A daily companion for nutrition, movement and progress, taken from a product concept to published mobile apps.',
+        summary: 'A 90-day nutrition and movement programme: meals recognised from a photo, an AI coach, activity and water tracking, and a weight forecast.',
         challenge: [
           'The product needed to bring several everyday habits into one understandable experience. Logging meals, tracking water and activity, reviewing progress and speaking to an AI coach had to feel like parts of the same day, rather than separate tools.',
           'The scope also extended beyond the visible screens. The team needed onboarding, accounts, subscription integration and a way to maintain product content. Shipping on both major mobile platforms meant that development, testing and store preparation belonged in one delivery process.',
@@ -88,7 +88,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Питание и активность · iOS и Android',
         status: 'В магазинах',
         statusDetail: 'Опубликовано в Google Play и App Store. Первые релизы — ноябрь 2026 года.',
-        summary: 'Приложение для питания, движения и отслеживания прогресса: от продуктовой идеи до публикации на двух мобильных платформах.',
+        summary: 'Программа питания и движения на 90 дней: блюдо по фото, AI-коуч, учёт активности и воды, прогноз веса.',
         challenge: [
           'Нужно было собрать несколько ежедневных привычек в один понятный сценарий. Запись еды, учёт воды и активности, просмотр прогресса и общение с AI-коучем должны работать как части одного дня пользователя.',
           'Задача включала не только видимые экраны. Для продукта нужны онбординг, аккаунты, интеграция подписки и управление текстами. Выход на две мобильные платформы означал, что разработку, проверку и подготовку к магазинам необходимо вести как единый процесс.',
@@ -134,7 +134,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Wellness education · Agency partnership',
         status: 'Launching soon',
         statusDetail: 'A working staging version is undergoing client review before production launch.',
-        summary: 'A course and membership experience built with an agency that retains product management, design and the client relationship.',
+        summary: 'Wellness courses and a club in one app: an energy index, a daily practice plan, and lessons with video and audio.',
         challenge: [
           'The client’s educational content needed a coherent application: courses and lessons, video and audio, progress, personal accounts and club materials. The experience had to make sense to learners while respecting the access rules of the existing business.',
           'A screen-by-screen implementation alone would not solve that problem. Playback, navigation between lessons, progress and course access must work together. The content team also needs a practical way to manage the material behind the interface.',
@@ -170,7 +170,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Обучение и wellness · Партнёрство с агентством',
         status: 'Скоро релиз',
         statusDetail: 'Рабочая тестовая версия проходит проверку заказчика перед промышленным запуском.',
-        summary: 'Приложение с курсами и клубом: агентство ведёт продукт, дизайн и клиента, DartWay отвечает за реализацию.',
+        summary: 'Курсы и клуб в одном приложении: индекс энергии, план практик на день, уроки с видео и аудио.',
         challenge: [
           'Образовательные материалы заказчика нужно было собрать в цельное приложение: курсы и уроки, видео и аудио, прогресс, личный кабинет и клуб. Пользовательский путь должен быть понятен ученику и учитывать правила доступа действующего бизнеса.',
           'Для этого недостаточно отдельно сверстать каждый экран. Воспроизведение, переходы между уроками, прогресс и доступ к курсам должны работать вместе. Команде контента нужен удобный способ управлять материалами, которые стоят за интерфейсом.',
@@ -212,7 +212,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Education companion · Agency partnership',
         status: 'Launching soon',
         statusDetail: 'Web environments are deployed. Integration configuration and client launch checks continue.',
-        summary: 'A companion experience for an established educational product, connecting personalised content, daily check-ins and a community.',
+        summary: 'A companion app for members of an education programme: mood check-ins with a diary, personalised materials, a moderated chat.',
         challenge: [
           'The client already had an educational product and its own content methodology. The next step was an application where participants could return to personal materials, record how they feel and stay connected to the community between lessons.',
           'The application had to coexist with the existing course platform. Access rules, participant identity, personalised content and an assistant integration crossed several systems and several people’s responsibilities.',
@@ -248,7 +248,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Приложение для обучения · Партнёрство с агентством',
         status: 'Скоро релиз',
         statusDetail: 'Веб-версии развёрнуты. Продолжаются настройка интеграций и проверки перед запуском.',
-        summary: 'Приложение для участников образовательного продукта: персональные материалы, ежедневные отметки состояния и сообщество.',
+        summary: 'Приложение для участников образовательной программы: отметки состояния с дневником, персональные материалы, чат с модератором.',
         challenge: [
           'У заказчика уже были образовательный продукт и собственная методика работы с контентом. Следующим шагом стало приложение, где участник возвращается к личным материалам, отмечает своё состояние и поддерживает связь с сообществом между занятиями.',
           'Продукт должен работать рядом с действующей учебной платформой. Доступ, идентификация участника, персональные материалы и интеграция ассистента затрагивают несколько систем и зоны ответственности разных специалистов.',
@@ -290,7 +290,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Relationships · Our own product',
         status: 'Launching soon',
         statusDetail: 'Internal iOS testing began in November 2026. The product is not yet publicly launched.',
-        summary: 'Our own relationship app: turning a designed prototype into a testable product built around small daily moments of understanding.',
+        summary: 'An app for couples: a question of the day, guessing each other’s answers, dates to plan, and a couple’s AI that keeps each partner’s private answers private.',
         challenge: [
           'The idea is to help partners learn more about each other through short, approachable interactions. The central mechanic is simple: answer a question, guess the partner’s answer and compare. Making that feel natural requires care with sequence, wording and the moments between screens.',
           'The product also needs to be useful before a partner joins. Solo use and couple use have to fit the same experience, so an invitation does not become a barrier to getting started.',
@@ -326,7 +326,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Отношения · Собственный продукт',
         status: 'Скоро релиз',
         statusDetail: 'Внутреннее тестирование на iOS началось в ноябре 2026 года. Публичного запуска ещё нет.',
-        summary: 'Наше приложение об отношениях: превращаем подробный прототип в продукт, который помогает узнавать друг друга через небольшие ежедневные действия.',
+        summary: 'Приложение для пар: вопрос дня, угадывание ответов друг друга, свидания и ИИ пары, который не раскрывает личное каждого.',
         challenge: [
           'Идея продукта — помогать партнёрам лучше узнавать друг друга через короткие и понятные взаимодействия. Центральная механика: ответить на вопрос, угадать ответ партнёра и сравнить. Чтобы она ощущалась естественно, важны порядок действий, формулировки и переходы между экранами.',
           'Приложение должно быть полезным ещё до приглашения партнёра. Сценарии для одного человека и для пары нужно объединить так, чтобы ожидание приглашённого не мешало начать пользоваться продуктом.',
@@ -368,7 +368,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Financial literacy · iOS, Android and web',
         status: 'Published',
         statusDetail: 'Live on the App Store, Google Play and the web, with paying users. Our part is complete; the app is handed over to the client’s in-house team.',
-        summary: 'Development and releases of a live financial-literacy app: a step-by-step programme, a financial rating, lessons with video and a community by track.',
+        summary: 'A financial-literacy app: a step-by-step programme, a financial rating test, lessons with video that work offline, and a community by track.',
         challenge: [
           'A live app has a different delivery context from a new prototype. People already pay for it, go through the programme and come back to their track’s community every day. Changes must be assessed against those existing journeys.',
           'For the product team, support means turning concrete user problems into checked changes and releases. Access, video, progress and account recovery all touch the basic expectation that a user can return to what they paid for.',
@@ -404,7 +404,7 @@ export const caseStudies: CaseStudy[] = [
         category: 'Финансовая грамотность · iOS, Android и веб',
         status: 'В магазинах',
         statusDetail: 'Работает в App Store, Google Play и в вебе, с платящими пользователями. Наша часть завершена, приложение передано внутренней команде заказчика.',
-        summary: 'Развитие и релизы действующего приложения по финансовой грамотности: пошаговый тренажёр, финансовый рейтинг, уроки с видео и сообщество по трекам.',
+        summary: 'Приложение по финансовой грамотности: пошаговый тренажёр, тест на финансовый рейтинг, уроки с видео и офлайн, сообщество по трекам.',
         challenge: [
           'У действующего приложения другой контекст, чем у нового прототипа. Люди уже платят, проходят тренажёр и каждый день возвращаются в сообщество своего трека. Изменения нужно оценивать с учётом этих существующих сценариев.',
           'Для продуктовой команды сопровождение означает превращение конкретных обращений пользователей в проверенные исправления и релизы. Доступ, видео, прогресс и восстановление аккаунта связаны с базовым ожиданием пользователя: вернуться к тому, за что он заплатил.',
