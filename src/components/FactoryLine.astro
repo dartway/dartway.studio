@@ -1,7 +1,7 @@
 ---
 // The dark factory, shown working: tickets ride station to station; one is stopped at review and sent back.
 // Keyframes are generated from the routes so stations and stops always line up.
-const { f, cta } = Astro.props;
+const { f } = Astro.props;
 const n = f.stations.length;
 const pos = (i: number) => ((i + 0.5) / n) * 100;
 const DURATION = 26;
@@ -60,10 +60,7 @@ const tickets = f.tickets.map((label: string, i: number) => ({
         ))}
       </div>
     </div>
-    <div class="line-foot">
-      {cta && <a class="btn" href="#contact" data-cta="hero-contact" data-first-cta>{cta}</a>}
-      <p class="line-note"><span class="swatch" aria-hidden="true"></span>{f.note}</p>
-    </div>
+    <p class="line-note"><span class="swatch" aria-hidden="true"></span>{f.note}</p>
 
     <div class="factory-head">
       <p class="eyebrow">{f.eyebrow}</p>
@@ -110,8 +107,7 @@ const tickets = f.tickets.map((label: string, i: number) => ({
     animation: fl-x var(--dur) linear infinite; opacity: 0; }
   .factory .ticket.lane-1 { top: 2.15rem; }
   .factory .ticket.rework { animation-name: fr-x; }
-  .factory .line-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 2.2rem; }
-  .factory .line-note { display: flex; align-items: center; gap: 0.6rem; margin: 0; font-size: 0.95rem; }
+  .factory .line-note { display: flex; align-items: center; gap: 0.6rem; margin: 2rem 0 0; font-size: 0.95rem; }
   .factory .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #ff5d5d; background: rgba(255, 93, 93, 0.2); flex: none; }
   .factory .flow-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
   .factory .flow-stats div { padding: 1.25rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.02); }
