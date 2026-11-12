@@ -59,7 +59,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['Every task went through the line: specification, agent code, review, automated tests, a build on staging. The partner accepted the work on test builds.'],
         result: ['The app is published on the App Store and Google Play.'],
         features: ['Daily overview', 'Meal from a photo', 'AI coach', 'Activity and water', 'Progress and weight forecast', 'Support circle', 'Subscriptions'],
-        highlights: ['Food from a photo: the model finds items and grams, calories and macros come from a USDA-based reference', 'Apple Health, Apple and Google sign-in, subscriptions, push notifications', 'Its own design system and a 32-screen onboarding quiz', 'AI coach: log a meal in text and chat about the day'],
+        highlights: ['Calories from a photo: a 17–18% median error, against 35–43% for estimating from the whole photo', 'AI coach: log a meal in text and talk the day over'],
         hardPart: { title: 'Calories from a photo', text: ['When a model estimates calories from the whole photo, public benchmarks put the error at 35–43%: the portion weight isn’t visible in a photo.', 'So our model only lists the items on the plate and their grams, and the server counts calories, protein, fat and carbs from a 410-item reference built on USDA data. We compared five models on an open set of phone photos and picked the best: the median calorie error is 17–18%. If the grams are off, the user moves a slider and the numbers update.'] },
         visuals: [
           { screen: 'u90-today', alt: 'U90 Today screen: day score, calories eaten and burned, quick logging, meals waiting for a check', caption: 'Today: the day score, what was eaten and burned, meals waiting for a check.' },
@@ -85,7 +85,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['Каждая задача проходила линию: спецификация, код агентов, ревью, автотесты, сборка на стенде. Партнёр принимал работу на тестовых сборках.'],
         result: ['Приложение опубликовано в App Store и Google Play.'],
         features: ['Обзор дня', 'Блюдо по фото', 'AI-коуч', 'Активность и вода', 'Прогресс и прогноз веса', 'Круг поддержки', 'Подписка'],
-        highlights: ['Еда по фото: продукты и граммы определяет модель, калории и БЖУ считаются по справочнику USDA', 'Apple Health, вход через Apple и Google, подписки, push-уведомления', 'Своя дизайн-система, онбординг-квиз из 32 экранов', 'AI-коуч: запись еды текстом и переписка по дню'],
+        highlights: ['Калории по фото: медиана ошибки 17–18 % — у оценки по фото целиком 35–43 %', 'AI-коуч: еду можно записать текстом и обсудить с ним день'],
         hardPart: { title: 'Калории по фото', text: ['Если модель оценивает калории по фото целиком, ошибка по открытым замерам — 35–43 %: вес порции на фото не виден.', 'Поэтому модель у нас только перечисляет продукты на тарелке и их граммы, а калории, белки, жиры и углеводы считает сервер по справочнику на 410 продуктов из базы USDA. Мы сравнили пять моделей на открытом наборе фото с телефона и выбрали лучшую: медиана ошибки по калориям — 17–18 %. Если граммы неточные, пользователь двигает ползунок, и цифры пересчитываются.'] },
         visuals: [
           { screen: 'u90-today', alt: 'Экран «Сегодня» в U90: оценка дня, съеденное и сожжённое, быстрая запись, блюда на проверку', caption: 'Сегодня: оценка дня, съедено и потрачено, блюда ждут проверки.' },
@@ -117,7 +117,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['The agency checks every build against its Figma designs, and remarks come to us as tasks. The client accepted stage one without remarks.'],
         result: ['The test version is ready; the launch comes next.'],
         features: ['Courses and lessons', 'Video and audio player', 'Energy index', 'Club and practice plan', 'Content admin', 'Course platform and CRM integration'],
-        highlights: ['Course access opens on payment on an external platform and closes on a refund', 'Sign-in with Telegram, SMS or email', 'Integrations with the course platform, CRM and an SMS service', 'Video and audio lessons, progress for each course'],
+        highlights: ['A course opens on payment on an external platform and closes on a refund', 'Sign-in with Telegram, SMS or email'],
         hardPart: { title: 'Access after a purchase on an external platform', text: ['A course is bought on the course platform, and the buyer may not have an app account yet. A refund has to close access.', 'The platform sends a purchase event. If the learner isn’t in the app yet, the access is stored and opens at their first sign-in. A refund closes the course, and a repeated event duplicates nothing.'] },
         visuals: [
           { screen: 'courses-home', alt: 'Home: energy index, current course and club workout', caption: 'Home: the index, the course and the club workout.' },
@@ -139,7 +139,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['Агентство сверяет каждую сборку с макетами Figma, замечания приходят к нам задачами. Первый этап заказчик принял без замечаний.'],
         result: ['Тестовая версия готова, дальше — запуск.'],
         features: ['Курсы и уроки', 'Видео- и аудиоплеер', 'Индекс энергии', 'Клуб и план практик', 'Админка контента', 'Интеграция с платформой курсов и CRM'],
-        highlights: ['Доступ к курсу открывается по оплате на внешней платформе и закрывается при возврате', 'Вход через Telegram, SMS или почту', 'Интеграции с платформой курсов, CRM и SMS-сервисом', 'Видео- и аудиоуроки, прогресс по каждому курсу'],
+        highlights: ['Курс открывается по оплате на внешней платформе и закрывается при возврате', 'Вход через Telegram, SMS или почту'],
         hardPart: { title: 'Доступ после покупки на внешней платформе', text: ['Курс покупают на платформе курсов, а аккаунта в приложении у покупателя может ещё не быть. При возврате денег доступ нужно закрыть.', 'Платформа присылает событие о покупке. Если такого ученика в приложении ещё нет, доступ сохраняется и открывается при первом входе. Возврат закрывает курс, повторное событие ничего не дублирует.'] },
         visuals: [
           { screen: 'courses-home', alt: 'Главная: индекс энергии, текущий курс и тренировка клуба', caption: 'Главная: индекс, курс и тренировка клуба.' },
@@ -167,7 +167,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['The agency and the client accept the work in deployed web versions. Every task closes together with its automated tests.'],
         result: ['The web versions are deployed. Before opening to participants, the integrations remain, the AI assistant included.'],
         features: ['Participant sign-in', 'Check-ins and diary', 'Personal materials', 'Moderated chat', 'Notifications', 'Course platform integration'],
-        highlights: ['A 19-section personal profile computed by the author’s method', 'Two production setups, Russia and the UAE; personal data kept in Russia as the law requires', '1,106 automated tests: 613 backend, 493 Flutter', 'Sign-in and access through the client’s learning platform'],
+        highlights: ['A 19-section personal profile computed by the author’s method', 'Two production setups, Russia and the UAE; personal data kept in Russia as the law requires'],
         hardPart: { title: 'Computing the personal profile', text: ['A participant’s profile has 19 sections across four themes. The author used to compile them by hand from the date of birth and name.', 'We moved the method into code, and the profile is computed automatically. On the author’s eight reference cases the result matched in full. Personal data is stored in Russia as Russian law requires, and the AI assistant runs through a separate setup abroad.'] },
         visuals: [
           { screen: 'comp-home', alt: 'Home: profile card, daily mood check-in and calendar', caption: 'Home: the daily check-in and the diary week.' },
@@ -189,7 +189,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['Агентство и заказчик принимают работу в развёрнутых веб-версиях. Каждая задача закрывается вместе с автотестами.'],
         result: ['Веб-версии развёрнуты. Перед открытием для участников осталось подключить интеграции, включая ИИ-ассистента.'],
         features: ['Вход участника', 'Отметки состояния и дневник', 'Персональные материалы', 'Чат с модератором', 'Уведомления', 'Интеграция с платформой курсов'],
-        highlights: ['Личный профиль из 19 разделов рассчитывается по методике автора', 'Два продакшена, Россия и ОАЭ; персональные данные — в России по 152-ФЗ', '1106 автотестов: 613 на бэкенде, 493 во Flutter', 'Вход и доступ через учебную платформу заказчика'],
+        highlights: ['Личный профиль из 19 разделов рассчитывается по методике автора', 'Два продакшена, Россия и ОАЭ; персональные данные — в России по 152-ФЗ'],
         hardPart: { title: 'Расчёт личного профиля', text: ['Профиль участника — 19 разделов в четырёх темах. Раньше автор составлял их вручную по дате рождения и имени.', 'Мы перенесли методику в код, и профиль считается автоматически. На восьми контрольных примерах автора результат совпал полностью. Персональные данные по 152-ФЗ хранятся в России, ИИ-ассистент работает через отдельный контур за рубежом.'] },
         visuals: [
           { screen: 'comp-home', alt: 'Главная: карточка профиля, отметка самочувствия и календарь', caption: 'Главная: отметка состояния и неделя дневника.' },
@@ -217,7 +217,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['We started with a 20-screen clickable prototype and tested the mechanic on it. Agents built the app from the prototype, and the build went to testers. Subscriptions and the public launch come after the mechanic is proven.'],
         result: ['Internal iOS testing through TestFlight is under way. The public launch and subscriptions come next.'],
         features: ['Question of the day', 'Guess and compare answers', 'Weekly themes and activities', 'Date planning', 'Couple’s AI', 'Solo and couple use'],
-        highlights: ['8 days from idea to a TestFlight build', 'A partner’s answer opens only when both have answered', 'The couple’s AI knows the week’s theme and the questionnaire but keeps private answers private', 'Works solo too; the partner joins by invitation'],
+        highlights: ['8 days from idea to a TestFlight build', 'The couple’s AI knows the week’s theme and the questionnaire but never reveals a partner’s private answers'],
         hardPart: { title: 'Privacy inside the couple', text: ['People answer honestly only when they are sure their partner won’t see too much. Yet the couple needs to see their shared progress.', 'A partner’s answer to the question of the day opens only when both have answered. The wheel on the Couple screen shows the topics you worked through, not the ratings: your rating is visible to you alone. The couple’s AI uses the shared theme and the questionnaire but never tells one partner the other’s private answers.'] },
         visuals: [
           { screen: 'para-today', alt: 'Love Paradogz Today screen: theme of the week, date plan and question of the day', caption: 'Today: the theme of the week, a date to plan and the question of the day.' },
@@ -239,7 +239,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['Сначала сделали кликабельный прототип на 20 экранов и проверили на нём механику. По прототипу агенты собрали приложение, сборка ушла тестировщикам. Подписка и публичный запуск — после проверки механики.'],
         result: ['Идёт внутреннее тестирование на iOS через TestFlight. Дальше — публичный запуск и подписка.'],
         features: ['Вопрос дня', 'Угадывание и сравнение ответов', 'Темы недели и задания', 'Планирование свиданий', 'ИИ пары', 'Для одного и для пары'],
-        highlights: ['8 дней от идеи до сборки в TestFlight', 'Ответ партнёра открывается, только когда ответили оба', 'ИИ пары знает тему недели и анкету, но не раскрывает личные ответы', 'Работает и для одного, партнёр подключается по приглашению'],
+        highlights: ['8 дней от идеи до сборки в TestFlight', 'ИИ пары знает тему недели и анкету, но не раскрывает личные ответы партнёра'],
         hardPart: { title: 'Приватность внутри пары', text: ['Люди отвечают честно, только если уверены, что партнёр не увидит лишнего. При этом паре нужно видеть общий прогресс.', 'Ответ партнёра на вопрос дня открывается, только когда ответили оба. Колесо на экране «Пара» показывает темы, которые вы проработали, а не оценки: свою оценку видишь только ты. ИИ пары использует общую тему и анкету, но не пересказывает одному партнёру личные ответы другого.'] },
         visuals: [
           { screen: 'para-today', alt: 'Экран «Сегодня» в Love Paradogz: тема недели, план свидания и вопрос дня', caption: 'Сегодня: тема недели, свидание, которое пора спланировать, и вопрос дня.' },
@@ -267,7 +267,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['A user report reached us as a task: reproduce it, find the cause, fix it, check it, hand the version over for acceptance.'],
         result: ['The app ships regular releases to the App Store, Google Play, RuStore and the web, and its community feed has 63,417 posts.'],
         features: ['iOS, Android and web', 'Step-by-step finance programme', 'Financial rating test', 'Lessons with video, offline too', 'Community feed by track', 'Paid access to courses'],
-        highlights: ['iOS, Android, web and RuStore from one codebase', 'Offline lessons on the iPhone: 66 of 69, 244 files', 'SMS sign-in protection: cut off a bot farm — 13,915 requests from 3,881 numbers', 'A community feed of 63,417 posts'],
+        highlights: ['iOS, Android, web and RuStore from one codebase', 'Cut off an SMS-code bot farm: 13,915 requests from 3,881 numbers', 'A community feed of 63,417 posts'],
         hardPart: { title: 'Offline video on the iPhone', text: ['Downloaded lessons played on the simulator but not on real iPhones.', 'The cause was the iOS sandbox: the system media player won’t open a file through a symbolic link, and the simulator has no such limit. After the fix, 66 of 69 lessons are available offline — 244 files.'] },
         visuals: [
           { screen: 'tvaity-home', alt: 'Home: streak, current lesson, financial goal and partner offers', caption: 'Home: the current lesson and the financial goal.' },
@@ -289,7 +289,7 @@ export const caseStudies: CaseStudy[] = [
         collaboration: ['Обращение пользователя доходило до нас задачей: воспроизвести, найти причину, исправить, проверить, отдать версию на приёмку.'],
         result: ['Приложение регулярно выходит в App Store, Google Play, RuStore и веб, в ленте сообщества 63 417 постов.'],
         features: ['iOS, Android и веб', 'Пошаговый тренажёр', 'Тест на финансовый рейтинг', 'Уроки с видео, в том числе офлайн', 'Лента сообщества по трекам', 'Платный доступ к курсам'],
-        highlights: ['iOS, Android, веб и RuStore из одного кода', 'Офлайн-уроки на iPhone: 66 из 69, 244 файла', 'Защита входа по SMS: отсекли ботоферму — 13 915 запросов с 3 881 номера', 'Лента сообщества — 63 417 постов'],
+        highlights: ['iOS, Android, веб и RuStore из одного кода', 'Отсекли ботоферму на SMS-кодах: 13 915 запросов с 3 881 номера', 'Лента сообщества — 63 417 постов'],
         hardPart: { title: 'Офлайн-видео на iPhone', text: ['Скачанные уроки играли на симуляторе, но не играли на настоящих iPhone.', 'Причина — в песочнице iOS: системный медиаплеер не открывает файл по символической ссылке, а на симуляторе такого ограничения нет. После исправления офлайн доступны 66 из 69 уроков — 244 файла.'] },
         visuals: [
           { screen: 'tvaity-home', alt: 'Главная: серия, текущий урок, финансовая цель и предложения партнёров', caption: 'Главная: текущий урок и финансовая цель.' },
