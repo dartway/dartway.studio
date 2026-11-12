@@ -130,7 +130,7 @@ export const caseStudies: CaseStudy[] = [
     accent: '#e4b3ff',
     locales: {
       en: {
-        title: 'NDA: course and club app',
+        title: 'NDA',
         category: 'Wellness education · Agency partnership',
         status: 'Launching soon',
         statusDetail: 'A working staging version is undergoing client review before production launch.',
@@ -166,7 +166,7 @@ export const caseStudies: CaseStudy[] = [
         cta: 'Your team owns design and product management? Send us the scope to discuss the implementation.',
       },
       ru: {
-        title: 'NDA: приложение курсов и клуба',
+        title: 'NDA',
         category: 'Обучение и wellness · Партнёрство с агентством',
         status: 'Скоро релиз',
         statusDetail: 'Рабочая тестовая версия проходит проверку заказчика перед промышленным запуском.',
@@ -208,7 +208,7 @@ export const caseStudies: CaseStudy[] = [
     accent: '#d5e9b5',
     locales: {
       en: {
-        title: 'NDA: companion app for an education product',
+        title: 'NDA',
         category: 'Education companion · Agency partnership',
         status: 'Launching soon',
         statusDetail: 'Web environments are deployed. Integration configuration and client launch checks continue.',
@@ -244,7 +244,7 @@ export const caseStudies: CaseStudy[] = [
         cta: 'Extending an existing course or membership business? Let’s map the app and the systems it needs to connect.',
       },
       ru: {
-        title: 'NDA: приложение-компаньон к обучению',
+        title: 'NDA',
         category: 'Приложение для обучения · Партнёрство с агентством',
         status: 'Скоро релиз',
         statusDetail: 'Веб-версии развёрнуты. Продолжаются настройка интеграций и проверки перед запуском.',

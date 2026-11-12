@@ -171,7 +171,7 @@ h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 0.6rem; }
 .work-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; justify-content: space-between; color: var(--muted); font-size: 0.8rem; }
 .work-meta span:last-child { color: var(--case-accent); }
 .work-head { padding-top: 1.1rem; }
-.work-head h3 { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; min-height: 2lh; margin: 0.6rem 0 0; font-size: 1.7rem; }
+.work-head h3 { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin: 0.6rem 0 0; font-size: 1.7rem; }
 .work-head h3 > span { color: var(--case-accent); }
 .work-copy p { font-size: 1rem; }
 .read-case { font-weight: 600; color: var(--text); }
