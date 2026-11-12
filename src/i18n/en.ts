@@ -13,7 +13,7 @@ export default {
     "primary": "Get a price for your project",
     "secondary": "See the work",
     "guarantees": [
-        "Pixel-perfect to your design",
+        "Pixel Perfect",
         "Fixed price",
         "Same-day fixes",
         "Your product, your code"

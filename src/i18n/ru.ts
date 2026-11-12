@@ -13,7 +13,7 @@ export default {
     "primary": "Получить цену проекта",
     "secondary": "Посмотреть проекты",
     "guarantees": [
-        "Pixel perfect по вашему макету",
+        "Pixel Perfect",
         "Фиксированная цена",
         "Правки в тот же день",
         "Продукт и код ваши"
