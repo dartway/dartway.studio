@@ -9,14 +9,15 @@ export default {
   "hero": {
     "eyebrow": "AI-native development",
     "title": "A dark factory for apps",
-    "lead": "AI agents build your app all the way to production, pixel-perfect to your design. Your product, your code.",
+    "lead": "AI agents build your app from design to release on the App Store and Google Play.",
     "primary": "Get a price for your project",
     "secondary": "See the work",
-    "meta": [
-      "Fixed price",
-      "Price and timeline in one business day",
-      "Same-day updates and fixes"
-    ]
+    "guarantees": [
+        "Pixel-perfect to your design",
+        "Fixed price",
+        "Same-day fixes",
+        "Your product, your code"
+      ]
   },
   "agency": {
     "title": "Your team leads the product. We deliver the app",
