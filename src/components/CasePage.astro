@@ -24,7 +24,7 @@ const sections = [
   lang={lang}
   title={`${content.title} — DartWay`}
   description={content.summary}
-  image={project.cover || images[0]?.src}
+  image={`/cases/og/${project.slug}.${ru ? 'ru' : 'en'}.png?v=1`}
 >
   <article class="case" style={`--case-accent:${project.accent || '#ffb000'}`}>
     <header class="wrap case-intro">
