@@ -1,0 +1,98 @@
+---
+// The agencies page: the home page's factory, told to an agency that sells apps under its own brand.
+import SiteLayout from './SiteLayout.astro';
+import FactoryLine from './FactoryLine.astro';
+import NotVibe from './NotVibe.astro';
+import WorkGrid from './WorkGrid.astro';
+import Contact from './Contact.astro';
+import en from '../i18n/en';
+import ru from '../i18n/ru';
+import { agencies } from '../i18n/agencies';
+const { lang = 'en' } = Astro.props;
+const a = agencies[lang as 'en' | 'ru'];
+const home = lang === 'ru' ? ru : en;
+---
+<SiteLayout lang={lang} title={a.title} description={a.description}>
+  <section class="hero delivery-hero lean ag-hero">
+    <p class="eyebrow">{a.hero.eyebrow}</p>
+    <h1>{a.hero.title}</h1>
+    <p class="lead">{a.hero.lead}</p>
+    <ul class="guarantees">{a.hero.guarantees.map((g) => <li>{g}</li>)}</ul>
+    <div class="actions">
+      <a class="btn" href="#contact" data-brief-preset={JSON.stringify({ for: 0 })} data-cta="agency-hero-contact">{a.hero.primary}</a>
+      <a class="more" href="#factory" data-cta="agency-hero-line">{a.hero.secondary}</a>
+    </div>
+  </section>
+
+  <section class="wrap ag-gains">
+    <p class="eyebrow">{a.gains.eyebrow}</p>
+    <h2>{a.gains.title}</h2>
+    <div class="ag-grid">
+      {a.gains.items.map((it) => <div class="tile"><h3>{it.h}</h3><p>{it.p}</p></div>)}
+    </div>
+  </section>
+
+  <NotVibe p={a.compare} />
+
+  <FactoryLine f={home.factory} />
+
+  <section class="wrap ag-roles">
+    <p class="eyebrow">{a.roles.eyebrow}</p>
+    <h2>{a.roles.title}</h2>
+    <div class="ag-roles-grid">
+      {a.roles.cols.map((c, i) => (
+        <div class:list={['ag-role', { 'ag-role-us': i === 2, 'ag-role-you': i === 1 }]}>
+          <h3>{c.who}</h3>
+          <ul>{c.items.map((x) => <li>{x}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap work-section" id="agency-work">
+    <p class="eyebrow">{a.work.eyebrow}</p>
+    <h2>{a.work.title}</h2>
+    <p class="section-intro">{a.work.intro}</p>
+    <WorkGrid lang={lang} only={['nda-courses', 'nda-companion']} />
+  </section>
+
+  <section class="wrap ag-start">
+    <p class="eyebrow">{a.start.eyebrow}</p>
+    <h2>{a.start.title}</h2>
+    <ol class="steps">
+      {a.start.steps.map((s, i) => <li><span class="ag-step-n">{String(i + 1).padStart(2, '0')}</span><h3>{s.h}</h3><p>{s.p}</p></li>)}
+    </ol>
+  </section>
+
+  <section class="wrap faq" id="faq">
+    <p class="eyebrow">{a.faq.eyebrow}</p>
+    <h2>{a.faq.title}</h2>
+    <div class="faq-list">
+      {a.faq.items.map((item) => <details data-cta="agency-faq"><summary>{item.q}</summary><p>{item.a}</p></details>)}
+    </div>
+  </section>
+
+  <Contact lang={lang} />
+</SiteLayout>
+
+<style is:global>
+  .ag-gains h2, .ag-roles h2, .ag-start h2, #agency-work h2 { text-wrap: balance; }
+  .ag-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .ag-grid .tile h3 { color: #fff; }
+  .ag-roles-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .ag-role { padding: 1.35rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); min-width: 0; }
+  .ag-role h3 { color: rgba(255, 255, 255, 0.7); font-size: 0.82rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ag-role-you { border-color: rgba(140, 200, 255, 0.45); }
+  .ag-role-you h3 { color: #b9dcff; }
+  .ag-role-us { border-color: rgba(255, 176, 0, 0.5); box-shadow: 0 0 24px rgba(255, 176, 0, 0.08); }
+  .ag-role-us h3 { color: var(--accent-lightest); }
+  .ag-role ul { margin: 0.4rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.45rem; }
+  .ag-role li { color: rgba(240, 240, 240, 0.88); line-height: 1.45; }
+  #agency-work .work-grid { margin-top: 2rem; }
+  .ag-step-n { display: block; margin-bottom: 0.5rem; color: var(--accent); font-weight: 800; font-size: 0.9rem; }
+  .ag-start .steps h3 { color: #fff; }
+  @media (max-width: 860px) {
+    .ag-grid, .ag-roles-grid { grid-template-columns: minmax(0, 1fr); }
+    .ag-start .steps { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

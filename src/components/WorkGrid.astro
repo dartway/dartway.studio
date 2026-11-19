@@ -1,10 +1,11 @@
 ---
 import { caseStudies } from '../data/caseStudies';
 import Replica from './Replica.astro';
-const { lang = 'en', limit, slider = false } = Astro.props;
+const { lang = 'en', limit, slider = false, only } = Astro.props;
 const ru = lang === 'ru';
 const prefix = lang === 'ru' ? '/ru' : '';
-const projects = limit ? caseStudies.slice(0, limit) : caseStudies;
+const picked = only ? caseStudies.filter((c) => only.includes(c.slug)) : caseStudies;
+const projects = limit ? picked.slice(0, limit) : picked;
 ---
 <div class:list={['work-slider', { 'is-slider': slider }]} data-slider={slider ? '' : undefined}>
 {slider && (
