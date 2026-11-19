@@ -223,6 +223,10 @@ export default {
         "gain": "You sell the development yourselves: more margin on every project, and the client stays yours.",
         "fear": "“AI code will fall apart, and they'll take our client.”",
         "answer": "White label: the client and the sign-off stay with you, and every screen is checked against your designer's mockup. Each task passes code review and tests, and the code lives in your repository. Two of our projects are built for an agency, under NDA.",
+        "more": {
+          "label": "More for agencies",
+          "href": "/agencies/"
+        },
         "preset": {
           "for": 0
         },

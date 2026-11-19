@@ -37,6 +37,7 @@ const { s } = Astro.props;
         <p class="seg-label seg-label-ours">{s.labels.answer}</p>
         <p class="seg-answer">{it.answer}</p>
         <a class="btn" href="#contact" data-brief-preset={JSON.stringify(it.preset)} data-cta="segment-price">{s.labels.cta} →</a>
+        {it.more && <p class="seg-cases"><a class="more" href={it.more.href} data-cta="segment-more">{it.more.label}</a></p>}
         {it.cases?.length > 0 && (
           <p class="seg-cases"><span>{s.labels.cases}:</span> {it.cases.map((c: any, k: number) => (
             <>{k > 0 && ' · '}<a href={c.href} data-cta="segment-case">{c.label}</a></>
