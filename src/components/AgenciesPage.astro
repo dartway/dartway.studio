@@ -62,6 +62,9 @@ const home = lang === 'ru' ? ru : en;
     <ol class="steps">
       {a.start.steps.map((s, i) => <li><span class="ag-step-n">{String(i + 1).padStart(2, '0')}</span><h3>{s.h}</h3><p>{s.p}</p></li>)}
     </ol>
+    <a class="more" href={lang === 'ru' ? '/ru/guides/fixed-price-app-brief/' : '/guides/fixed-price-app-brief/'}>
+      {lang === 'ru' ? 'Бриф для оценки одного этапа' : 'Get the brief for a fixed-price stage'}
+    </a>
   </section>
 
   <section class="wrap faq" id="faq">

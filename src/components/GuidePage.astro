@@ -1,0 +1,46 @@
+---
+import SiteLayout from './SiteLayout.astro';
+const { lang, title, description } = Astro.props.frontmatter;
+const ru = lang === 'ru';
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  inLanguage: lang,
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+  publisher: { '@type': 'Organization', name: 'DartWay', url: Astro.site?.href },
+};
+---
+<SiteLayout lang={lang} title={title + ' — DartWay'} description={description} pageType="article">
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(article).replace(/</g, '\\u003c')} />
+  <article class="wrap guide">
+    <header>
+      <a class="back-link" href={ru ? '/ru/guides/' : '/guides/'}>← {ru ? 'Руководства' : 'Guides'}</a>
+      <h1>{title}</h1>
+    </header>
+    <div class="guide-copy"><slot /></div>
+  </article>
+</SiteLayout>
+
+<style>
+  .guide { max-width: 56rem; padding-block: 8rem 5rem; }
+  .guide h1 { font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.08; letter-spacing: -0.035em; }
+  .guide-copy { font-size: 1.08rem; line-height: 1.65; }
+  .guide-copy :global(h2) { margin: 2.5rem 0 0.8rem; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.2; }
+  .guide-copy :global(p:first-child) { margin-top: 1.5rem; }
+  .guide-copy :global(strong) { color: var(--text); }
+  .guide-copy :global(a) { color: var(--accent-lightest); text-underline-offset: 0.18em; }
+  .guide-copy :global(ul) { padding-left: 1.4rem; }
+  .guide-copy :global(li) { color: var(--muted); margin-bottom: 0.65rem; }
+  .guide-copy :global(table) { width: 100%; border-collapse: collapse; margin-block: 1.5rem; }
+  .guide-copy :global(th), .guide-copy :global(td) { text-align: start; vertical-align: top; border-bottom: 1px solid var(--line); padding: 0.7rem; }
+  .guide-copy :global(th) { background: #202026; }
+  .guide-copy :global(td:first-child) { width: 38%; }
+  .guide-copy :global(blockquote) { margin: 1.2rem 0; padding: 0.1rem 1.2rem; border-left: 3px solid var(--accent); background: #202026; }
+  @media (max-width: 520px) {
+    .guide { padding-top: 6.5rem; }
+    .guide-copy :global(table) { font-size: 0.94rem; line-height: 1.45; }
+    .guide-copy :global(td), .guide-copy :global(th) { padding-inline: 0.4rem; }
+  }
+</style>

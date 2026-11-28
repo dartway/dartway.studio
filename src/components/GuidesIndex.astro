@@ -1,0 +1,24 @@
+---
+import SiteLayout from './SiteLayout.astro';
+import { guides } from '../data/guides';
+const { lang } = Astro.props;
+const ru = lang === 'ru';
+const title = ru ? 'Руководства по заказной разработке приложений' : 'Mobile app development guides for buyers';
+const description = ru ? 'Как выбрать способ разработки, описать первый этап и сравнить предложения студий.' : 'Choose a mobile delivery approach, scope a first milestone and compare studio estimates.';
+---
+<SiteLayout lang={lang} title={title + ' — DartWay'} description={description}>
+  <section class="wrap page-intro"><h1>{title}</h1><p class="lead">{description}</p></section>
+  <ul class="wrap guide-list">
+    {guides.filter(g => g.lang === lang).map(g => (
+      <li><h2><a href={g.path}>{g.title}</a></h2><p>{g.description}</p></li>
+    ))}
+  </ul>
+</SiteLayout>
+
+<style>
+  .guide-list { list-style: none; padding-bottom: var(--sy); }
+  .guide-list li { border-top: 1px solid var(--line); padding-block: 1.5rem; }
+  h2 { max-width: 48rem; font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.2; }
+  h2 a { text-decoration-color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+  p { max-width: 48rem; margin-top: 0.8rem; }
+</style>
