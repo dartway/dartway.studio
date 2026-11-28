@@ -1,6 +1,6 @@
 ---
 import '../styles/site.css';
-const { lang = 'en', title, description, image: pageImage } = Astro.props;
+const { lang = 'en', title, description, image: pageImage, pageType = 'website' } = Astro.props;
 const ru = lang === 'ru';
 const image = pageImage ?? (ru ? '/og-ru.png' : '/og-en.png');
 const prefix = ru ? '/ru' : '';
@@ -29,7 +29,8 @@ const email = 'mailto:evgenii@dartway.studio';
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={pageType} />
+    <slot name="head" />
     <meta property="og:image" content={new URL(image, Astro.site).href} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#05060c" />
@@ -81,6 +82,7 @@ const email = 'mailto:evgenii@dartway.studio';
       <a href={email} data-cta="footer-email">Email</a>
       <a href="https://t.me/eu_novikov" data-cta="footer-telegram">Telegram</a>
       <a href={`${prefix}/work/`}>{ru ? 'Все проекты' : 'All projects'}</a>
+      <a href={`${prefix}/guides/`}>{ru ? 'Руководства' : 'Guides'}</a>
       <a href="https://dartway.dev" data-cta="footer-framework">{ru ? 'Наш фреймворк' : 'Our framework'}</a>
     </footer>
     <script>

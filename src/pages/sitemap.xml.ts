@@ -1,8 +1,9 @@
 // Every page of the site in both languages, for search engines; robots.txt points here.
+import { guides } from '../data/guides';
 import { caseStudies } from '../data/caseStudies';
 
 export function GET({ site }: { site: URL }) {
-  const paths = ['/', '/agencies/', '/work/', ...caseStudies.map((c) => `/work/${c.slug}/`)];
+  const paths = ['/', '/agencies/', '/work/', '/guides/', ...guides.filter(g => g.lang === 'en').map(g => g.path), ...caseStudies.map((c) => `/work/${c.slug}/`)];
   const url = (p: string) => new URL(p, site).href;
   const entries = paths.map((p) => {
     const en = url(p);
